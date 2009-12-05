@@ -26,36 +26,36 @@
 
 \begin{abstract}
 
-Avogadro is a free, cross-platform, open source graphical user interface for building molecular structures, formatting input files and analyzing output files from different codes. The work presented here details the Avogadro library which provides a framework, application programming interface, and three-dimensional visualization capabilities with direct applications in research and education in the fields of chemistry, physics, materials science and biology. The Avogadro application provides a rich graphical interface using dynamically loaded plugins. The application can be extended by implementing a plug-in in C++ or Python in order to explore different visualization techniques, build/manipulate molecular structures, interact with other programs or various other tasks.
+Avogadro is a free, cross-platform, open source, OpenGL based graphical user interface and library for building molecular structures, formatting input files and analyzing output files from computational chemistry codes. The work presented here details the Avogadro library which provides a framework, application programming interface, and three-dimensional visualization capabilities that have direct applications in research and education in the fields of chemistry, physics, materials science and biology. The Avogadro application provides a rich graphical interface using dynamically loaded plugins. The application can be extended by implementing a plug-in in C++ or Python in order to explore different visualization techniques, build/manipulate molecular structures, and interact with other programs.
 
 \end{abstract}
 
 \section{Introduction}
 
-Many areas such as chemistry, materials science, physics and biology need efficient computer programs to both build and visualize molecular structures. The field of molecular graphics is dominated by viewers with little or no editing capabilities, such as RasMol~\cite{RasMol}, JMol~\cite{JMol}, PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol}, and BALLView~\cite{BALLView} among many others. The aforementioned viewers are all freely available, and most of them are available under open source licenses and work on the major operating systems.
+Many areas such as chemistry, materials science, physics and biology need efficient computer programs to both build and visualize molecular structures. The field of molecular graphics is dominated by viewers with little or no editing capabilities, such as RasMol~\cite{RasMol}, JMol~\cite{JMol}, PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol}, and BALLView~\cite{BALLView} among many others. The aforementioned viewers are all freely available, and most of them are available under open source licenses and work on the most common operating systems (GNU/Linux, Apple Mac OS X, BSD and Microsoft Windows).
 
-The choice of software capable of building chemical structures is far smaller. There are existing commercial packages, such as Spartan, CAChe, GaussView, Materials Studio~\cite{Accelrys} and CrystalMaker~\cite{CrystalMaker}, that are well polished and capable of constructing many different types of molecular structures. They are however not available for all operating systems, easily extensible or released under an open source license. Licensing costs can be prohibitive, as can the changing direction of companies which can lead to a loss of significant research investment in a single commercial product.
+The choice of software capable of building chemical structures is far smaller. There are existing commercial packages, such as Spartan, CAChe, GaussView, Materials Studio~\cite{Accelrys} and CrystalMaker~\cite{CrystalMaker}, that are well polished and capable of constructing many different types of molecular structures. They are however not available for all operating systems (most of them only have programs for Microsoft Windows), are not easily extensible or released under an open source license. Licensing costs can be prohibitive, as can the changing direction of companies which can lead to a loss of significant research investment in a single commercial product.
 
-The selection of free, open source, cross platform molecular builders was quite limited when the Avogadro project was founded in late 2006. Ghemical~\cite{Ghemical} was one of the only cross platform, open source molecular builders available at that time. Two of the authors contributed to Ghemical previously, but had found that it was not easily extensible. This was what led them to found a new project in order to address the issues they had observed in Ghemical and other packages. The Molden~\cite{Molden} application was also available, able to build up small molecules and analyze output from several quantum codes. It suffers from a restrictive license and also uses an antiquated graphical toolkit.
+The selection of free, open source, cross platform molecular builders was quite limited when the Avogadro project was founded in late 2006. Ghemical~\cite{Ghemical} was one of the only projects satisfying these needs at the time. Two of the authors (Hutchison and Curtis) contributed to Ghemical previously, but had found that it was not easily extensible. This led them to found a new project in order to address the issues they had observed in Ghemical and other packages. The Molden~\cite{Molden} application was also available, able to build up small molecules and analyze output from several quantum codes. It suffers from a restrictive license and also uses an antiquated graphical toolkit.
 
-Following a case study of the available GUIs capable of building molecular structures broad design goals were outlined. One of the main issues with both commercial and open source applications is a lack of extensibility, many of the applications also only work on one or two operating systems. An open and extensible framework is needed in order to be able to perform innovative research. The creation of a platform that implements many of the necessary foundations for a molecular builder and visualizer facilitates more effective future research.
+Following a case study of the available applications capable of building molecular structures broad design goals were outlined. One of the main issues with both commercial and open source applications is a lack of extensibility, many of the applications also only work on one or two operating systems. An open and extensible framework is needed in order to be able to perform innovative research. The creation of a framework that implements many of the necessary foundations for a molecular builder and visualizer would facilitate more effective research in this area in the future.
 
-At the time of writing it is apparent that other researchers have perceived similar needs. Several new applications are available today that focus on both building and visualizing molecular structure. These include CCP1GUI~\cite{CCP1GUI}, Gabedit~\cite{Gabedit} along with some highly specific editors such as MacMolPlt~\cite{MacMolPlt}. Whilst offering many interesting and useful features these applications suffer from the same kind of issues centering around effective reuse of existing code, well commented and documented code and easy extension.
+At the time of writing it is apparent that other researchers have perceived similar needs. Several new applications are available today that focus on both building and visualizing molecular structure. These include CCP1GUI~\cite{CCP1GUI}, Gabedit~\cite{Gabedit} along with some highly specific editors such as MacMolPlt~\cite{MacMolPlt}. Whilst offering many interesting and useful features, these projects suffer from the same kind of issues centering around effective reuse of existing code, well commented and documented code and easy extension to specialized areas.
 
 The Avogadro project has endeavored to make a free, open source framework for both building and visualizing molecular structures. Much of the initial focus has been placed on preparing input and analyzing output from quantum calculations. Other applications such as preparing input for MD simulations and visualizing periodic structures will also be presented, demonstrating the flexibility of the Avogadro framework.
 
-Avogadro has close ties to several other free, cross platform, open source projects in order to reuse as much code as practical. These projects include Qt to provide a free, cross platform graphical toolkit, Open Babel~\cite{OpenBabel} for chemical file input/output, geometry optimization and other chemical perception, Eigen~\cite{Eigen} for matrix and vector mathematics, OpenGL/GLSL for real time three dimensional rendering and POV-Ray for ray-traced rendering.
+Avogadro has close ties to several other free, cross platform, open source projects in order to reuse as much code as is practical. These projects include Nokia Qt to provide a free, cross platform graphical toolkit, Open Babel~\cite{OpenBabel} for chemical file input/output, geometry optimization and other chemical perception, Eigen~\cite{Eigen} for matrix and vector mathematics, OpenGL/GLSL for real time three dimensional rendering and POV-Ray for ray-traced rendering.
 
-Avogadro also uses quantum codes such as GAMESS-US, Q-Chem, Gaussian and MOPAC to perform ab-initio and semi-empirical calculations. Support for more calculation backends is planned and we are working with Q-Chem on an advanced input file generator. As with most open source projects, the directions the project has taken are influenced largely by the research and interests of the contributors.
+Avogadro also uses quantum codes such as GAMESS-US, Q-Chem, Gaussian and MOPAC to perform ab-initio and semi-empirical calculations. Support for more calculation backends is planned and we are working with Q-Chem on an advanced input file generator. As with most open source projects, the directions the project has taken are influenced largely by the research areas and interests of the principal contributors.
 
 \section{The Graphical User Interface}
 
-The first view most people will have of Avogadro is the main application. Binary installers are provided under the GPL license for Apple Mac OS X and Microsoft Windows, along with packages for all of the major Linux distributions. This means that Avogadro can easily be installed no matter what operating system is being used. Easy to follow instructions on how to compile the latest source code is also provided on the main Avogadro web site for the more adventurous.
+The first thing most people will see is the main Avogadro application window. Binary installers are provided under the GPL license for Apple Mac OS X and Microsoft Windows, along with packages for all of the major Linux distributions. This means that Avogadro can be installed quite easily on most operating systems. Easy to follow instructions on how to compile the latest source code are also provided on the main Avogadro web site for the more adventurous, or those using an operating system that is not yet supported.
 
-The Qt toolkit gives Avogadro a native look and feel on each of the three supported operating systems---Linux, Mac OS X and Windows. The basic functionality expected in a molecular builder and viewer has been implemented, along with several less common features. Most of this functionality has been written using the API made available to plugin writers, and is loaded at runtime. It is very easy for new users to install Avogadro and be building their first molecules within minutes. Thanks to the Open Babel library Avogadro also supports the majority of chemical file formats in common useage.
+The Qt toolkit gives Avogadro a native look and feel on each of the three supported operating systems---Linux, Mac OS X and Windows. The basic functionality expected in a molecular builder and viewer has been implemented, along with several less common features. The vast majority of this functionality has been written using the API made available to plug-in writers, and is loaded at runtime. It is very easy for new users to install Avogadro and be building their first molecules within minutes. Thanks to the Open Babel library Avogadro also supports a large portion of the chemical file formats in common use.
 
 \begin{figure}
-	\includegraphics[width=0.8\textwidth]{images/avogadro-0-9-3}
+	\includegraphics[width=0.8\textwidth]{images/avogadro-0-9-8}
 	\caption{The Avogadro graphical user interface when first opened.}
 	\label{f:avogadrogui}
 \end{figure}
@@ -65,15 +65,17 @@ The Qt toolkit gives Avogadro a native look and feel on each of the three suppor
 
 After opening Avogadro a window such as that shown in figure~\ref{f:avogadrogui} is presented. From there simply left clicking on the black part of the display allows the user to draw a carbon atom. If the user pushes the left mouse button down and drags a bonded carbon atom would be drawn between the start point and the final position where the mouse was released.
 
-A large amount of effort has been expended to create an intuitive tool for drawing small molecules. Common elements can be selected from a drop down list, or a periodic table can be displayed to select less common elements from. Clicking on an existing atom changes its type, dragging reverts the original atom and draws the new atom bonded to the original. If the bonds are left-clicked then the bond order cycles between single, double and triple.
+A large amount of effort has been expended to create an intuitive tool for drawing small molecules. Common elements can be selected from a drop down list, or a periodic table can be displayed to select less common elements. Clicking on an existing atom changes its type, dragging reverts the original atom and draws the new atom bonded to the original. If the bonds are left-clicked then the bond order cycles between single, double and triple.
 
-In much the same way right clicking on atoms or bonds deletes them. If the ``Adjust Hydrogens'' check box is active the number of hydrogens bonded to each atom is automatically adjusted to satisfy valency. This can also be done at the end of an editing session by using the add hydrogens extension in the build menu.
+Right clicking on atoms or bonds deletes them. If the ``Adjust Hydrogens'' box is checked the number of hydrogens bonded to each atom is automatically adjusted to satisfy valency. This can also be done at the end of an editing session by using the add hydrogens extension in the build menu. Keyboard shortcuts are also available to change the active element (by typing the one or two letter symbol), or bond order (by entering the numeric bond order).
 
-In addition to the draw tool there are two tools for adjusting the position of atoms in existing molecules. The atom centric manipulate tool can be used to move an atom or a group of selected atoms. The bond centric manipulate tool can be used to select a bond and then adjust all atoms positions relative to the selected bond in various ways. These three tools allow for a great deal of flexibility in building small molecule structures interactively.
+In addition to the draw tool there are two tools for adjusting the position of atoms in existing molecules. The atom centric manipulate tool can be used to move an atom or a group of selected atoms. The bond centric manipulate tool can be used to select a bond and then adjust all atoms positions relative to the selected bond in various ways. These three tools allow for a great deal of flexibility in building small molecules interactively on screen.
 
-Once the molecular structure is complete the forcefield extension can be used to perform a geometry optimization. By clicking on ``Extensions'' and ``Optimize Geometry'' a fast geometry optimization is performed on the molecule. The forcefield and calculation parameters can be adjusted, but the defaults are adequate for most molecules. The workflow described is typical when building up a small molecular structure for use as input to quantum calculations, or publication quality figures.
+Once the molecular structure is complete the forcefield extension can be used to perform a geometry optimization. By clicking on ``Extensions'' and ``Optimize Geometry'' a fast geometry optimization is performed on the molecule. The forcefield and calculation parameters can be adjusted, but the defaults are adequate for most molecules. This workflow is typical when building up a small molecular structures for use as input to quantum calculations, or publication quality figures.
 
 An alternative is to combine the ``Auto Optimization'' tool with the drawing tool. This presents a unique way of sculpting the molecule while the geometry is constantly minimized in the background. The geometry optimization is animated, and the effect of changing bond orders, adding new groups or removing groups can be observed interactively.
+
+Several dialogs are provided to provide information on molecule properties, and to precisely change parameters, such as the cartesian coordinates of the atoms in the molecule.
 
 \subsection{Building a Molecule: Z-Matrix (Incomplete)}
 
@@ -89,9 +91,9 @@ An alternative is to combine the ``Auto Optimization'' tool with the drawing too
 
 \subsection{Preparing Input for Quantum Codes}
 
-There are several extensions that assist the user in preparing input files for major quantum codes such as GAMESS-US, Gaussian, Q-Chem and MOPAC. The dialogs presented present the features required to run basic quantum calculations, as shown in figure~\ref{f:quantumdialogs}. The preview of the input file shown at the bottom of each dialog is updated as options are changed.
+There are several extensions that assist the user in preparing input files for popular quantum codes such as GAMESS-US, Gaussian, Q-Chem and MOPAC. The graphical dialogs present the features required to run basic quantum calculations, as shown in figure~\ref{f:quantumdialogs}.
 
-This approach helps new users of quantum codes to learn the input syntax of different codes, and to quickly generate input files for the quantum codes as they learn. The input files can also be edited before the file is generated and submitted to the quantum code. The MOPAC extension can run MOPAC directly if it is installed on the host computer, loading the output file once the MOPAC calculation is complete.
+The preview of the input file at the bottom of each dialog is updated as options are changed. This approach helps new users of quantum codes to learn the syntax of input files for different codes, and to quickly generate useful input files as they learn. The input can be edited in the dialog, before the file is generated and submitted to the quantum code. The MOPAC extension can also run MOPAC directly if it is installed on the host computer, and load the output file once the calculation is complete.
 
 \subsection{Alignment and Measurements}
 
@@ -102,11 +104,19 @@ More complex alignment tools for specific tasks couuld be created. The alignment
 
 \section{Visualization}
 
-An overview of the various visualization types available.
+The Avogadro application uses OpenGL to render molecular representations to the screen interactively. This has the advantage of being a good cross platform technique to render three dimensional images using hardware accelerated. 
 
 \subsection{Standard Representations}
 
-A description of the standard representations, along with some examples of more novel uses of composites, transparency etc.
+\begin{figure}
+	\includegraphics[width=0.95\textwidth]{images/standardRepsLabel}
+	\caption{Several molecular representations of thiophene, (a) wireframe, (b) stick/liquorice, (c) ball and stick, (d) ball and stick with ring, (e) Van der Waal's/CPK and (f) transparent Van der Waal's with stick.}
+	\label{f:standardReps}
+\end{figure}
+
+In chemistry there are several standard representations of molecular structre, originally based upon those possible with physical models. The Avogadro application implements each of these representations shown in figure~\ref{f:standardReps} as a plugin. These range from the simple wireframe representation, stick/liquorice, ball and stick and Van der Waal's.
+
+It is also possible to combine several representations, such as ball and stick with ring rendering, figure~\ref{f:standardReps} (d), and a semi-transparent Van der Waal's space-filling representation with a stick representation to eludicate molecular backbone, figure~\ref{f:standardReps} (f).
 
 \subsection{Electronic Structure}
 
