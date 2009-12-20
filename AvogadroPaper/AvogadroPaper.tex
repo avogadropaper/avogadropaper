@@ -46,16 +46,18 @@ The Avogadro project has endeavored to make a free, open source framework for bo
 
 Avogadro has close ties to several other free, cross platform, open source projects in order to reuse as much code as is practical. These projects include Nokia Qt to provide a free, cross platform graphical toolkit, Open Babel~\cite{OpenBabel} for chemical file input/output, geometry optimization and other chemical perception, Eigen~\cite{Eigen} for matrix and vector mathematics, OpenGL/GLSL for real time three dimensional rendering and POV-Ray for ray-traced rendering.
 
-Avogadro also uses quantum codes such as GAMESS-US, Q-Chem, Gaussian and MOPAC to perform ab-initio and semi-empirical calculations. Support for more calculation backends is planned and we are working with Q-Chem on an advanced input file generator. As with most open source projects, the directions the project has taken are influenced largely by the research areas and interests of the principal contributors.
+Avogadro also uses quantum codes such as GAMESS-US, Q-Chem, Gaussian and MOPAC to perform ab-initio and semi-empirical calculations. Support for more calculation backends is planned and we are working with Q-Chem on an advanced input file generator. As with most open source projects, the directions the project has taken were influenced largely by the research areas and interests of the principal contributors.
 
 \section{The Graphical User Interface}
 
 The first thing most people will see is the main Avogadro application window. Binary installers are provided under the GPL license for Apple Mac OS X and Microsoft Windows, along with packages for all of the major Linux distributions. This means that Avogadro can be installed quite easily on most operating systems. Easy to follow instructions on how to compile the latest source code are also provided on the main Avogadro web site for the more adventurous, or those using an operating system that is not yet supported.
 
-The Qt toolkit gives Avogadro a native look and feel on each of the three supported operating systems---Linux, Mac OS X and Windows. The basic functionality expected in a molecular builder and viewer has been implemented, along with several less common features. The vast majority of this functionality has been written using the API made available to plug-in writers, and is loaded at runtime. It is very easy for new users to install Avogadro and be building their first molecules within minutes. Thanks to the Open Babel library Avogadro also supports a large portion of the chemical file formats in common use.
+The Qt toolkit from Nokia gives Avogadro a native look and feel on the three supported operating systems---Linux, Mac OS X and Windows. The basic functionality expected in a molecular builder and viewer has been implemented, along with several less common features. The vast majority of this functionality has been written using the API made available to plug-in writers, and is loaded at runtime. It is very easy for new users to install Avogadro and build their first molecules within minutes. Thanks to the Open Babel library Avogadro supports a large portion of the chemical file formats that are in common use.
 
 \begin{figure}
-	\includegraphics[width=0.8\textwidth]{images/avogadro-0-9-8}
+	\begin{center}
+    \includegraphics[width=0.8\textwidth]{images/avogadro-0-9-8}
+  \end{center}
 	\caption{The Avogadro graphical user interface when first opened.}
 	\label{f:avogadrogui}
 \end{figure}
@@ -77,9 +79,7 @@ An alternative is to combine the ``Auto Optimization'' tool with the drawing too
 
 Several dialogs are provided to provide information on molecule properties, and to precisely change parameters, such as the cartesian coordinates of the atoms in the molecule.
 
-\subsection{Building a Molecule: Z-Matrix (Incomplete)}
-
-\subsection{Building a Molecule: From Fragments}
+\subsection{Building a Molecule: From Fragments} %Geoff?
 
 \begin{figure}
 	\includegraphics[width=0.44\textwidth]{images/avogadro-q-chem}
@@ -91,20 +91,20 @@ Several dialogs are provided to provide information on molecule properties, and 
 
 \subsection{Preparing Input for Quantum Codes}
 
-There are several extensions that assist the user in preparing input files for popular quantum codes such as GAMESS-US, Gaussian, Q-Chem and MOPAC. The graphical dialogs present the features required to run basic quantum calculations, as shown in figure~\ref{f:quantumdialogs}.
+Several extensions were developed for Avogadro that assist the user in preparing input files for popular quantum codes such as GAMESS-US, Gaussian, Q-Chem and MOPAC. The graphical dialogs present the features required to run basic quantum calculations, some examples are shown in figure~\ref{f:quantumdialogs}.
 
-The preview of the input file at the bottom of each dialog is updated as options are changed. This approach helps new users of quantum codes to learn the syntax of input files for different codes, and to quickly generate useful input files as they learn. The input can be edited in the dialog, before the file is generated and submitted to the quantum code. The MOPAC extension can also run MOPAC directly if it is installed on the host computer, and load the output file once the calculation is complete.
+The preview of the input file at the bottom of each dialog is updated as options are changed. This approach helps new users of quantum codes to learn the syntax of input files for different codes, and to quickly generate useful input files as they learn. The input can be edited in the dialog, before the file is saved and submitted to the quantum code. The MOPAC extension can also run the  MOPAC program directly if it is available on the user's computer, Avogadro can also load the output file once the calculation is complete.
 
 \subsection{Alignment and Measurements}
 
-One of the more specialized tools included in the standard Avogadro distribution is the alignment tool. This mouse tool facilitates the alignment of a molecular structure with the coordinate origin if one atom is selected, and along the specified axis if two atoms are selected. The alignment tool can be combined with the measure, select and manipulate tools in order to create inputs for quantum codes where the position and orientation of the molecule is important. One example of this would be calculations where an external electric field is applied to the molecule and the effect of orientation is being studied.
+One of the specialized tools included in the standard Avogadro distribution is the alignment tool. This mouse tool facilitates the alignment of a molecular structure with the coordinate origin if one atom is selected, and along the specified axis if two atoms are selected. The alignment tool can be combined with the measure, select and manipulate tools in order to create inputs for quantum codes where the position and orientation of the molecule is important. One example of this is calculations where an external electric field is applied to the molecule. In these types of calculations the alignment of the molecule can have a large effect.
 
-More complex alignment tools for specific tasks couuld be created. The alignment tool was created in a few hours for a specific research project looking at single molecules. in external fields. This is an instance where extensibility was very important in order to be able to complete some new research using a graphical tool. It would not have been worth the investment to create a new tool 
+More complex alignment tools for specific tasks couuld be created. The alignment tool was created in just a few hours for a specific research project performing calculation on the piezoelectric effect in single molecules. This is a prime example where extensibility was very important in order to be able to perform research using a graphical computational chemistry tool. It would not have been worth the investment to create a new application just to align molecular structures to an axis, but creating a plugin for an extensible project was not unreasonable.
 
 
 \section{Visualization}
 
-The Avogadro application uses OpenGL to render molecular representations to the screen interactively. This has the advantage of being a good cross platform technique to render three dimensional images using hardware accelerated. 
+The Avogadro application uses OpenGL to render molecular representations to the screen interactively. This has the advantage of being a good cross platform API to render three dimensional images using hardware accelerated graphics. OpenGL 1.1 and below is used in most of the rendering code, and so Avogadro can be used even on very modest/old computer systems. It is capable of taking advantage of some of the newer features available in OpenGL 2.0, but this has been kept as an optional extra feature when working on novel visualizations of molecular structure.
 
 \subsection{Standard Representations}
 
@@ -120,11 +120,13 @@ It is also possible to combine several representations, such as ball and stick w
 
 \subsection{Electronic Structure}
 
-Avogadro can read Gaussian cube files, in addition it can also read the basis set and relevant information output by Gaussian, Q-Chem, Molpro and MOPAC. The volumetric data can be calculated and isosurfaces calculated. These isosurfaces can be displayed interactively, overlayed onto molecular structure etc.
+Avogadro can read Gaussian cube files, in addition it can also read the basis set and relevant information output by Gaussian, Q-Chem, Molpro and MOPAC. The volumetric data can be calculated and isosurfaces computed from that volumetric data. There are display types that can display these isosurfaces in Avogadro interactively.
 
-\subsection{Secondary Biological Structure}
+\subsection{Secondary Biological Structure} % This would likely be a great one for Tim to add some detail to.
 
 \subsection{GLSL, Novel Visualization}
+
+
 
 \subsection{Ray Tracing}
 
@@ -158,9 +160,9 @@ Some of the engines also convey some information about the underlying data the g
 
 \subsection{Extensions}
 
-\subsection{Colors}
+\subsection{Colors} % Geoff
 
-\section{Python Interface}
+\section{Python Interface} % Tim
 
 Description of the Python bindings, PyQt, plugins as Python classes.
 
