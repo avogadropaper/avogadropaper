@@ -196,9 +196,33 @@ Description of the quantum calculation code already implemented. Slater and Gaus
 
 \section{Avogadro Library in Use}
 
-The Avogadro library used in Kalzium, may be Kompound if there is more to show. QUI as an external user, not yet well integrated.7
+The Avogadro library used in Kalzium, may be Kompound if there is more to show.
+QUI as an external user, not yet well integrated.
+
+\subsection{Packmol}
+
+\subsection{XtalOpt}
+
+The XtalOpt[xo1][xo2] software package is implemented as a third-party C++
+extension to Avogadro and makes heavy use of the libavogadro API. The extension
+implements an evolutionary algorithm tailored for crystal structure prediction.
+The XtalOpt development team chose Avogadro as a development platform for the
+open source license, well-designed API, powerful visualization tools, and
+intuitive interface of the Avogadro package. XtalOpt exists as a dialog window
+(Figure XO) and uses the main Avogadro window for visualizing candidate
+structures as they evolve. The API is well suited for XtalOpt’s needs,
+providing a simple mechanism to allow the user to view, edit, and export the
+structures generated during the search. Taking advantage of the cross-platform
+capabilities of Avogadro and its dependencies, XtalOpt is available for Linux,
+Windows, (Mac?).
 
 \section{Conclusions}
+
+\section{Acknowledgements}
+
+We wish to thank the many contributors to the Avogadro project, including
+developers, testers, translators, and users. MDH and GRH thank the University
+of Pittsburgh for support.
 
 \bibliographystyle{unsrt}
 \bibliography{AvogadroPaper}
