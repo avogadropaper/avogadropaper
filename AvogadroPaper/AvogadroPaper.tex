@@ -75,12 +75,12 @@ and is loaded at runtime. It is very easy for new users to install Avogadro and
 build their first molecules within minutes. Thanks to the Open Babel library
 Avogadro supports a large portion of the chemical file formats that are in
 common use.
-% TODO Update the figure here
+
 \begin{figure}
   \begin{center}
-    \includegraphics[width=0.8\textwidth]{images/avogadro-0-9-8}
+    \includegraphics[width=0.8\textwidth]{images/avogadro-drawing}
   \end{center}
-  \caption{The Avogadro graphical user interface when first opened.}
+  \caption{The Avogadro graphical user interface, showing the editing interface for a molecule.}
   \label{f:avogadrogui}
 \end{figure}
 
@@ -133,9 +133,11 @@ The Avogadro application uses OpenGL to render molecular representations to the 
 \subsection{Standard Representations}
 
 \begin{figure}
-	\includegraphics[width=0.95\textwidth]{images/standardRepsLabel}
-	\caption{Several molecular representations of thiophene, (a) wireframe, (b) stick/liquorice, (c) ball and stick, (d) ball and stick with ring, (e) Van der Waal's/CPK and (f) transparent Van der Waal's with stick.}
-	\label{f:standardReps}
+  \includegraphics[width=0.95\textwidth]{images/standardRepsLabel}
+  \caption{Several molecular representations of thiophene, (a) wireframe, 
+    (b) stick/liquorice, (c) ball and stick, (d) ball and stick with ring,
+    (e) Van der Waal's/CPK and (f) transparent Van der Waal's with stick.}
+  \label{f:standardReps}
 \end{figure}
 
 In chemistry there are several standard representations of molecular structre, originally based upon those possible with physical models. The Avogadro application implements each of these representations shown in figure~\ref{f:standardReps} as a plugin. These range from the simple wireframe representation, stick/liquorice, ball and stick and Van der Waal's.
@@ -201,9 +203,24 @@ QUI as an external user, not yet well integrated.
 
 \subsection{Packmol}
 
+\begin{figure}
+  \includegraphics[width=0.45\textwidth]{images/packmol-extension}
+  \includegraphics[width=0.45\textwidth]{images/packmol-lipid}
+  \caption{The PackMol extension for Avogadro (left) and a lipid layer (right) as
+    produced by the PackMol program.}
+  \label{f:packmol}
+\end{figure}
+
 \subsection{XtalOpt}
 
-The XtalOpt[xo1][xo2] software package is implemented as a third-party C++
+\begin{figure}
+  \includegraphics[width=0.95\textwidth]{images/xtalopt}
+  \caption{The XtalOpt package showing a plot of stability vs. search progress
+    for a $\mathrm{TiO_2}$ supercell.}
+  \label{f:xtalopt}
+\end{figure}
+
+The XtalOpt~\cite{xo1, xo2} software package is implemented as a third-party C++
 extension to Avogadro and makes heavy use of the libavogadro API. The extension
 implements an evolutionary algorithm tailored for crystal structure prediction.
 The XtalOpt development team chose Avogadro as a development platform for the
