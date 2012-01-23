@@ -293,17 +293,84 @@ The Avogadro framework uses the model, view, controller paradigm. The model bein
 
 \subsection{Plug-in Interface}
 
-Description of the runtime plugin interface, along with some examples of the API for a typical plugin in C++ and Python.
+The Avogadro library was developed as an extensible library using C++ plugins that are loaded at runtime for most
+functionality. The Avogadro plugins are divided into four separate types, all having a common base class. The Plugin
+class is the common base, defining a minimal set of interfaces for an Avogadro plugin inside the Avogadro C++ namespace.
+
+There are four classes that derive from this common base class specializing their interface for specific activities. The
+Avogadro::Color base class defines the virtual interface for applying colors to atoms, bonds and other properties.
+Avogadro::Engine defines the common interface for all display types in Avogadro, from the simple ball and stick or
+Van der Waals visualizations through to surfaces and force visualizations. The Avogadro::Tool base class provides
+the interface for all interactive tools, focusing principally on mouse and keyboard interaction with Avogadro. Examples
+of tool plugins include the draw tool used to draw molecules atom by atom, and the navigation tool used to pan, rotate and
+scale the view of the molecule. There are also several specialized tools such as the alignment tool.
+
+Finally there is the Avogadro::Extension class, which defines the interface for dialog based plugins. These extensions
+can interact with the molecule, and are used for a variety of purposes from molecule properties dialogs to input file
+generation dialogs for many quantum codes including NWChem, Gaussian, GAMESS and others. This class of plugin is also
+applied to file import, and network aware extensions querying web databases for structures given their common name for
+example.
+
+When the application starts up it searches several directories for plugins, which it then attempts to load. The Qt plugin
+framework is used to check that the plugins have a recent enough version to be loaded, and the plugin type can be deduced
+once it has been loaded. The user interface is then populated with appropriate entries. The tools being added to the
+main toolbar using their embedded icons, display types are added to the display type list, and menu entries are added for
+all loaded extensions.
+
+The tool and display type plugins can both (optionally) return a dialog that is used to configure the plugin. These are
+specific to each plugin, and provided in the user interface.
 
 \subsection{Display Types}
 
-Display types are one type of plugin, referred to as engines internally. Their primar focus is with rendering graphics to the screen. As is the case with most molecular graphics a large portion of the geometric primitives are spheres and cylinders. These are typically used to represent atoms and bonds.
+Display types are one type of plugin, referred to as engines internally. Their primary focus is to render graphics to
+the screen. As is the case with most molecular graphics a large portion of the geometric primitives are spheres and cylinders.
+These are typically used to represent atoms and bonds, but there are many other properties that can be rendered using
+the display type plugins.
 
-Some of the engines also convey some information about the underlying data the geometric primitives represent, in order to allow for the molecule to be edited. Engines are performance critical as the render functions are called each time a frame is requested for display. It is very important for the engines
+Some of the engines also convey some information about the underlying data the geometric primitives represent, in order to
+allow for the molecule to be edited. Engines are performance critical as the render functions are called each time a frame
+is requested for display. It is very important for the engines to efficiently render all requested data, and multiple display
+types can be combined to form a composite display, for example ball and stick display overlaid with a transparent Van der
+Waals space filling diplay and ring rendering to highlight all rings in the structure. Figure~\ref{f:standardReps} (d) and
+(f) show two such combinations of multiple display types.
 
 \subsection{Tools}
 
+The tools are responsible for virtually all mouse and keyboard interaction with the molecule. The navigation tool provides
+basic scene navigation, implementing rotation, panning, tilting and zooming support. This tool provides optional visual
+cues to show what type of navigation is taking place, and all scene navigation will take place about the center of the
+molecule if an empty space is clicked, or about the center of the clicked atom. The navigation tool is also used as the
+default tool if the currently active tool does not handle the mouse event passed to it.
+
+One of the other central tools is the draw tool, this implements a free hand molecule drawing input method, supporting
+keyboard shortcuts, combo boxes or a periodic table view to select elements. The user can use the left mouse button to
+add new atoms or bonds, or click on the bonds to change their order. The right mouse button can be used to delete atoms
+or bonds and the directional keys can be used in combination with the mouse to quickly rotate/pan the molecule.
+
+There are also two tools for adjustment of structures (atom or bond centric), a selection tool supporting standard
+selection interactions and an auto-rotate tool that allows users to set the speed and angles about which to rotate the
+molecule. The interactive auto-optimization tool provides a sculpting interaction, where the user can begin a
+continuous geometry optimization, and switch back to the draw or adjustment tools and change the shape and structure
+of the molecule while observing the new structure being optimized.
+
+This can also be combined with the measurement tool to interactively observe bond lengths and angles evolve as the
+structure is updated and the geometry minimized. If the optimization tool is turned off the measurement tool also
+allows the user to precisely adjust bond lengths and/or angles using the adjustment tools.
+
 \subsection{Extensions}
+
+The extensions represent quite a diverse range of plugins. These range from the input generation dialogs for various
+quantum chemistry codes such as GAMESS, MOLPRO, NWChem, etc, through to animation of the molecule and visualization of
+molecular orbitals and electron density. Network aware extensions allow the user to click on File->Import->Fetch by
+chemical name and search for ``tnt'' or ``propanol'' and have structures returned by the NIH CACTUS Chemical Structure
+Resolver service.
+
+Other extensions translate the entire scene to POV-Ray input, and call POV-Ray to render the molecule using ray tracing
+techniques to provide higher quality renderings for publication. Various molecular property dialogs are also implemented
+as plugins, drawing largely on Open Babel functionality to provide an overview of the molecule. Cartesian editors, addition
+and removal of hydrogens, fragment, SMILES and peptide insertion are all implemented as extensions showing up in the
+Avogadro menus. More recently a crystallography extension was added giving access to a much wider range to functionality
+useful to practitioners in that area.
 
 \subsection{Colors} % Geoff
 
