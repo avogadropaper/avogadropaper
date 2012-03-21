@@ -177,7 +177,7 @@ previously, but had found that it was not easily extensible. This led them to
 found a new project in order to address the issues they had observed in Ghemical
 and other packages. The Molden~\cite{Molden} application was also available,
 able to build up small molecules and analyze output from several quantum codes.
-It suffers from a restrictive license and also uses an antiquated graphical
+It suffers from a restrictive license and it uses an antiquated graphical
 toolkit.
 
 Following a case study of the available applications capable of building
@@ -388,22 +388,75 @@ molecular backbone, figure~\ref{f:standardReps} (f).
 
 \subsection{Electronic Structure}
 
-Avogadro can read Gaussian cube files, in addition it can also read the basis
-set and relevant information output by Gaussian, Q-Chem, Molpro and MOPAC. The
-volumetric data can be calculated and isosurfaces computed from that volumetric
-data. There are display types that can display these isosurfaces in Avogadro
-interactively.
+The support for electronic structure visualization evolved in Avogadro.
+Initially support for reading in Gaussian cube files was added to Open Babel,
+and a marching cubes implementation was added to Avogadro to visualize
+isosurfaces. Once this was integrated it became clear that many codes could not
+easily produce cube files, and that direct support for calculating cubes in the
+Avogadro application would be advantageoous.
 
-\subsection{Secondary Biological Structure} % This would likely be a great one
-for Tim to add some detail to.
+Initially support for Gaussian type orbitals was added, as used in a large
+range of quantum codes. Later support for Slater type orbitals was added in
+order to visulize the output from the MOPAC code. This code was written using
+the Qt Concurrent framework, reading in the basis set, eigenvectors and density
+matrix in order to directly calculate molecular orbitals and electron
+densities. The cube calculation is highly multithreaded, parallelising the
+calculation of each point in the regular grid making up the volume of interest.
+The original marching cubes implemeentation is then used to calculate
+isosurfaces in much the same way as for Gaussian cube files.
+
+Both features were developed within plugins, and matured there. More recently
+the code responsible for reading quantum output files and calculating the cubes
+has been separated out into a separate library called ``OpenQube''. This allows
+other applications to reuse the code more easily, as well as facilitating its
+use on clusters where graphical rendering may not be available. A range of
+output files are supported including Gaussian formatted checkpoint files,
+Q-Chem formatted checkpoints, GAMESS, Molpro and MOPAC AUX files. There are
+several related projects to add semantic meaning to this type of output,
+including the JUMBO converter project and Quixote.
+
+\subsection{Secondary Biological Structure}
+
+Avogadro uses the PDB reader from Open Babel, and is able to to visualize the
+secondary structure annotated in those files. Initially a simple plugin was
+developed that drew a simple tube between the biomolecule backbone, then a
+second more advanced visualization plugin was developed to calculate meshes for
+the alpha helices and beta sheets. The simple plugin is much faster, but with
+more optimization it is clear that the superior rendering produces the results
+expected in that field.
 
 \subsection{GLSL, Novel Visualization}
 
+GLSL, or OpenGL Shader Language, is a C-like syntax that can be used to develop
+code that will run on graphics cards. It has been used to great effect by the
+games industry, as well as in many areas of data visualization. Several recent
+papers highlight the potential in chemistry, such as QuteMol~\cite{QuteMol} in
+adding support for features such as ambient occlusion to add depth to images.
 
+Avogadro has support for vertex and fragment shader programs, and several
+examples are bundled with Avogadro. If the user's graphics card is capable,
+these programs can be loaded at runtime and used to great effect to visualize
+structure. Some of these include summarization techniques such as isosurface
+rendering where only the edges orthogonal to the view plane are visible giving
+a much better rendering of both the molecular and electronic structure.
 
 \subsection{Ray Tracing}
 
-Description and examples of ray traced images.
+Avogadro uses a painter abstraction that makes it much easier for developers to
+add new display types. It also abstracts away the renderer, making it possible
+to add support for alternative backends. Currently only OpenGL and POV-Ray are
+supported. Due to the abstraction we are able to use the implicit surfaces
+available in ray tracers to render molecular structure at very high levels of
+clarity with none of the triangle artifacts present in standard OpenGL rendered
+images. Much higher quality transparency and reflection also allow for the
+images to be used in poster and oral presentations as well as research
+articles.
+
+This feature is implemented in an extension, with an additional painter class
+deriving from the base class and a dialog allowing the user to edit the basic
+rendering controls. The POV-Ray input file can also be retained and edited to
+produce more complex images, or to allow for much finer control of the
+rendering process if desired.
 
 \section{Software Architecture}
 
@@ -428,10 +481,6 @@ Qt and Open Babel libraries. Qt has since been released under the much more
 permissive LGPL license. Packages such as PyMol use the more permissive BSD
 license, selling commercial versions in addition to the open source version
 (that has some capabilities missing that are present in the commercial version).
-The GPLv2 license is a good choice in order to ensure that the code base remains
-free and open, philosophically blocking the commercialization of the code at no
-cost to the company. This allows for open collaboration but precludes some
-avenues for funding further development.
 
 The core of Avogadro is written in portable C++ code with platform specific
 differences abstracted away by Qt, OpenGL and Open Babel. The CMake build system
@@ -568,6 +617,12 @@ useful to practitioners in that area.
 
 \subsection{Colors} % Geoff
 
+The color plugins primarily take either double precision numbers or integer
+values and return an RGB value. The plugins range from the standard color
+plugin that takes atomic number and returns the standard RGB value for that
+element through to mapping things like partial change and index to more easily
+view various aspects of the molecule's structure.
+
 \section{Python Interface} % Tim
 
 Description of the Python bindings, PyQt, plugins as Python classes.
@@ -580,8 +635,12 @@ data layout.
 
 \section{Avogadro Library in Use}
 
-The Avogadro library used in Kalzium, may be Kompound if there is more to show.
-QUI as an external user, not yet well integrated.
+The Avogadro library's first user was the Avogadro application, closely
+followed by the Kalzium periodic table program that is part of the KDE software
+collection. This initial work was funded as part of the Google Summer of Code
+program in 2007, and also resulted in the addition of several other features in
+the Avogadro library to support Kalzium and general visualization and editing
+of molecular structure.
 
 \subsection{Packmol}
 
