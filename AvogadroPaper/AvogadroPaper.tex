@@ -163,11 +163,11 @@ The choice of software capable of building chemical structures is far smaller.
 There are existing commercial packages, such as Spartan, CAChe, GaussView,
 Materials Studio~\cite{Accelrys} and CrystalMaker~\cite{CrystalMaker}, that are
 well polished and capable of constructing many different types of molecular
-structures. They are however not available for all operating systems (most of
+structures. They are, however, not available for all operating systems (most of
 them only have programs for Microsoft Windows), are not easily extensible or
-released under an open source license. Licensing costs can be prohibitive, as
-can the changing direction of companies which can lead to a loss of significant
-research investment in a single commercial product.
+released under an open source license. Licensing costs can be prohibitive. If
+the company were to change its direction or focus this can lead to a loss of
+significant research investment in a commercial product.
 
 The selection of free, open source, cross platform molecular builders was quite
 limited when the Avogadro project was founded in late 2006.
@@ -180,14 +180,14 @@ able to build up small molecules and analyze output from several quantum codes.
 It suffers from a restrictive license and it uses an antiquated graphical
 toolkit.
 
-Following a case study of the available applications capable of building
-molecular structures broad design goals were outlined. One of the main issues
-with both commercial and open source applications is a lack of extensibility,
-many of the applications also only work on one or two operating systems. An open
-and extensible framework is needed in order to be able to perform innovative
-research. The creation of a framework that implements many of the necessary
-foundations for a molecular builder and visualizer would facilitate more
-effective research in this area in the future.
+Broad goals for the design of a molecular editor were identified following a
+case study of the available applications. One of the main issues with both
+commercial and open source applications is a lack of extensibility, many of the
+applications also only work on one or two operating systems. An open and
+extensible framework is needed in order to perform innovative research. The
+creation of a framework that implements many of the necessary foundations for a
+molecular builder and visualizer would facilitate more effective research in
+this area.
 
 At the time of writing it is apparent that other researchers have perceived
 similar needs. Several new applications are available today that focus on both
@@ -222,7 +222,7 @@ the principal contributors.
 
 \section{The Graphical User Interface}
 
-%The first thing most people will see is the main Avogadro application window.
+The first thing most people will see is the main Avogadro application window.
 Binary installers are provided under the GPL license for Apple Mac OS X and
 Microsoft Windows, along with packages for all of the major Linux distributions.
 This means that Avogadro can be installed quite easily on most operating
@@ -261,7 +261,7 @@ for a molecule.}
 \subsection{Building a Molecule: Atom by Atom}
 
 After opening Avogadro a window such as that shown in figure~\ref{f:avogadrogui}
-is presented. From there simply left clicking on the black part of the display
+is presented. Simply left clicking on the black part of the display
 allows the user to draw a carbon atom. If the user pushes the left mouse button
 down and drags a bonded carbon atom would be drawn between the start point and
 the final position where the mouse was released.
@@ -274,11 +274,12 @@ the new atom bonded to the original. If the bonds are left-clicked then the bond
 order cycles between single, double and triple.
 
 Right clicking on atoms or bonds deletes them. If the ``Adjust Hydrogens'' box
-is checked the number of hydrogens bonded to each atom is automatically adjusted
-to satisfy valency. This can also be done at the end of an editing session by
-using the add hydrogens extension in the build menu. Keyboard shortcuts are also
-available to change the active element (by typing the one or two letter symbol),
-or bond order (by entering the numeric bond order).
+is checked, the number of hydrogens bonded to each atom is automatically
+adjusted to satisfy valency. Alternatively, this can also be done at the end of
+an editing session by using the add hydrogens extension in the build menu.
+Keyboard shortcuts are also available to change the active element (by typing
+the one or two letter symbol), or bond order (by entering the numeric bond
+order).
 
 In addition to the draw tool there are two tools for adjusting the position of
 atoms in existing molecules. The atom centric manipulate tool can be used to
@@ -327,9 +328,9 @@ calculations, some examples are shown in figure~\ref{f:quantumdialogs}.
 The preview of the input file at the bottom of each dialog is updated as options
 are changed. This approach helps new users of quantum codes to learn the syntax
 of input files for different codes, and to quickly generate useful input files
-as they learn. The input can be edited in the dialog, before the file is saved
+as they learn. The input can be edited in the dialog before the file is saved
 and submitted to the quantum code. The MOPAC extension can also run the  MOPAC
-program directly if it is available on the user's computer, Avogadro can also
+program directly, if it is available on the user's computer, Avogadro can also
 load the output file once the calculation is complete.
 
 \subsection{Alignment and Measurements}
@@ -357,8 +358,8 @@ unreasonable.
 \section{Visualization}
 
 The Avogadro application uses OpenGL to render molecular representations to the
-screen interactively. This has the advantage of being a good cross platform API
-to render three dimensional images using hardware accelerated graphics. OpenGL
+screen interactively. OpenGL offers a good cross platform API for rendering
+three dimensional images using hardware accelerated graphics. OpenGL
 1.1 and below is used in most of the rendering code, and so Avogadro can be used
 even on very modest/old computer systems. It is capable of taking advantage of
 some of the newer features available in OpenGL 2.0, but this has been kept as an
@@ -479,20 +480,18 @@ The choice of license is an interesting one, and is hotly debated in many
 industries. The choice of the GPLv2 was necessitated because of the use of the
 Qt and Open Babel libraries. Qt has since been released under the much more
 permissive LGPL license. Packages such as PyMol use the more permissive BSD
-license, selling commercial versions in addition to the open source version
-(that has some capabilities missing that are present in the commercial version).
+license, which allows the sale of commercial versions in addition to the open
+source version (some capabilities are present only in the commercial version).
 
 The core of Avogadro is written in portable C++ code with platform specific
 differences abstracted away by Qt, OpenGL and Open Babel. The CMake build system
 makes the build process relatively simple on all supported platforms. Avogadro
 has been successfully built and tested on x86 and x86\_64 versions of Linux, PPC
-and x86 version of Apple Mac OS X and x86 Microsoft Windows. By leveraging the
-power of existing libraries the time required to develop new features has been
-significantly reduced.
+and x86 version of Apple Mac OS X and x86 Microsoft Windows.
 
-Avogadro has a well defined set of interfaces and programming interfaces. Almost
+Avogadro has a well defined set of graphical and programming interfaces. Almost
 all functionality is implemented in self contained plugins that are loaded at
-runtime. The majority of these plugins are written in C++ but the Avogadro API
+runtime. The majority of these plugins are written in C++, but the Avogadro API
 has also been exposed to the Python scripting language. This allows for a great
 deal of choice in how plugins are implemented. In both cases each plugin is a
 self contained class that implements a set of functions that are part of the
@@ -548,10 +547,10 @@ the user interface.
 \subsection{Display Types}
 
 Display types are one type of plugin, referred to as engines internally. Their
-primary focus is to render graphics to the screen. As is the case with most
-molecular graphics a large portion of the geometric primitives are spheres and
-cylinders. These are typically used to represent atoms and bonds, but there are
-many other properties that can be rendered using the display type plugins.
+primary focus rendering graphics to the screen. As is the case with most
+molecular graphics, a large portion of the geometric primitives are spheres and
+cylinders, typically used to represent atoms and bonds. There are many other
+properties that can be rendered using the display type plugins.
 
 Some of the engines also convey some information about the underlying data the
 geometric primitives represent, in order to allow for the molecule to be edited.
@@ -664,15 +663,15 @@ of molecular structure.
 The XtalOpt~\cite{xo1, xo2} software package is implemented as a third-party C++
 extension to Avogadro and makes heavy use of the libavogadro API. The extension
 implements an evolutionary algorithm tailored for crystal structure prediction.
-The XtalOpt development team chose Avogadro as a development platform for the
+The XtalOpt development team chose Avogadro as a platform because of its
 open source license, well-designed API, powerful visualization tools, and
-intuitive interface of the Avogadro package. XtalOpt exists as a dialog window
-(Figure XO) and uses the main Avogadro window for visualizing candidate
-structures as they evolve. The API is well suited for XtalOpt’s needs,
+intuitive user-interface. XtalOpt exists as a dialog window
+(Figure~\ref{f:xtalopt}) and uses the main Avogadro window for visualizing
+candidate structures as they evolve. The API is well suited for XtalOpt’s needs,
 providing a simple mechanism to allow the user to view, edit, and export the
 structures generated during the search. Taking advantage of the cross-platform
 capabilities of Avogadro and its dependencies, XtalOpt is available for Linux,
-Windows, (Mac?).
+Windows, and Mac.
 
 \section{Conclusions}
 
