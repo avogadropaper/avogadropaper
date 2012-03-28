@@ -128,16 +128,22 @@ Pittsburgh, PA, 15260, USA\\
 
 \begin{abstract}
 
-Avogadro is a free, cross-platform, open source, OpenGL based graphical user
-interface and library for building molecular structures, formatting input files
-and analyzing output files from computational chemistry codes. The work
-presented here details the Avogadro library, which provides a framework,
+The Avogadro project is an advanced molecule editor and visualizer
+designed for cross-platform use in computational chemistry, molecular
+modeling, bioinformatics, materials science, and related areas. It
+offers flexible high quality rendering and a powerful plugin
+architecture. Typical uses include building molecular structures,
+formatting input files and analyzing output of a wide variety of
+computational chemistry packages. By using the CML file format as its native
+document type, Avogadro seeks to enhance the semantic accesibility of
+chemical data types. The work presented here details the Avogadro library, which provides a framework,
 application programming interface, and three-dimensional visualization
-capabilities that have direct applications in research and education in the
+capabilities, that have direct applications in research and education in the
 fields of chemistry, physics, materials science and biology. The Avogadro
 application provides a rich graphical interface using dynamically loaded
-plugins. The application can be extended by implementing a plug-in module in C++
-or Python in order to explore different visualization techniques,
+plugins through the library itself. The application and library can
+each be extended by implementing a plugin module in C++
+or Python to explore different visualization techniques,
 build/manipulate molecular structures, and interact with other programs.
 We describe some example extensions, one which uses a genetic algorithm to find
 stable crystal structures, and one which interfaces with the PackMol program to
@@ -156,17 +162,17 @@ editing capabilities, such as RasMol~\cite{RasMol}, JMol~\cite{JMol},
 PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol}, and
 BALLView~\cite{BALLView} among many others. The aforementioned viewers are all
 freely available, and most of them are available under open source licenses and
-work on the most common operating systems (GNU/Linux, Apple Mac OS X, BSD and
-Microsoft Windows).
+work on the most common operating systems (GNU/Linux, Apple Mac OS X, Windows, and
+BSD).
 
 The choice of software capable of building chemical structures is far smaller.
 There are existing commercial packages, such as Spartan, CAChe, GaussView,
 Materials Studio~\cite{Accelrys} and CrystalMaker~\cite{CrystalMaker}, that are
 well polished and capable of constructing many different types of molecular
 structures. They are, however, not available for all operating systems (most of
-them only have programs for Microsoft Windows), are not easily extensible or
-released under an open source license. Licensing costs can be prohibitive. If
-the company were to change its direction or focus this can lead to a loss of
+them only run on Microsoft Windows), and are not easily extensible, customized, or
+integrated into automated workflows. Licensing costs can be prohibitive. If
+the developer were to change its direction or focus this can lead to a loss of
 significant research investment in a commercial product.
 
 The selection of free, open source, cross platform molecular builders was quite
@@ -174,18 +180,18 @@ limited when the Avogadro project was founded in late 2006.
 Ghemical~\cite{Ghemical} was one of the only projects satisfying these needs at
 the time. Two of the authors (Hutchison and Curtis) contributed to Ghemical
 previously, but had found that it was not easily extensible. This led them to
-found a new project in order to address the issues they had observed in Ghemical
+found a new project to address the issues they had observed in Ghemical
 and other packages. The Molden~\cite{Molden} application was also available,
 able to build up small molecules and analyze output from several quantum codes.
 It suffers from a restrictive license and it uses an antiquated graphical
-toolkit.
+toolkit, which is not native on most modern operating systems.
 
 Broad goals for the design of a molecular editor were identified following a
 case study of the available applications. One of the main issues with both
 commercial and open source applications is a lack of extensibility, many of the
 applications also only work on one or two operating systems. An open and
-extensible framework is needed in order to perform innovative research. The
-creation of a framework that implements many of the necessary foundations for a
+extensible framework is needed to perform innovative research. The
+creation of such a framework that implements many of the necessary foundations for a
 molecular builder and visualizer would facilitate more effective research in
 this area.
 
@@ -193,10 +199,17 @@ At the time of writing it is apparent that other researchers have perceived
 similar needs. Several new applications are available today that focus on both
 building and visualizing molecular structure. These include
 CCP1GUI~\cite{CCP1GUI}, Gabedit~\cite{Gabedit} along with some highly specific
-editors such as MacMolPlt~\cite{MacMolPlt}. Whilst offering many interesting and
-useful features, these projects suffer from the same kind of issues centering
-around effective reuse of existing code, well commented and documented code and
-easy extension to specialized areas.
+editors such as MacMolPlt~\cite{MacMolPlt} which focus on particular
+computational packages (i.e., GAMESS-US for MacMolPlt). Whilst offering many interesting and
+useful features, these projects suffer from the same issues centering
+around effective reuse of existing code, well commented and documented code, and
+easy extension to new features and specialized areas.
+
+%% Does this make sense for the introduction?
+
+The Avogadro project was started in earnest in 2007, and over the
+first 5 years of development has been downloaded over 250,000 times,\cite{Downloads}
+been translated into over 20 languages,\cite{Translations} and over 20 contributors.\cite{OhlohContributors}
 
 The Avogadro project has endeavored to make a free, open source framework for
 both building and visualizing molecular structures. Much of the initial focus
@@ -206,7 +219,7 @@ visualizing periodic structures will also be presented, demonstrating the
 flexibility of the Avogadro framework.
 
 Avogadro has close ties to several other free, cross platform, open source
-projects in order to reuse as much code as is practical. These projects include
+projects to reuse as much code as is practical. These projects include
 Nokia Qt to provide a free, cross platform graphical toolkit, Open
 Babel~\cite{OpenBabel} for chemical file input/output, geometry optimization and
 other chemical perception, Eigen~\cite{Eigen} for matrix and vector mathematics,
@@ -234,7 +247,7 @@ The Qt toolkit from Nokia gives Avogadro a native look and feel on the three
 supported operating systems---Linux, Mac OS X and Windows. The basic
 functionality expected in a molecular builder and viewer has been implemented,
 along with several less common features. The vast majority of this functionality
-has been written using the API made available to plug-in writers, and is loaded
+has been written using the API made available to plugin writers, and is loaded
 at runtime. It is very easy for new users to install Avogadro and build their
 first molecules within minutes. Thanks to the Open Babel library Avogadro
 supports a large portion of the chemical file formats that are in common use.
@@ -339,7 +352,7 @@ One of the specialized tools included in the standard Avogadro distribution is
 the alignment tool. This mouse tool facilitates the alignment of a molecular
 structure with the coordinate origin if one atom is selected, and along the
 specified axis if two atoms are selected. The alignment tool can be combined
-with the measure, select and manipulate tools in order to create inputs for
+with the measure, select and manipulate tools to create inputs for
 quantum codes where the position and orientation of the molecule is important.
 One example of this is calculations where an external electric field is applied
 to the molecule. In these types of calculations the alignment of the molecule
@@ -348,7 +361,7 @@ can have a large effect.
 More complex alignment tools for specific tasks couuld be created. The alignment
 tool was created in just a few hours for a specific research project performing
 calculation on the piezoelectric effect in single molecules. This is a prime
-example where extensibility was very important in order to be able to perform
+example where extensibility was very important to perform
 research using a graphical computational chemistry tool. It would not have been
 worth the investment to create a new application just to align molecular
 structures to an axis, but creating a plugin for an extensible project was not
@@ -400,7 +413,7 @@ Initially support for Gaussian type orbitals was added, as used in a large
 range of quantum codes. Later support for Slater type orbitals was added in
 order to visulize the output from the MOPAC code. This code was written using
 the Qt Concurrent framework, reading in the basis set, eigenvectors and density
-matrix in order to directly calculate molecular orbitals and electron
+matrix to directly calculate molecular orbitals and electron
 densities. The cube calculation is highly multithreaded, parallelising the
 calculation of each point in the regular grid making up the volume of interest.
 The original marching cubes implemeentation is then used to calculate
@@ -504,7 +517,7 @@ engine plugins and the controllers being the tools (interactive mouse) and
 extensions (non-interactive, form based/menu based). Each plugin has full access
 to the core data model.
 
-\subsection{Plug-in Interface}
+\subsection{Plugin Interface}
 
 The Avogadro library was developed as an extensible library using C++ plugins
 that are loaded at runtime for most functionality. The Avogadro plugins are
@@ -553,7 +566,7 @@ cylinders, typically used to represent atoms and bonds. There are many other
 properties that can be rendered using the display type plugins.
 
 Some of the engines also convey some information about the underlying data the
-geometric primitives represent, in order to allow for the molecule to be edited.
+geometric primitives represent, to allow for the molecule to be edited.
 Engines are performance critical as the render functions are called each time a
 frame is requested for display. It is very important for the engines to
 efficiently render all requested data, and multiple display types can be
