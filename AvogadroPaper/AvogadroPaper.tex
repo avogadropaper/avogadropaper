@@ -110,7 +110,7 @@ Pittsburgh, PA, 15260, USA\\
   \iid(2)Kitware, Inc., 28 Corporate Drive, Clifton Park, NY, 12065, USA\\
   \iid(3)Department of Computer Science, University of Iowa\\
   \iid(4)Department of Chemistry, State University of New York at Buffalo\\
-  \iid(5)Tim's Affiliation, Europe
+  \iid(5)Avogadro development team
 }%
 
 \maketitle
@@ -358,7 +358,7 @@ One example of this is calculations where an external electric field is applied
 to the molecule. In these types of calculations the alignment of the molecule
 can have a large effect.
 
-More complex alignment tools for specific tasks couuld be created. The alignment
+More complex alignment tools for specific tasks could be created. The alignment
 tool was created in just a few hours for a specific research project performing
 calculation on the piezoelectric effect in single molecules. This is a prime
 example where extensibility was very important to perform
@@ -637,7 +637,17 @@ view various aspects of the molecule's structure.
 
 \section{Python Interface} % Tim
 
-Description of the Python bindings, PyQt, plugins as Python classes.
+Python bindings are provided for all of the core API. Python code can be used
+in two ways, the first is the interactive python terminal and the second is to
+write python plugins. Python plugins can be extensions, tools or display types.
+Writing a python plugin requires the same functions to be implemented as a
+native C++ plugin. The advantage of python plugins is that it's easier to make
+prototypes since no compilation is required. Python plugins can also easily be
+shared with other users.
+
+The python bindings also interface with the PyQt python bindings for the Qt
+toolkit. This enables python code to use all of Qt's features when writing a
+python plugin.
 
 \section{Quantum Calculations}
 
