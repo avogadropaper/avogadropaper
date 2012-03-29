@@ -135,7 +135,7 @@ offers flexible high quality rendering and a powerful plugin
 architecture. Typical uses include building molecular structures,
 formatting input files and analyzing output of a wide variety of
 computational chemistry packages. By using the CML file format as its native
-document type, Avogadro seeks to enhance the semantic accesibility of
+document type, Avogadro seeks to enhance the semantic accessibility of
 chemical data types.
 
 \textbf{Results:} The work presented here details the Avogadro library, which provides a framework,
@@ -373,15 +373,15 @@ structure.
   \label{f:standardReps}
 \end{figure}
 
-In chemistry there are several standard representations of molecular structre,
+In chemistry there are several standard representations of molecular structure,
 originally based upon those possible with physical models. The Avogadro
 application implements each of these representations shown in
 figure~\ref{f:standardReps} as a plugin. These range from the simple wireframe
-representation, stick/liquorice, ball and stick and Van der Waal's.
+representation, stick/licorice, ball and stick and Van der Waal's spheres.
 
 It is also possible to combine several representations, such as ball and stick
 with ring rendering, figure~\ref{f:standardReps} (d), and a semi-transparent Van
-der Waal's space-filling representation with a stick representation to eludicate
+der Waal's space-filling representation with a stick representation to elucidate
 molecular backbone, figure~\ref{f:standardReps} (f).
 
 \subsection{Electronic Structure}
@@ -391,16 +391,16 @@ Initially support for reading in Gaussian cube files was added to Open Babel,
 and a marching cubes implementation was added to Avogadro to visualize
 isosurfaces. Once this was integrated it became clear that many codes could not
 easily produce cube files, and that direct support for calculating cubes in the
-Avogadro application would be advantageoous.
+Avogadro application would be advantageous.
 
 Initially support for Gaussian type orbitals was added, as used in a large
 range of quantum codes. Later support for Slater type orbitals was added in
-order to visulize the output from the MOPAC code. This code was written using
+order to visualize the output from the MOPAC code. This code was written using
 the Qt Concurrent framework, reading in the basis set, eigenvectors and density
 matrix to directly calculate molecular orbitals and electron
-densities. The cube calculation is highly multithreaded, parallelising the
+densities. The cube calculation is highly multithreaded, parallelizing the
 calculation of each point in the regular grid making up the volume of interest.
-The original marching cubes implemeentation is then used to calculate
+The original marching cubes implementation is then used to calculate
 isosurfaces in much the same way as for Gaussian cube files.
 
 Both features were developed within plugins, and matured there. More recently
@@ -565,7 +565,7 @@ Engines are performance critical as the render functions are called each time a
 frame is requested for display. It is very important for the engines to
 efficiently render all requested data, and multiple display types can be
 combined to form a composite display, for example ball and stick display
-overlaid with a transparent Van der Waals space filling diplay and ring
+overlaid with a transparent Van der Waals space filling display and ring
 rendering to highlight all rings in the structure. Figure~\ref{f:standardReps}
 (d) and (f) show two such combinations of multiple display types.
 
@@ -757,12 +757,12 @@ Windows, and Mac.
 
 \section{Availability and Requirements}
 
-\textbf{Project Name:} Avogadro
-\textbf{Project home page:} http://avogadro.openmolecules.net/
-\textbf{Operating system(s):} Cross-platform
-\textbf{Programming language:} C++, bindings to Python
-\textbf{Other requirements (if compiling):} CMake 2.4+
-\textbf{License:} GNU GPL v2
+\textbf{Project Name:} Avogadro \\
+\textbf{Project home page:} http://avogadro.openmolecules.net/ \\
+\textbf{Operating system(s):} Cross-platform \\
+\textbf{Programming language:} C++, bindings to Python \\
+\textbf{Other requirements (if compiling):} CMake 2.4+ \\
+\textbf{License:} GNU GPL v2 \\
 \textbf{Any restrictions to use by non-academics:} None
 
 \section{Acknowledgements and Funding}
