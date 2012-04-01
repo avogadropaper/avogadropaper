@@ -107,9 +107,12 @@
 \address{%
   \iid(1)Department of Chemistry, University of Pittsburgh, 219 Parkman Avenue,
 Pittsburgh, PA, 15260, USA\\
-  \iid(2)Department of Scientific Computing, Kitware, Inc., 28 Corporate Drive, Clifton Park, NY, 12065, USA\\
-  \iid(3)Department of Computer Science, Coe College, 1220 First Avenue NE, Cedar Rapids, Iowa 52402\\
-  \iid(4)Department of Chemistry, State University of New York at Buffalo, Buffalo, New York 14260-3000\\
+  \iid(2)Department of Scientific Computing, Kitware, Inc., 28 Corporate Drive,
+Clifton Park, NY, 12065, USA\\
+  \iid(3)Department of Computer Science, Coe College, 1220 First Avenue NE,
+Cedar Rapids, Iowa 52402\\
+  \iid(4)Department of Chemistry, State University of New York at Buffalo,
+Buffalo, New York 14260-3000\\
   \iid(5)Avogadro development team
 }%
 
@@ -128,20 +131,22 @@ Pittsburgh, PA, 15260, USA\\
 
 \begin{abstract}
 
-\textbf{Background:} The Avogadro project is an advanced molecule editor and visualizer
+\textbf{Background:} The Avogadro project is an advanced molecule editor and
+visualizer
 designed for cross-platform use in computational chemistry, molecular
 modeling, bioinformatics, materials science, and related areas. It
 offers flexible high quality rendering and a powerful plugin
 architecture. Typical uses include building molecular structures,
-formatting input files and analyzing output of a wide variety of
+formatting input files, and analyzing output of a wide variety of
 computational chemistry packages. By using the CML file format as its native
 document type, Avogadro seeks to enhance the semantic accessibility of
 chemical data types.
 
-\textbf{Results:} The work presented here details the Avogadro library, which provides a framework,
+\textbf{Results:} The work presented here details the Avogadro library, which
+provides a framework,
 application programming interface, and three-dimensional visualization
-capabilities, that have direct applications in research and education in the
-fields of chemistry, physics, materials science and biology. The Avogadro
+capabilities, and has direct applications to research and education in the
+fields of chemistry, physics, materials science, and biology. The Avogadro
 application provides a rich graphical interface using dynamically loaded
 plugins through the library itself. The application and library can
 each be extended by implementing a plugin module in C++
@@ -151,7 +156,8 @@ We describe some example extensions, one which uses a genetic algorithm to find
 stable crystal structures, and one which interfaces with the PackMol program to
 create packed, solvated structures for molecular dynamics simulations.
 
-\textbf{Conclusions:} It is freely available under an open-source license from http://avogadro.openmolecules.net.
+\textbf{Conclusions:} It is freely available under an open-source license from
+http://avogadro.openmolecules.net.
 
 \end{abstract}
 
@@ -159,14 +165,15 @@ create packed, solvated structures for molecular dynamics simulations.
 
 \section{Introduction}
 
-Many areas such as chemistry, materials science, physics and biology need
+Many areas such as chemistry, materials science, physics, and biology need
 efficient computer programs to both build and visualize molecular structures.
 The field of molecular graphics is dominated by viewers with little or no
 editing capabilities, such as RasMol~\cite{RasMol}, JMol~\cite{JMol},
 PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol}, and
 BALLView~\cite{BALLView} among many others. The aforementioned viewers are all
 freely available, and most of them are available under open source licenses and
-work on the most common operating systems (GNU/Linux, Apple Mac OS X, Windows, and
+work on the most common operating systems (GNU/Linux, Apple Mac OS X, Windows,
+and
 BSD).
 
 The choice of software capable of building chemical structures is far smaller.
@@ -174,7 +181,8 @@ There are existing commercial packages, such as Spartan, CAChe, GaussView,
 Materials Studio~\cite{Accelrys} and CrystalMaker~\cite{CrystalMaker}, that are
 polished and capable of constructing many different types of molecular
 structures. They are, however, not available for all operating systems (most of
-them only run on Microsoft Windows), and are not easily extensible, customized, or
+them only run on Microsoft Windows), and are not easily extensible, customized,
+or
 integrated into automated workflows. Licensing costs can be prohibitive. If
 the company were to change its direction or focus this can lead to a loss of
 significant research investment in a commercial product.
@@ -195,7 +203,8 @@ case study of the available applications. One of the main issues with both
 commercial and open source applications is a lack of extensibility, many of the
 applications also only work on one or two operating systems. An open and
 extensible framework is needed to perform innovative research. The
-creation of such a framework that implements many of the necessary foundations for a
+creation of such a framework that implements many of the necessary foundations
+for a
 molecular builder and visualizer would facilitate more effective research in
 this area.
 
@@ -204,14 +213,16 @@ similar needs. Several new applications are available today that focus on both
 building and visualizing molecular structure. These include
 CCP1GUI~\cite{CCP1GUI}, Gabedit~\cite{Gabedit} along with some highly specific
 editors such as MacMolPlt~\cite{MacMolPlt} which focus on particular
-computational packages (i.e., GAMESS-US for MacMolPlt). Whilst offering many interesting and
+computational packages (i.e., GAMESS-US for MacMolPlt). Whilst offering many
+interesting and
 useful features, these projects suffer from the same issues centering
 around effective reuse of existing code, well commented and documented code, and
 easy extension to add new features and adapt for specialized areas.
 
 The Avogadro project was started in earnest in 2007, and over the
-first 5 years of development has been downloaded over 250,000 times,\cite{Downloads}
-been translated into over 20 languages,\cite{Translations} and has over 20
+first 5 years of development has been downloaded over 250,000
+times,\cite{Downloads} been translated into over 20
+languages,\cite{Translations} and has over 20
 contributors.\cite{OhlohContributors} From the beginning, the project
 has strived to make a robust, flexible framework for
 both building and visualizing molecular structures. Much of the initial focus
@@ -235,7 +246,8 @@ or those using an operating system that is not yet supported.
 The Qt toolkit from Nokia gives Avogadro a native look and feel on the three
 supported operating systems---Linux, Mac OS X and Windows. The basic
 functionality expected in a molecular builder and viewer has been implemented,
-along with several less common features. It is very easy for new users to install Avogadro and build their
+along with several less common features. It is very easy for new users to
+install Avogadro and build their
 first molecules within minutes. Thanks to the Open Babel library Avogadro
 supports a large portion of the chemical file formats that are in
 common use.
@@ -272,7 +284,8 @@ quantum data.
   \begin{center}
     \includegraphics[width=0.9\textwidth]{images/avogadro-drawing}
   \end{center}
-  \caption{The Avogadro graphical user interface (on Mac OS X), showing the editing interface
+  \caption{The Avogadro graphical user interface (on Mac OS X), showing the
+editing interface
 for a molecule.}
   \label{f:avogadrogui}
 \end{figure}
@@ -281,7 +294,8 @@ for a molecule.}
 \subsection{Building a Molecule: Atom by Atom}
 
 After opening Avogadro a window such as that shown in Figure~\ref{f:avogadrogui}
-is presented. By default, the draw tool is selected. Simply left clicking on the black part of the display
+is presented. By default, the draw tool is selected. Simply left clicking on the
+black part of the display
 allows the user to draw a carbon atom. If the user pushes the left
 mouse button down and drags a bonded carbon atom would be drawn
 between the start point and the final position where the mouse was released.
@@ -302,7 +316,8 @@ an editing session by using the add hydrogens extension in the build menu.
 
 In addition to the draw tool there are two tools for adjusting the position of
 atoms in existing molecules. The ``atom centric manipulate'' tool can be used to
-move an atom or a group of selected atoms. The ``bond centric manipulate'' tool can
+move an atom or a group of selected atoms. The ``bond centric manipulate'' tool
+can
 be used to select a bond and then adjust all atoms positions relative to the
 selected bond in various ways (e.g., altering the bond length, bond
 angles, or dihedral angles). These three tools allow for a great deal of
@@ -322,7 +337,8 @@ constantly minimized in the background. The geometry optimization is animated,
 and the effect of changing bond orders, adding new groups or removing groups can
 be observed interactively.
 
-Several dialogs are provided to provide information on molecule properties, and
+Several dialogs are implemented to provide information on molecule properties,
+and
 to precisely change parameters, such as the cartesian coordinates of the atoms
 in the molecule.
 
@@ -341,7 +357,7 @@ in the molecule.
 \subsection{Preparing Input for Quantum Codes}
 
 Several extensions were developed for Avogadro that assist the user in preparing
-input files for popular quantum codes such as GAMESS-US, Gaussian, Q-Chem and
+input files for popular quantum codes such as GAMESS-US, Gaussian, Q-Chem, and
 MOPAC. The graphical dialogs present the features required to run basic quantum
 calculations, some examples are shown in figure~\ref{f:quantumdialogs}.
 
@@ -350,8 +366,8 @@ are changed. This approach helps new users of quantum codes to learn the syntax
 of input files for different codes, and to quickly generate useful input files
 as they learn. The input can be edited in the dialog before the file is saved
 and submitted to the quantum code. The MOPAC extension can also run the  MOPAC
-program directly, if it is available on the user's computer, Avogadro can also
-load the output file once the calculation is complete.
+program directly, if it is available on the user's computer, and then reload the
+output file into Avogadro once the calculation is complete.
 
 \subsection{Alignment and Measurements}
 
@@ -419,7 +435,7 @@ Avogadro application would be advantageous.
 Initially support for Gaussian type orbitals was added, as used in a large
 range of quantum codes. Later support for Slater type orbitals was added in
 order to visualize the output from the MOPAC code. This code was written using
-the Qt Concurrent framework, reading in the basis set, eigenvectors and density
+the Qt Concurrent framework, reading in the basis set, eigenvectors, and density
 matrix to directly calculate molecular orbitals and electron
 densities. The cube calculation is highly multithreaded, parallelizing the
 calculation of each point in the regular grid making up the volume of interest.
@@ -577,7 +593,7 @@ the user interface.
 \subsection{Display Types}
 
 Display types are one type of plugin, referred to as engines internally. Their
-primary focus rendering graphics to the screen. As is the case with most
+primary focus is rendering graphics to the screen. As is the case with most
 molecular graphics, a large portion of the geometric primitives are spheres and
 cylinders, typically used to represent atoms and bonds. There are many other
 properties that can be rendered using the display type plugins.
@@ -628,14 +644,14 @@ used as the default tool if the currently active tool does not handle the mouse
 event passed to it.
 
 One of the other central tools is the draw tool, this implements a free hand
-molecule drawing input method, supporting keyboard shortcuts, combo boxes or a
+molecule drawing input method, supporting keyboard shortcuts, combo boxes, or a
 periodic table view to select elements. The user can use the left mouse button
 to add new atoms or bonds, or click on the bonds to change their order. The
 right mouse button can be used to delete atoms or bonds and the directional keys
 can be used in combination with the mouse to quickly rotate/pan the molecule.
 
 There are also two tools for adjustment of structures (atom or bond centric), a
-selection tool supporting standard selection interactions and an auto-rotate
+selection tool supporting standard selection interactions, and an auto-rotate
 tool that allows users to set the speed and angles about which to rotate the
 molecule. The interactive auto-optimization tool provides a sculpting
 interaction, where the user can begin a continuous geometry optimization, and
@@ -670,7 +686,7 @@ The extensions represent quite a diverse range of plugins. These range from the
 input generation dialogs for various quantum chemistry codes such as GAMESS,
 MOLPRO, NWChem, etc, through to animation of the molecule and visualization of
 molecular orbitals and electron density. Network aware extensions allow the user
-to click on File->Import->Fetch by chemical name and search for ``tnt'' or
+to click on File$\to$Import$\to$Fetch by chemical name and search for ``tnt'' or
 ``propanol'' and have structures returned by the NIH CACTUS Chemical Structure
 Resolver service.
 
@@ -679,9 +695,9 @@ to render the molecule using ray tracing techniques to provide higher quality
 renderings for publication. Various molecular property dialogs are also
 implemented as plugins, drawing largely on Open Babel functionality to provide
 an overview of the molecule. Cartesian editors, addition and removal of
-hydrogens, fragment, SMILES and peptide insertion are all implemented as
+hydrogens, fragment, SMILES, and peptide insertion are all implemented as
 extensions showing up in the Avogadro menus. More recently a crystallography
-extension was added giving access to a much wider range to functionality
+extension was added, giving access to a much wider range to functionality
 useful to practitioners in that area.
 
 \begin{tabular}{l | l}
@@ -797,7 +813,7 @@ Kitware for additional dashboard resources. MDH and GRH thank the
 University of Pittsburgh for support. MDH also thanks Kitware and the
 Engineering Research Development Center for support.
 
-\section{Authors’ contributions}
+\section{Authors' contributions}
 GRH and DEC are the founders of the Avogadro project. MDH is the
 current lead developer and maintainer of Avogadro. DL and TV are
 active developers. DL and EZ are founders of the XtalOpt project which
