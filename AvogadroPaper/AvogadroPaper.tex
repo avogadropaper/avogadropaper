@@ -173,8 +173,7 @@ PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol}, and
 BALLView~\cite{BALLView} among many others. The aforementioned viewers are all
 freely available, and most of them are available under open source licenses and
 work on the most common operating systems (GNU/Linux, Apple Mac OS X, Windows,
-and
-BSD).
+and BSD).
 
 The choice of software capable of building chemical structures is far smaller.
 There are existing commercial packages, such as Spartan, CAChe, GaussView,
@@ -182,8 +181,7 @@ Materials Studio~\cite{Accelrys} and CrystalMaker~\cite{CrystalMaker}, that are
 polished and capable of constructing many different types of molecular
 structures. They are, however, not available for all operating systems (most of
 them only run on Microsoft Windows), and are not easily extensible, customized,
-or
-integrated into automated workflows. Licensing costs can be prohibitive. If
+or integrated into automated workflows. Licensing costs can be prohibitive. If
 the company were to change its direction or focus this can lead to a loss of
 significant research investment in a commercial product.
 
@@ -204,9 +202,8 @@ commercial and open source applications is a lack of extensibility, many of the
 applications also only work on one or two operating systems. An open and
 extensible framework is needed to perform innovative research. The
 creation of such a framework that implements many of the necessary foundations
-for a
-molecular builder and visualizer would facilitate more effective research in
-this area.
+for a molecular builder and visualizer would facilitate more effective research
+in this area.
 
 At the time of writing it is apparent that other researchers have perceived
 similar needs. Several new applications are available today that focus on both
@@ -229,7 +226,10 @@ both building and visualizing molecular structures. Much of the initial focus
 has been placed on preparing input and analyzing output from quantum
 calculations. Other applications such as preparing input for MD simulations and
 visualizing periodic structures will also be presented, demonstrating the
-flexibility of the Avogadro platform.
+flexibility of the Avogadro platform. The software has been developed by
+members of the Blue Obelisk movement, following the three pillars outlined by
+the group: Open Data, Open Standards and Open Source~\cite{BlueObelisk2006,
+BlueObelisk2011}.
 
 \section{The Graphical User Interface}
 
@@ -269,7 +269,8 @@ the plugin types later.
 
 \section{Semantic Chemistry}
 
-Avogadro has used CML as its default file format from a very early stage, this
+Avogadro has used CML~\cite{CML2011a, CML2011b} as its default file format from
+a very early stage, this
 was chosen over all the other file formats provided by Open Babel due to the
 semantic structure provided and the support available in Open Babel. The CML
 format offers a number of advantages over others in common use, including the
@@ -284,11 +285,11 @@ quantum codes, it was necessary to devote significant development resources to
 understanding and adding meaning to the quantum code outputs. This work was
 developed in a plugin, which was later split out into a small independent
 library called OpenQube. More recently a great deal of work has been done
-by the Quixote project, JUMBO converters and the Semantic Physical Science
-workshop to augment qunatum codes to output more of this data directly from
-the code. If CML can be extended, it is possible to reuse existing conventions
-for molecular structure data, and add new conventions for the additional
-quantum data.
+by the Quixote project~\cite{Quixote}, JUMBO-Converters and the Semantic
+Physical Science workshop to augment qunatum codes to output more of this data
+directly from the code. If CML can be extended, it is possible to reuse
+existing conventions for molecular structure data, and add new conventions for
+the additional quantum data.
 
 \subsection{Building a Molecule: Atom by Atom}
 
