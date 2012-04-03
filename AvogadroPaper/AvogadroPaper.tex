@@ -286,7 +286,7 @@ understanding and adding meaning to the quantum code outputs. This work was
 developed in a plugin, which was later split out into a small independent
 library called OpenQube. More recently a great deal of work has been done
 by the Quixote project~\cite{Quixote}, JUMBO-Converters and the Semantic
-Physical Science workshop to augment qunatum codes to output more of this data
+Physical Science workshop to augment quantum codes to output more of this data
 directly from the code. If CML can be extended, it is possible to reuse
 existing conventions for molecular structure data, and add new conventions for
 the additional quantum data.
@@ -407,9 +407,9 @@ structure.
 \begin{figure}
   \includegraphics[width=0.95\textwidth]{images/standardRepsLabel}
   \caption{Several molecular representations of thiophene, (a) wireframe,
-    (b) stick/liquorice, (c) ball and stick, (d) ball and stick with ring,
-    (e) Van der Waals/CPK and (f) transparent Van der Waals with stick.}
-  \label{f:standardReps}
+   (b) stick/licorice, (c) ball and stick, (d) ball and stick with ring,
+    (e) Van der Waals/CPK and (f) transparent Van der Waal's with stick.}
+ \label{f:standardReps}
 \end{figure}
 
 In chemistry there are several standard representations of molecular structure,
@@ -608,6 +608,8 @@ overlaid with a transparent Van der Waals space filling display and ring
 rendering to highlight all rings in the structure. Figure~\ref{f:standardReps}
 (d) and (f) show two such combinations of multiple display types.
 
+\begin{table}
+\caption{List of default display type (engine) plugins}
 \begin{tabular}{l | l}
 \hline
 Name & Description \\
@@ -631,6 +633,7 @@ Van der Waals Spheres & \\
 Wireframe & \\
 \hline
 \end{tabular}
+\end{table}
 
 \subsection{Tools}
 
@@ -664,21 +667,35 @@ minimized. If the optimization tool is turned off the measurement tool also
 allows the user to precisely adjust bond lengths and/or angles using the
 adjustment tools.
 
+\begin{table}
+\caption{List of default mouse tool plugins}
+\label{tool-table}
 \begin{tabular}{c | l | l }
 \hline
 Icon & Tool Name & Description \\
 \hline
-& Draw & \\
-& Navigate & \\
-& Bond Centric Manipulate & \\
-& Manipulate & \\
-& Select & \\
-& Auto Rotate & \\
-& Auto Optimize & \\
-& Measure & \\
-& Align & \\
+\includegraphics[height=0.2in]{images/draw} & Draw Tool & Build and edit
+atoms\\
+\includegraphics[height=0.2in]{images/navigate} & Navigate Tool & Move the
+camera, rotate, pan, and zoom \\
+\includegraphics[height=0.2in]{images/bondcentric} & Bond Centric
+Manipulate Tool & Alter bond lengths, angles, and torsions \\
+\includegraphics[height=0.2in]{images/manipulate} & Manipulate Tool & Move
+atoms and selected fragments \\
+\includegraphics[height=0.2in]{images/select} & Select Tool & Select
+individual atoms, bonds, or fragments \\
+\includegraphics[height=0.2in]{images/autorotate} & Auto Rotate Tool &
+Continuously rotate a molecule for presentations \\
+\includegraphics[height=0.2in]{images/autoopttool} & Auto Optimize
+Tool &
+Continuously optimize molecular geometry using molecular mechanics \\
+\includegraphics[height=0.2in]{images/measure} & Measure Tool & Determine
+bond lengths, angles, and dihedrals \\
+\includegraphics[height=0.2in]{images/align} & Align Tool & Rotate and
+translate to a specified frame of reference \\
 \hline
 \end{tabular}
+\end{table}
 
 \subsection{Extensions}
 
@@ -700,6 +717,9 @@ extensions showing up in the Avogadro menus. More recently a crystallography
 extension was added, giving access to a much wider range to functionality
 useful to practitioners in that area.
 
+\begin{table}
+  \caption{List of default extension commands}
+  \label{extension-table}
 \begin{tabular}{l | l}
 \hline
 Name & Description \\
@@ -722,6 +742,7 @@ Unit Cell & \\
 Vibrations & \\
 \hline
 \end{tabular}
+\end{table}
 
 \subsection{Colors} % Geoff
 
@@ -730,6 +751,35 @@ values and return an RGB value. The plugins range from the standard color
 plugin that takes atomic number and returns the standard RGB value for that
 element through to mapping things like partial change and index to more easily
 view various aspects of the molecule's structure.
+
+By defining a plugin interface for coloring atoms, bonds, or residues,
+developers can easily offer flexible rendering options to highlight
+important information without requiring a user to tediously set colors
+on specific atoms or functional groups. Default color plugins are
+listed in table~\ref{color-table}, illustrating the variety of
+options. Each plugin is usually only 40-50 lines of C++ code.
+
+\begin{table}
+  \caption{List of default color plugins}
+  \label{color-table}
+\begin{tabular}{l | l}
+\hline
+Name & Description \\
+\hline
+Atom Index Color & Color based on atom ID (from atom 1, 2, etc.) \\
+Charge Color & Color based on predicted electrostatic partial charge \\
+Custom Color & Color all atoms a specific, custom color \\
+Distance Color & Color based on distance from one end of the
+molecule \\
+Element Color \textbf{(Default)} & Standard color scheme, giving each
+atom a color defined by its element\\
+Residue Color & Color based on amino acid or nucleic acid residue (i.e., glycine,
+histidine, etc.) \\
+SMARTS Color & Color atoms matching a specific SMARTS pattern with a
+custom color \\
+\hline
+\end{tabular}
+\end{table}
 
 \section{Python Interface} % Tim
 
@@ -745,7 +795,7 @@ The python bindings also interface with the PyQt python bindings for the Qt
 toolkit. This enables python code to use all of Qt's features when writing a
 python plugin.
 
-\section{Quantum Calculations}
+\section{Quantum Calculations} % Marcus
 
 Description of the quantum calculation code already implemented. Slater and
 Gaussian types, output file parsing, parallel calculation code and details of
@@ -762,6 +812,28 @@ of molecular structure.
 
 \subsection{Packmol}
 
+Packmol is a third-party package, designed to create initial
+``packed'' configurations of molecules for molecular dynamics or other
+simulations.~\cite{packmol}\cite{packmol-packing} Examples include
+surrounding a protein with solvent, solvent mixtures, lipid bilayers,
+spherical micelles, placing counterions, adding ligands to
+nanoparticles, etc.
+
+Typically, users may have equilibrated ``solvent boxes'' which have
+been run for long simulations to ensure proper density, and both short
+and long-range interactions between solvent molecules. Using such
+solvent boxes allows placing solute molecules such as proteins in an
+approximately correct initial structure. The solute is added into the
+box, and solvent molecules with overlapping atoms are removed. While
+these utilities are often enough, creating complex input files is not
+always easy.
+
+For more complicated systems, Packmol can create an initial
+configuration based on defined densities, geometries (e.g., sphere,
+box, etc.) and the molecules to be placed. An Avogadro developer wrote
+an external plugin to facilitate use of Packmol, including estimating
+the number of molecules in a given volume.
+
 \begin{figure}
   \includegraphics[width=0.45\textwidth]{images/packmol-extension}
   \includegraphics[width=0.45\textwidth]{images/packmol-lipid}
@@ -769,6 +841,13 @@ of molecular structure.
     as produced by the PackMol program.}
   \label{f:packmol}
 \end{figure}
+
+The plugin is not currently distributed with Avogadro as a standard
+feature, although it is planned for some future version. It serves as
+an example of how Avogadro can facilitate a workflow with a
+text-oriented package (Packmol), including saving files in the PDB
+format required by Packmol, generating an input file, and reading the
+output for visualization, analysis, and further simulations.
 
 \subsection{XtalOpt}
 
@@ -792,7 +871,17 @@ structures generated during the search. Taking advantage of the cross-platform
 capabilities of Avogadro and its dependencies, XtalOpt is available for Linux,
 Windows, and Mac.
 
-\section{Conclusions}
+\section{Conclusions and Future Directions}
+
+Currently, two future versions of Avogadro are under development. The
+first is Avogadro version 1.1, which adds additional features and
+refinement, particularly including crystallography support developed
+through the XtalOpt project. The second is a more substantial
+development, for Avogadro version 2.0.
+
+% More on Future Development here
+
+
 
 \section{Availability and Requirements}
 
