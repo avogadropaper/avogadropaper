@@ -131,7 +131,7 @@ Buffalo, New York 14260-3000\\
 
 \begin{abstract}
 
-\textbf{Background:} The Avogadro project is an advanced molecule editor and
+\textbf{Background:} The Avogadro project has developed an advanced molecule editor and
 visualizer
 designed for cross-platform use in computational chemistry, molecular
 modeling, bioinformatics, materials science, and related areas. It
@@ -275,16 +275,16 @@ was chosen over all the other file formats provided by Open Babel due to the
 semantic structure provided and the support available in Open Babel. The CML
 format offers a number of advantages over others in common use, including the
 ability to extend the format to include more information and add the features
-necessary in an application at a later time by looking for new parts of the
-standard.
+necessary for an advanced semantically-aware editor at a later time by looking for
+new features of the standard while still remaining readable in older versions.
 
 Through the use of Open Babel a large array of file formats can be interpreted,
-and a large amount of the work in doing this has been done by the Open Babel
+and a big portion of the work in doing this has been done by the Open Babel
 project. When extending Avogadro to read in larger amounts of the output from
 quantum codes, it was necessary to devote significant development resources to
 understanding and adding meaning to the quantum code outputs. This work was
 developed in a plugin, which was later split out into a small independent
-library called OpenQube. More recently a great deal of work has been done
+library called OpenQube. More recently a large amount of work has been done
 by the Quixote project~\cite{Quixote}, JUMBO-Converters and the Semantic
 Physical Science workshop to augment quantum codes to output more of this data
 directly from the code. If CML can be extended, it is possible to reuse
@@ -357,7 +357,7 @@ in the molecule.
 \subsection{Preparing Input for Quantum Codes}
 
 Several extensions were developed for Avogadro that assist the user in preparing
-input files for popular quantum codes such as GAMESS-US, Gaussian, Q-Chem, and
+input files for popular quantum codes such as GAMESS-US, NWChem, Gaussian, Q-Chem, and
 MOPAC. The graphical dialogs present the features required to run basic quantum
 calculations, some examples are shown in figure~\ref{f:quantumdialogs}.
 
@@ -368,6 +368,16 @@ as they learn. The input can be edited in the dialog before the file is saved
 and submitted to the quantum code. The MOPAC extension can also run the  MOPAC
 program directly, if it is available on the user's computer, and then reload the
 output file into Avogadro once the calculation is complete.
+
+The GAMESS-US plugin is one of the most highly developed, featuring a basic dialog
+present in most of the other input deck generators as well as an advanced dialog
+exposing many of the more unusual and complex calculation types. In addition to
+the advanced dialog the input deck can be edited inline, and features syntax
+highlighting as used in many popular editors aimed at software developers. This
+can highlight simple typing errors in keywords, as well as harder to spot whitespace
+errors that would otherwise cause the hand edited input deck to fail when being
+read by GAMESS-US. Some early stage additions to the GAMESS plugin even allow
+for the submission of GAMESS-US jobs to computational clusters.
 
 \subsection{Alignment and Measurements}
 
