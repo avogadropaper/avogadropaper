@@ -593,18 +593,18 @@ class is the common base, defining a minimal set of interfaces for an Avogadro
 plugin inside the Avogadro C++ namespace.
 
 There are four classes that derive from this common base class specializing
-their interface for specific activities. The Avogadro::Color base class defines
+their interface for specific activities. The {\tt Avogadro::Color} base class defines
 the virtual interface for applying colors to atoms, bonds and other properties.
-Avogadro::Engine defines the common interface for all display types in Avogadro,
+ {\tt Avogadro::Engine} defines the common interface for all display types in Avogadro,
 from the simple ball and stick or Van der Waals visualizations through to
-surfaces and force visualizations. The Avogadro::Tool base class provides
+surfaces and force visualizations. The {\tt Avogadro::Tool} base class provides
 the interface for all interactive tools, focusing principally on mouse and
 keyboard interaction with Avogadro. Examples of tool plugins include the draw
 tool used to draw molecules atom by atom, and the navigation tool used to pan,
 rotate and scale the view of the molecule. There are also several specialized
 tools such as the alignment tool.
 
-Finally there is the Avogadro::Extension class, which defines the interface for
+Finally there is the {\tt Avogadro::Extension} class, which defines the interface for
 dialog based plugins. These extensions can interact with the molecule, and are
 used for a variety of purposes from molecule properties dialogs to input file
 generation dialogs for many quantum codes including NWChem, Gaussian, GAMESS and
@@ -655,7 +655,7 @@ Dipole & Render direction/magnitude of dipole moment if present \\
 Force & Renders arrows showing forces on atoms from forcefield \\
 Hydrogen Bond & Renders hydrogen bonds as dotted lines \\
 Label & Shows labels on atoms and bonds, configurable \\
-Overlay & \\
+Overlay & Overlay of color gradient used for electrostatic properties \\
 Polygon & Renders closed polygons of metallic centers \\
 Ribbon & Basic secondary structure ribbon rendering \\
 Ring & Renders rings in structure, different colors depending on ring size \\
@@ -757,27 +757,29 @@ useful to practitioners in that area.
 \hline
 Name & Description \\
 \hline
-Angle Properties & \\
-Atom Properties & \\
-Bond Properties & \\
 Create Surfaces & Create surface meshes from molecular orbital/electron density data \\
 GAMESS & Prepare input files for GAMESS-US, featuring syntax highlighting, advanced properties \\
 Insert Fragment & Insert molecular fragments from a library of common fragments \\
 Insert Peptide & Build up and insert peptide fragments \\
 Molecular Mechanics & Use Open Babel's forcefields for geometry optimization and conformer searches \\
-Molecule Properties & \\
 MOPAC & Prepare input for and run MOPAC  \\
 POV-Ray & Ray-trace the displayed structure using POV-Ray \\
+\textbf{Properties} \\
+Angle Properties & Table of all bond angles (editable)\\
+Atom Properties & Table of all atoms with common properties \\
+Bond Properties & Table of all bonds with common properties \\
+Molecule Properties & Common properties of the molecule (including
+molecular weight, etc.)\\
+Torsion Properties & Table of all dihedral angles (editable) \\
 Spectra & Visualize spectra from output files \\
 Super Cell Builder & Expand atoms with space group, replicate specified repeats and perform simple bonding \\
-Torsion Properties & \\
-Unit Cell & \\
+Unit Cell & Change crystallographic unit cell display and parameters \\
 Vibrations & Show and animate molecular vibrations \\
 \hline
 \end{tabular}
 \end{table}
 
-\subsection{Colors} % Geoff
+\subsection{Colors}
 
 The color plugins primarily take either double precision numbers or integer
 values and return an RGB value. The plugins range from the standard color
@@ -969,9 +971,10 @@ Engineering Research Development Center for support.
 
 \section{Authors' contributions}
 GRH and DEC are the founders of the Avogadro project. MDH is the
-current lead developer and maintainer of Avogadro. DL and TV are
+current lead developer and maintainer of Avogadro. GRH, DL and TV are
 active developers. DL and EZ are founders of the XtalOpt project which
-is discussed in this work. All authors read and approved the final manuscript.
+is discussed in this work. TV developed the PackMol plugin. All
+authors read and approved the final manuscript.
 
 \section{Competing interests}
 
