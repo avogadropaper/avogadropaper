@@ -830,9 +830,39 @@ python plugin.
 
 \section{Quantum Calculations} % Marcus
 
-Description of the quantum calculation code already implemented. Slater and
-Gaussian types, output file parsing, parallel calculation code and details of
-data layout.
+Once quantum calculations have been performed it is desirable to be able
+to visualize various properties, including the molecular orbitals and electron
+density of the final state of the system. The OpenQube library houses most of
+the code that reads in the relevant matrices and factors. This code takes
+care of scanning the output files for the output, and putting the output into a
+standard format as expected by the calculation code.
+
+Once the data has been parsed, and normalized, some initialization is
+necessary. Once the initialization of the calculation is complete these data
+structures can be treated as read-only. This allows the calculation to be
+multithreaded, but to share one copy of the input data. The scalar value of
+the molecular orbital or electron density is calculated as a linear combination
+or atomic orbitals. The parallelization takes place across a regularly spaced
+cube, with each point being calculated in an independent thread sharing
+the input arrays and matrices. The QtConcurrent framework abstracts away
+thread pool management, using as many cores as available on the host system.
+
+Once a cube has been calculated this is then passed to the marching cubes
+algorithm to calculate an isosurface. Each isosurface is calculated in a separate
+thread, at this stage the cube is read only and so both the positive and negative
+isosurface of a molecular orbital can be calculated in separate threads. Further
+parallelization of this stage is possible, but typical isosurfaces do not take long
+to calculate, and offloading this calculation to the GPU is likely to be more useful
+as the result would already be in GPU memory for rendering.
+
+A class hierarchy with a standard API is provided for quantum output. Adding
+support for new codes involved developing a new parser, and ensuring the
+Gaussian or Slater set is populated with the correct ordering and the expected
+normalization scheme. The s, p and d-type Gaussian orbitals are supported,
+with f and g support planned in order to support the increasing number of
+calculations using these higher-order orbitals. The Basis Set Exchange hosted
+by EMSL provides access to the basis sets in common use, although at present
+these basis sets are normally read in directly from the output files.
 
 \section{Avogadro Library in Use}
 
