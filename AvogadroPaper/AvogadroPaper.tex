@@ -379,46 +379,6 @@ errors that would otherwise cause the hand edited input deck to fail when being
 read by GAMESS-US. Some early stage additions to the GAMESS plugin even allow
 for the submission of GAMESS-US jobs to computational clusters.
 
-\subsection{Parsing and Visualization of Quantum Code Output}
-
-Quantum codes were originally developed for line printers, and unfortunately little has
-changed since then in the standard log files. There are several formats developed for
-use in other codes and specifically for visualization and analysis but there is little
-agreement on any standard file format in the computational quantum chemistry
-community. A plugin was developed in Avogadro to visualize the output of various
-quantum codes, and get the data into the right format for further visualization and
-analysis.
-
-Initially support was added and extended in Open Babel for Gaussian cube files.
-This format provides atomic coordinates and one or more regularly spaced grids
-of scalar values. This can be read in, and techniques such as the marching cubes
-algorithm can be used to compute triangular meshes of isosurfaces at values of
-electron density for example. Once the code has been developed to visualize these
-isosurfaces it became clear that it would be useful to be able to calculate these cubes
-on the fly, at different levels of detail depending upon the intended use.
-
-The first format, which was somewhat documented at the time it was developed, is the
-Gaussian formatted checkpoint format. This format is much easier to parse than the
-log files generated as the program runs, and provides all of the detail needed to
-calculate scalar values of the molecular orbital or electron density at any point in space.
-Once a class structure had been developed for Gaussian type orbitals the approach
-was extended to read in several other popular output file formats including Q-Chem,
-GAMESS-US, NWChem and MolPro. MOPAC support was added later, along with
-support for the AUX format and Slater type orbitals used in that code. All of these
-codes output their final configurations using the standard linear combination of
-atomic orbitals, meaning that parallelization is extremely simple.
-
-The plugin was developed to take advantage of the map-reduce approach offered
-by QtConcurrent in order to use all available processor cores. This offers almost
-linear scaling as each point in the grid can be calculated independently of all other
-points. An alternate approach to calculating the molecular orbitals was developed
-in a second plugin, and the relevant code was split out into a support library later
-named OpenQube. This library has now been split off into a separate support
-project outside of Avogadro. This library was added as an optional backend in
-VTK during the 2011 Google Summer of Code, bringing support for several
-output file formats and calculation of cube files that can later be fed into more
-advanced data pipelines.
-
 \subsection{Alignment and Measurements}
 
 One of the specialized tools included in the standard Avogadro distribution is
@@ -475,32 +435,56 @@ molecular backbone, figure~\ref{f:standardReps} (f).
 
 \subsection{Electronic Structure}
 
-The support for electronic structure visualization evolved in Avogadro.
-Initially support for reading in Gaussian cube files was added to Open Babel,
-and a marching cubes implementation was added to Avogadro to visualize
-isosurfaces. Once this was integrated it became clear that many codes could not
-easily produce cube files, and that direct support for calculating cubes in the
-Avogadro application would be advantageous.
+Quantum codes were originally developed for line printers, and unfortunately little has
+changed since then in the standard log files. There are several formats developed for
+use in other codes and specifically for visualization and analysis but there is little
+agreement on any standard file format in the computational quantum chemistry
+community. A plugin was developed in Avogadro to visualize the output of various
+quantum codes, and get the data into the right format for further visualization and
+analysis.
 
-Initially support for Gaussian type orbitals was added, as used in a large
-range of quantum codes. Later support for Slater type orbitals was added in
-order to visualize the output from the MOPAC code. This code was written using
-the Qt Concurrent framework, reading in the basis set, eigenvectors, and density
-matrix to directly calculate molecular orbitals and electron
-densities. The cube calculation is highly multithreaded, parallelizing the
-calculation of each point in the regular grid making up the volume of interest.
-The original marching cubes implementation is then used to calculate
-isosurfaces in much the same way as for Gaussian cube files.
+Initially support was added and extended in Open Babel for Gaussian cube files.
+This format provides atomic coordinates and one or more regularly spaced grids
+of scalar values. This can be read in, and techniques such as the marching cubes
+algorithm can be used to compute triangular meshes of isosurfaces at values of
+electron density for example. Once the code has been developed to visualize these
+isosurfaces it became clear that it would be useful to be able to calculate these cubes
+on the fly, at different levels of detail depending upon the intended use.
 
-Both features were developed within plugins, and matured there. More recently
-the code responsible for reading quantum output files and calculating the cubes
-has been separated out into a separate library called ``OpenQube''. This allows
-other applications to reuse the code more easily, as well as facilitating its
-use on clusters where graphical rendering may not be available. A range of
-output files are supported including Gaussian formatted checkpoint files,
-Q-Chem formatted checkpoints, GAMESS, Molpro and MOPAC AUX files. There are
-several related projects to add semantic meaning to this type of output,
-including the JUMBO-Converters project and Quixote.
+The first format, which was somewhat documented at the time it was developed, is the
+Gaussian formatted checkpoint format. This format is much easier to parse than the
+log files generated as the program runs, and provides all of the detail needed to
+calculate scalar values of the molecular orbital or electron density at any point in space.
+Once a class structure had been developed for Gaussian type orbitals the approach
+was extended to read in several other popular output file formats including Q-Chem,
+GAMESS-US, NWChem and MolPro. MOPAC support was added later, along with
+support for the AUX format and Slater type orbitals used in that code. All of these
+codes output their final configurations using the standard linear combination of
+atomic orbitals, meaning that parallelization is extremely simple.
+
+The plugin was developed to take advantage of the map-reduce approach offered
+by QtConcurrent in order to use all available processor cores. This offers almost
+linear scaling as each point in the grid can be calculated independently of all other
+points. An alternate approach to calculating the molecular orbitals was developed
+in a second plugin, and the relevant code was split out into a support library later
+named ``OpenQube''. This library has now been split off into a separate support
+project outside of Avogadro. This library was added as an optional backend in
+VTK during the 2011 Google Summer of Code, bringing support for several
+output file formats and calculation of cube files that can later be fed into more
+advanced data pipelines.
+
+There are several related projects to add semantic meaning to this type of output,
+including the JUMBO-Converters project and Quixote. It is hoped that more codes
+will adopt semantic output in the future, using a common format so that data exchange,
+validation and analysis become easier across several codes. This was the subject of
+a recent meeting, with several computational chemistry codes beginning to use FoX
+in order to output CML. Development has begun on code to read in CML output,
+either directly from the codes or from conversion of other formats using Open Babel
+of the JUMBO-Converters. If enough structure can be added to CML, and the
+converters support a large enough range of the output this could replace most of
+the parsing code present in OpenQube. Semantic meaning is one of the most
+difficult to extract from log files, and coming together as a community will help
+projects like Avogadro to derive more meaning from the outputs of these codes.
 
 \subsection{Secondary Biological Structure}
 
