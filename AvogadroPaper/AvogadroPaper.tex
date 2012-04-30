@@ -135,7 +135,7 @@ Buffalo, New York 14260-3000\\
 visualizer
 designed for cross-platform use in computational chemistry, molecular
 modeling, bioinformatics, materials science, and related areas. It
-offers flexible high quality rendering and a powerful plugin
+offers flexible, high quality rendering, and a powerful plugin
 architecture. Typical uses include building molecular structures,
 formatting input files, and analyzing output of a wide variety of
 computational chemistry packages. By using the CML file format as its native
@@ -156,7 +156,7 @@ We describe some example extensions, one which uses a genetic algorithm to find
 stable crystal structures, and one which interfaces with the PackMol program to
 create packed, solvated structures for molecular dynamics simulations.
 
-\textbf{Conclusions:} It is freely available under an open-source license from
+\textbf{Conclusions:} Avogadro is freely available under an open-source license from
 http://avogadro.openmolecules.net.
 
 \end{abstract}
@@ -165,28 +165,34 @@ http://avogadro.openmolecules.net.
 
 \section{Introduction}
 
-Many areas such as chemistry, materials science, physics, and biology need
+Many fields such as chemistry, materials science, physics, and biology, need
 efficient computer programs to both build and visualize molecular structures.
 The field of molecular graphics is dominated by viewers with little or no
 editing capabilities, such as RasMol~\cite{RasMol}, JMol~\cite{JMol},
 PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol}, and
-BALLView~\cite{BALLView} among many others. The aforementioned viewers are all
+BALLView~\cite{BALLView}, among many others. The aforementioned viewers are all
 freely available, and most of them are available under open source licenses and
 work on the most common operating systems (GNU/Linux, Apple Mac OS X, Windows,
 and BSD).
 
-The choice of software capable of building chemical structures is far smaller.
-There are existing commercial packages, such as Spartan, CAChe, GaussView,
-Materials Studio~\cite{Accelrys} and CrystalMaker~\cite{CrystalMaker}, that are
-polished and capable of constructing many different types of molecular
-structures. They are, however, not available for all operating systems (most of
-them only run on Microsoft Windows), and are not easily extensible, customized,
-or integrated into automated workflows. Licensing costs can be prohibitive. If
-the company were to change its direction or focus this can lead to a loss of
-significant research investment in a commercial product.
+The choice of software capable of building chemical structures in
+three dimensions is far smaller.
+There are existing commercial packages, such as
+Spartan~\cite{Spartan}, CAChe/Scigress~\cite{CAChe},
+GaussView~\cite{GaussView}, Materials Studio~\cite{Accelrys} and
+CrystalMaker~\cite{CrystalMaker}, that are polished and capable of
+constructing many different types of molecular structures. They are,
+however, not available for all operating systems (most of them only
+run on Microsoft Windows), and are not easily extensible, customized,
+or integrated into automated workflows. Licensing costs can be
+prohibitive. If the company were to change its direction or focus this
+can lead to a loss of significant research investment in a commercial
+product. Furthermore, in most cases, these programs use custom,
+proprietary file formats, and semantic and chemical data can be lost in
+conversion to other data formats.
 
-The selection of free, open source, cross platform molecular builders was quite
-limited when the Avogadro project was founded in late 2006.
+The selection of free, open source, cross platform, three-dimensional,
+molecular builders was quite limited when the Avogadro project was founded in late 2006.
 Ghemical~\cite{Ghemical} was one of the only projects satisfying these needs at
 the time. Two of the authors (Hutchison and Curtis) contributed to Ghemical
 previously, but had found that it was not easily extensible. This led them to
@@ -203,7 +209,10 @@ applications also only work on one or two operating systems. An open and
 extensible framework is needed to perform innovative research. The
 creation of such a framework that implements many of the necessary foundations
 for a molecular builder and visualizer would facilitate more effective research
-in this area.
+in this area. Further, the open, standardized Chemical Markup Language
+(CML) file format~\cite{CML2011a, CML2011b} would be used, to secure
+semantic and chemical data and allow easy interoperability with other
+chemistry software.
 
 At the time of writing it is apparent that other researchers have perceived
 similar needs. Several new applications are available today that focus on both
@@ -217,7 +226,7 @@ around effective reuse of existing code, well commented and documented code, and
 easy extension to add new features and adapt for specialized areas.
 
 The Avogadro project was started in earnest in 2007, and over the
-first 5 years of development has been downloaded over 250,000
+first 5 years of development has been downloaded over 270,000
 times~\cite{Downloads}, been translated into over 20
 languages~\cite{Translations}, and has over 20
 contributors~\cite{OhlohContributors}. From the beginning, the project
@@ -226,7 +235,7 @@ both building and visualizing molecular structures. Much of the initial focus
 has been placed on preparing input and analyzing output from quantum
 calculations. Other applications such as preparing input for MD simulations and
 visualizing periodic structures will also be presented, demonstrating the
-flexibility of the Avogadro platform. The software has been developed by
+flexibility of the Avogadro platform. The development team has also been
 members of the Blue Obelisk movement, following the three pillars outlined by
 the group: Open Data, Open Standards and Open Source~\cite{BlueObelisk2006,
 BlueObelisk2011}.
@@ -258,7 +267,7 @@ supported operating systems---Linux, Mac OS X and Windows. The basic
 functionality expected in a molecular builder and viewer has been implemented,
 along with several less common features. It is very easy for new users to
 install Avogadro and build their
-first molecules within minutes. Thanks to the Open Babel library Avogadro
+first molecules within minutes. Thanks to the Open Babel library~\cite{OpenBabel}, Avogadro
 supports a large portion of the chemical file formats that are in
 common use.
 
@@ -271,25 +280,26 @@ the plugin types later.
 
 Avogadro has used CML~\cite{CML2011a, CML2011b} as its default file format from
 a very early stage, this
-was chosen over all the other file formats provided by Open Babel due to the
-semantic structure provided and the support available in Open Babel. The CML
+was chosen over all other file formats because of the extensible,
+semantic structure provided by CML, and the support available in Open Babel~\cite{OpenBabel}. The CML
 format offers a number of advantages over others in common use, including the
-ability to extend the format to include more information and add the features
-necessary for an advanced semantically-aware editor at a later time by looking for
-new features of the standard while still remaining readable in older versions.
+ability to extend the format. This allows Avogadro and other programs
+to be future-proof, adding new information and features
+necessary for an advanced semantically-aware editor at a later time,
+while still remaining readable in older versions of Avogadro.
 
-Through the use of Open Babel a large array of file formats can be interpreted,
-and a big portion of the work in doing this has been done by the Open Babel
-project. When extending Avogadro to read in larger amounts of the output from
-quantum codes, it was necessary to devote significant development resources to
-understanding and adding meaning to the quantum code outputs. This work was
-developed in a plugin, which was later split out into a small independent
-library called OpenQube. More recently a large amount of work has been done
+%% Does JUMBO and Semantic Physical Science require citations?
+Through the use of Open Babel~\cite{OpenBabel}, a large array of file
+formats can be interpreted. When extending Avogadro to read in larger
+amounts of the output from quantum codes, it was necessary to devote
+significant development resources to understanding and adding semantic
+meaning to the quantum code outputs. This work was developed in a plugin, which was later split out into a small independent
+library called OpenQube~\cite{OpenQube}. More recently a large amount of work has been done
 by the Quixote project~\cite{Quixote}, JUMBO-Converters and the Semantic
 Physical Science workshop to augment quantum codes to output more of this data
-directly from the code. If CML can be extended, it is possible to reuse
-existing conventions for molecular structure data, and add new conventions for
-the additional quantum data.
+directly from the code. Since CML can be extended, it is possible to reuse
+existing conventions for molecular structure data, and add new
+conventions for the additional quantum data.
 
 \subsection{Building a Molecule: Atom by Atom}
 
@@ -314,11 +324,11 @@ is checked, the number of hydrogens bonded to each atom is automatically
 adjusted to satisfy valency. Alternatively, this can also be done at the end of
 an editing session by using the add hydrogens extension in the build menu.
 
-In addition to the draw tool there are two tools for adjusting the position of
+In addition to the draw tool, there are two tools for adjusting the position of
 atoms in existing molecules. The ``atom centric manipulate'' tool can be used to
 move an atom or a group of selected atoms. The ``bond centric manipulate'' tool
 can
-be used to select a bond and then adjust all atoms positions relative to the
+be used to select a bond, and then adjust all atoms positions relative to the
 selected bond in various ways (e.g., altering the bond length, bond
 angles, or dihedral angles). These three tools allow for a great deal of
 flexibility in building small molecules interactively on screen.
@@ -338,11 +348,33 @@ and the effect of changing bond orders, adding new groups or removing groups can
 be observed interactively.
 
 Several dialogs are implemented to provide information on molecule properties,
-and
-to precisely change parameters, such as the cartesian coordinates of the atoms
+and to precisely change parameters, such as the cartesian coordinates of the atoms
 in the molecule.
 
-\subsection{Building a Molecule: From Fragments} %Geoff?
+\subsection{Building a Molecule: From Fragments}
+
+\begin{figure}
+  \includegraphics[width=0.44\textwidth]{images/insert-fragment}
+  \hspace{0.1cm}
+  \includegraphics[width=0.44\textwidth]{images/insert-peptide}
+  \caption{Dialogs for inserting pre-built fragments for (left)
+    molecules) and (right) amino-acid sequences.}
+  \label{f:insertdialogs}
+\end{figure}
+
+In addition to building molecules atom-by-atom, users can insert
+pre-built fragments of common molecules, ligands, or amino-acid
+sequences, as shown in figure~\ref{f:insertdialogs}.
+
+In all cases, after inserting the fragment, the atom-centered manipulate tool
+is selected, allowing the fragment to be moved or rotated into
+position easily.
+
+Users can also insert a SMILES~\cite{smiles} string for a molecule. In
+this case, a rough 3D geometry is generated using Open Babel and a
+quick force field optimization.
+
+\subsection{Preparing Input for Quantum Codes}
 
 \begin{figure}
   \includegraphics[width=0.44\textwidth]{images/avogadro-q-chem}
@@ -354,8 +386,6 @@ in the molecule.
   \label{f:quantumdialogs}
 \end{figure}
 
-\subsection{Preparing Input for Quantum Codes}
-
 Several extensions were developed for Avogadro that assist the user in preparing
 input files for popular quantum codes such as GAMESS-US, NWChem, Gaussian, Q-Chem, and
 MOPAC. The graphical dialogs present the features required to run basic quantum
@@ -364,19 +394,20 @@ calculations, some examples are shown in figure~\ref{f:quantumdialogs}.
 The preview of the input file at the bottom of each dialog is updated as options
 are changed. This approach helps new users of quantum codes to learn the syntax
 of input files for different codes, and to quickly generate useful input files
-as they learn. The input can be edited in the dialog before the file is saved
-and submitted to the quantum code. The MOPAC extension can also run the  MOPAC
+as they learn. The input can also be edited by hand in the dialog before the file is saved
+and submitted to the quantum code. The MOPAC extension can also run the MOPAC
 program directly, if it is available on the user's computer, and then reload the
-output file into Avogadro once the calculation is complete.
+output file into Avogadro once the calculation is complete. This
+feature will be extended to other quantum codes in future versions of Avogadro.
 
 The GAMESS-US plugin is one of the most highly developed, featuring a basic dialog
-present in most of the other input deck generators as well as an advanced dialog
+present in most of the other input deck generators, as well as an advanced dialog
 exposing many of the more unusual and complex calculation types. In addition to
 the advanced dialog the input deck can be edited inline, and features syntax
 highlighting as used in many popular editors aimed at software developers. This
-can highlight simple typing errors in keywords, as well as harder to spot whitespace
-errors that would otherwise cause the hand edited input deck to fail when being
-read by GAMESS-US. Some early stage additions to the GAMESS plugin even allow
+can indicate simple typing errors in keywords, as well as harder to spot whitespace
+errors that would otherwise cause the hand-edited input deck to fail when being
+read by GAMESS-US. Some new features in the GAMESS plugin will even allow
 for the submission of GAMESS-US jobs to computational clusters.
 
 \subsection{Alignment and Measurements}
@@ -392,8 +423,7 @@ to the molecule. In these types of calculations the alignment of the molecule
 can have a large effect.
 
 More complex alignment tools for specific tasks could be created. The alignment
-tool was created in just a few hours for a specific research project performing
-calculation on the piezoelectric effect in single molecules. This is a prime
+tool was created in just a few hours for a specific research project. This is a prime
 example where extensibility was very important to perform
 research using a graphical computational chemistry tool. It would not have been
 worth the investment to create a new application just to align molecular
@@ -404,10 +434,10 @@ unreasonable.
 \section{Visualization}
 
 The Avogadro application uses OpenGL to render molecular representations to the
-screen interactively. OpenGL offers a good cross platform API for rendering
+screen interactively. OpenGL offers a high-level, cross-platform API for rendering
 three dimensional images using hardware accelerated graphics. OpenGL
 1.1 and below is used in most of the rendering code, and so Avogadro can be used
-even on very modest/old computer systems. It is capable of taking advantage of
+even on modest, older computer systems. It is capable of taking advantage of
 some of the newer features available in OpenGL 2.0, but this has been kept as an
 optional extra feature when working on novel visualizations of molecular
 structure.
@@ -422,7 +452,7 @@ structure.
  \label{f:standardReps}
 \end{figure}
 
-In chemistry there are several standard representations of molecular structure,
+In chemistry, there are several standard representations of molecular structure,
 originally based upon those possible with physical models. The Avogadro
 application implements each of these representations shown in
 figure~\ref{f:standardReps} as a plugin. These range from the simple wireframe
