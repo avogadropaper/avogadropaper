@@ -169,11 +169,12 @@ Many fields such as chemistry, materials science, physics, and biology, need
 efficient computer programs to both build and visualize molecular structures.
 The field of molecular graphics is dominated by viewers with little or no
 editing capabilities, such as RasMol~\cite{RasMol}, JMol~\cite{JMol},
-PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol}, and
-BALLView~\cite{BALLView}, among many others. The aforementioned viewers are all
-freely available, and most of them are available under open source licenses and
-work on the most common operating systems (GNU/Linux, Apple Mac OS X, Windows,
-and BSD).
+PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol},
+BALLView~\cite{BALLView}, VESTA~\cite{vesta}, and
+XCrySDen~\cite{xcrysden1}\cite{xcrysden2}, among many others. The aforementioned
+viewers are all freely available, and most of them are available under
+open source licenses and work on the most common operating systems
+(GNU/Linux, Apple Mac OS X, Windows, and BSD).
 
 The choice of software capable of building chemical structures in
 three dimensions is far smaller.
@@ -358,7 +359,7 @@ in the molecule.
   \hspace{0.1cm}
   \includegraphics[width=0.44\textwidth]{images/insert-peptide}
   \caption{Dialogs for inserting pre-built fragments for (left)
-    molecules) and (right) amino-acid sequences.}
+    molecules, and (right) amino-acid sequences.}
   \label{f:insertdialogs}
 \end{figure}
 
@@ -778,7 +779,9 @@ an overview of the molecule. Cartesian editors, addition and removal of
 hydrogens, fragment, SMILES, and peptide insertion are all implemented as
 extensions showing up in the Avogadro menus. More recently a crystallography
 extension was added, giving access to a much wider range to functionality
-useful to practitioners in that area.
+useful to practitioners in that area, including Miller Plane
+visualization, slab and surface generation. New builders for
+nanotubes, nanoparticles, and DNA are also planned for upcoming releases.
 
 \begin{table}
   \caption{List of default extension commands}
@@ -994,10 +997,12 @@ scalability.
 
 We wish to thank the many contributors to the Avogadro project, including
 developers, testers, translators, and users. We thank SourceForge for
-providing resources for issue tracking and managing releases, and
+providing resources for issue tracking and managing releases,
+Launchpad for hosting language translations, and
 Kitware for additional dashboard resources. MDH and GRH thank the
 University of Pittsburgh for support. MDH also thanks Kitware and the
-Engineering Research Development Center for support.
+Engineering Research Development Center for support. EZ and DL acknowledge
+the NSF (DMR-1005413) for financial support.
 
 \section{Authors' contributions}
 GRH and DEC are the founders of the Avogadro project. MDH is the
