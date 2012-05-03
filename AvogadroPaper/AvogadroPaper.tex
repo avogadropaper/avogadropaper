@@ -161,7 +161,7 @@ http://avogadro.openmolecules.net.
 
 \end{abstract}
 
-\ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
+%\ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
 
 \section{Introduction}
 
@@ -170,7 +170,7 @@ efficient computer programs to both build and visualize molecular structures.
 The field of molecular graphics is dominated by viewers with little or no
 editing capabilities, such as RasMol~\cite{RasMol}, JMol~\cite{JMol},
 PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol},
-BALLView~\cite{BALLView}, VESTA~\cite{vesta}, and
+BALLView~\cite{BALLView}, VESTA~\cite{vesta3}, and
 XCrySDen~\cite{xcrysden1}\cite{xcrysden2}, among many others. The aforementioned
 viewers are all freely available, and most of them are available under
 open source licenses and work on the most common operating systems
@@ -295,7 +295,7 @@ formats can be interpreted. When extending Avogadro to read in larger
 amounts of the output from quantum codes, it was necessary to devote
 significant development resources to understanding and adding semantic
 meaning to the quantum code outputs. This work was developed in a plugin, which was later split out into a small independent
-library called OpenQube~\cite{OpenQube}. More recently a large amount of work has been done
+library called OpenQube~\cite{OpenQube}\cite{OpenQubeSource}. More recently a large amount of work has been done
 by the Quixote project~\cite{Quixote}, JUMBO-Converters and the Semantic
 Physical Science workshop to augment quantum codes to output more of this data
 directly from the code. Since CML can be extended, it is possible to reuse
@@ -371,7 +371,7 @@ In all cases, after inserting the fragment, the atom-centered manipulate tool
 is selected, allowing the fragment to be moved or rotated into
 position easily.
 
-Users can also insert a SMILES~\cite{smiles} string for a molecule. In
+Users can also insert a SMILES~\cite{smiles}\cite{opensmiles} string for a molecule. In
 this case, a rough 3D geometry is generated using Open Babel and a
 quick force field optimization.
 
