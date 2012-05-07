@@ -570,12 +570,24 @@ games industry, as well as in many areas of data visualization. Several recent
 papers highlight the potential in chemistry, such as QuteMol~\cite{QuteMol} in
 adding support for features such as ambient occlusion to add depth to images.
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.45\textwidth]{images/avo-vitaminc-xray}
+    \hspace*{0.1cm}
+    \includegraphics[width=0.45\textwidth]{images/avo-vitaminc-cryos}
+  \end{center}
+  \caption{Rendering of a molecular orbital isosurface using two GLSL shaders to
+  highlight the edges of the surfaces. The X-ray effect (left) and red and blue (right)
+  showing the positive and negative molecular orbital shapes.}
+ \label{f:electronic-glsl}
+\end{figure}
+
 Avogadro has support for vertex and fragment shader programs, and several
 examples are bundled with the package. If the user's graphics card is capable,
 these programs can be loaded at runtime and used to great effect to visualize
 structure. Some of these include summarization techniques such as isosurface
 rendering where only the edges orthogonal to the view plane are visible, giving
-a much better rendering of both the molecular and electronic structure.
+a much better rendering of both the molecular and electronic structure (Figure~\ref{f:electronic-glsl}).
 
 \subsection{Ray Tracing}
 
@@ -587,7 +599,17 @@ available in ray tracers to render molecular structure at very high levels of
 clarity and with none of the triangle artifacts present in standard OpenGL rendered
 images. Much higher quality transparency and reflection also allow for the
 images to be used in poster and oral presentations as well as research
-articles.
+articles (Figure~\ref{f:electronic-ray}).
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.45\textwidth]{images/caffeine-homo3}
+    \includegraphics[width=0.45\textwidth]{images/caffeine-homo4}
+  \end{center}
+  \caption{Rendering of a molecular orbital isosurface using POV-Ray with cubes
+  of low (left) and high (right) density.}
+ \label{f:electronic-ray}
+\end{figure}
 
 This feature is implemented in an extension, with an additional painter class
 deriving from the base class and a dialog allowing the user to edit the basic
@@ -940,7 +962,15 @@ followed by the Kalzium periodic table program that is part of the KDE software
 collection. This initial work was funded as part of the Google Summer of Code
 program in 2007, and also resulted in the addition of several other features in
 the Avogadro library to support Kalzium and general visualization and editing
-of molecular structure.
+of molecular structure (Figure~\ref{f:kalzium}).
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{images/kalzium-porph}
+  \end{center}
+  \caption{The Kalzium application in KDE using Avogadro to render molecular structures.}
+ \label{f:kalzium}
+\end{figure}
 
 \subsection{Packmol}
 
