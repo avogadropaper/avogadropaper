@@ -516,10 +516,22 @@ support for the AUX format and Slater type orbitals used in that code. All of th
 codes output their final configurations using the standard linear combination of
 atomic orbitals, meaning that parallelization is extremely simple.
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.45\textwidth]{images/avo-mbt-orb}
+    \hspace*{0.1cm}
+    \includegraphics[width=0.45\textwidth]{images/avo-mbt-esp}
+  \end{center}
+  \caption{Rendering of a molecular orbital isosurface (left) and an electrostatic
+  surface potential mapped onto the electron density (right).}
+ \label{f:electronic-structure}
+\end{figure}
+
 The plugin was developed to take advantage of the map-reduce approach offered
 by QtConcurrent in order to use all available processor cores. This offers almost
 linear scaling as each point in the grid can be calculated independently of all other
-points. An alternate approach to calculating the molecular orbitals was developed
+points, the results of which can be seen in Figure~\ref{f:electronic-structure}.
+An alternate approach to calculating the molecular orbitals was developed
 in a second plugin, and the relevant code was split out into a support library later
 named ``OpenQube''. This library has now been split off into a separate support
 project outside of Avogadro, and was added as an optional backend in
