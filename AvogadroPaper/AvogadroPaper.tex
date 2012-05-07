@@ -378,17 +378,21 @@ quick force field optimization.
 \subsection{Preparing Input for Quantum Codes}
 
 \begin{figure}
-  \includegraphics[width=0.44\textwidth]{images/avogadro-q-chem}
+  \includegraphics[width=0.44\textwidth]{images/qchem}
   \hspace{0.1cm}
-  \includegraphics[width=0.44\textwidth]{images/avogadro-gaussian}
-  \caption{Dialog for generating input for Q-Chem (left) and Gaussian (right).
-    Note that both dialogs are similar in interface, allowing users to use
+  \includegraphics[width=0.44\textwidth]{images/nwchem}\\
+
+  \includegraphics[width=0.44\textwidth]{images/molpro}
+  \hspace{0.1cm}
+  \includegraphics[width=0.44\textwidth]{images/mopac}
+  \caption{Dialog for generating input for Q-Chem, NWChem, MolPro and MOPAC.
+    Note that the dialogs are similar in interface, allowing users to use
     multiple computational chemistry packages.}
   \label{f:quantumdialogs}
 \end{figure}
 
 Several extensions were developed for Avogadro that assist the user in preparing
-input files for popular quantum codes such as GAMESS-US, NWChem, Gaussian, Q-Chem, and
+input files for popular quantum codes such as GAMESS-US, NWChem, Gaussian, Q-Chem, MolPro and
 MOPAC. The graphical dialogs present the features required to run basic quantum
 calculations; some examples are shown in Figure~\ref{f:quantumdialogs}.
 
@@ -401,11 +405,19 @@ program directly if it is available on the user's computer, and then reload the
 output file into Avogadro once the calculation is complete. This
 feature will be extended to other quantum codes in future versions of Avogadro.
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{images/gamess-input}
+  \end{center}
+  \caption{The GAMESS-US input deck generator, showing the advanced panel and syntax highlighting.}
+  \label{f:gamess}
+\end{figure}
+
 The GAMESS-US plugin is one of the most highly developed, featuring a basic dialog
 present in most of the other input deck generators, as well as an advanced dialog
 exposing many of the more unusual and complex calculation types. In addition to
 the advanced dialog, the input deck can be edited inline and features syntax
-highlighting as used in many popular editors aimed at software developers. This
+highlighting (Figure~\ref{f:gamess}) as used in many popular editors aimed at software developers. This
 can indicate simple typing errors in keywords, as well as harder to spot whitespace
 errors that would otherwise cause the hand-edited input deck to fail when being
 read by GAMESS-US. Some new features in the GAMESS plugin will even allow
@@ -775,7 +787,7 @@ translate to a specified frame of reference \\
 
 The extensions represent quite a diverse range of plugins. These range from the
 input generation dialogs for various quantum chemistry codes such as GAMESS,
-MOLPRO, NWChem, etc, through to animation of the molecule and visualization of
+MolPro, NWChem, etc, through to animation of the molecule and visualization of
 molecular orbitals and electron density. Network aware extensions allow the user
 to click on File$\to$Import$\to$Fetch by chemical name and search for ``tnt'' or
 ``propanol'' and have structures returned by the NIH CACTUS Chemical Structure
