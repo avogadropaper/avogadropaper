@@ -228,7 +228,8 @@ easy extension to add new features and adapt for specialized areas.
 The Avogadro project was started in earnest in 2007, and over the
 first 5 years of development has been downloaded over 270,000
 times~\cite{Downloads}, been translated into over 20
-languages~\cite{Translations}, and has over 20
+languages~\cite{Translations}, has been cited over 100
+times,~\cite{ScholarCitations}, and has over 20
 contributors~\cite{OhlohContributors}. From the beginning, the project
 has strived to make a robust, flexible framework for
 both building and visualizing molecular structures. Much of the initial focus
@@ -441,7 +442,7 @@ corner.
   \begin{center}
     \includegraphics[width=0.9\textwidth]{images/avogadro-measurement}
   \end{center}
-  \caption{The measurement tool being used to measure bond angles and lengths 
+  \caption{The measurement tool being used to measure bond angles and lengths
   (on Linux with KDE 4).}
   \label{f:measurement}
 \end{figure}
@@ -679,9 +680,17 @@ divided into four separate types, all having a common base class. The Plugin
 class is the common base, defining a minimal set of interfaces for an Avogadro
 plugin inside the Avogadro C++ namespace.
 
-There are four classes that derive from this common base class, specializing
-their interface for specific activities. The {\tt Avogadro::Color} base class defines
-the virtual interface for applying colors to atoms, bonds, and other properties.
+\begin{figure}
+  \includegraphics[width=0.9\textwidth]{images/architecture}
+  \caption{General code architecture of Avogadro, indicating major
+    plugin interfaces for colors, display engines, tools, and extensions.}
+ \label{f:standardReps}
+\end{figure}
+
+There are four main classes that derive from this common base class, specializing
+their interface for specific activities
+(Figure~\ref{f:architecture}). The {\tt Avogadro::Color} base class
+defines the virtual interface for applying colors to atoms, bonds, and other properties.
  {\tt Avogadro::Engine} defines the common interface for all display types in Avogadro,
 from the simple ball and stick or Van der Waals visualizations, through to
 surfaces and force visualizations. The {\tt Avogadro::Tool} base class provides
