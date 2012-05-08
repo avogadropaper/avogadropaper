@@ -228,9 +228,18 @@ easy extension to add new features and adapt for specialized areas.
 The Avogadro project was started in earnest in 2007, and over the
 first 5 years of development has been downloaded over 270,000
 times~\cite{Downloads}, been translated into over 20
-languages~\cite{Translations}, has been cited over 100
-times,~\cite{ScholarCitations}, and has over 20
-contributors~\cite{OhlohContributors}. From the beginning, the project
+languages~\cite{Translations}, and has over 20
+contributors~\cite{OhlohContributors}. So far, it has been cited over
+100 times,~\cite{ScholarCitations} including applications in spectroscopy, catalysis,
+materials chemistry, theoretical chemistry, biochemistry, and
+molecular dynamics, among many
+others.~\cite{MeraAdasme:2011hj,Closser:2010kc,Ide:2011cj}
+\cite{Menegazzo:2012by,Patel:2011fe,Popov:2011gv,Hu:2011ce,Bingol:2012kx}
+\cite{Yao:2010id,Fleisher:2011vz,Mayorkas:2011eu,Tian:2011ej,Kapla:2012ho}
+\cite{Mandal:2012ff,Bernstein:2010kc,Hlawacek:2011gh,Forster:2012ka}
+\cite{Burkhardt:2010kc,Burkhardt:2011hn,Madison:2011kw}
+
+From the beginning, the project
 has strived to make a robust, flexible framework for
 both building and visualizing molecular structures. Much of the initial focus
 has been placed on preparing input and analyzing output from quantum
@@ -250,7 +259,7 @@ Microsoft Windows, along with packages for all of the major Linux distributions.
 This means that Avogadro can be installed quite easily on most operating
 systems. Easy to follow instructions on how to compile the latest source code
 are also provided on the main Avogadro web
-site\cite{CompileWindows}\cite{CompileLinux} for the more adventurous,
+site\cite{CompileWindows,CompileLinux} for the more adventurous,
 or those using an operating system that is not yet supported.
 
 \begin{figure}
@@ -295,7 +304,7 @@ formats can be interpreted. When extending Avogadro to read in larger
 amounts of the output from quantum codes, it was necessary to devote
 significant development resources to understanding and adding semantic
 meaning to the quantum code outputs. This work was developed in a plugin, which was later split out into a small independent
-library called OpenQube~\cite{OpenQube}\cite{OpenQubeSource}. More recently a large amount of work has been done
+library called OpenQube~\cite{OpenQube,OpenQubeSource}. More recently a large amount of work has been done
 by the Quixote project~\cite{Quixote}, JUMBO-Converters, and the Semantic
 Physical Science workshop to augment quantum codes to output more of this data
 directly from the code. Since CML can be extended, it is possible to reuse
@@ -372,7 +381,7 @@ In all cases, after inserting the fragment, the atom-centered manipulate tool
 is selected, allowing the fragment to be moved or rotated into
 position easily.
 
-Users can also insert a SMILES~\cite{smiles}\cite{opensmiles} string for a molecule. In
+Users can also insert a SMILES~\cite{smiles,opensmiles} string for a molecule. In
 this case, a rough 3D geometry is generated using Open Babel and a
 quick force field optimization.
 
@@ -393,9 +402,12 @@ quick force field optimization.
 \end{figure}
 
 Several extensions were developed for Avogadro that assist the user in preparing
-input files for popular quantum codes such as GAMESS-US, NWChem, Gaussian, Q-Chem, MolPro and
-MOPAC. The graphical dialogs present the features required to run basic quantum
-calculations; some examples are shown in Figure~\ref{f:quantumdialogs}.
+input files for popular quantum codes such as
+GAMESS-US,~\cite{GAMESS-US} NWChem,~\cite{NWChem}
+Gaussian,~\cite{Gaussian} Q-Chem,~\cite{Q-Chem3} MOLPRO,~\cite{MOLPRO}
+and MOPAC.~\cite{MOPAC} The graphical dialogs present the features
+required to run basic quantum calculations; some examples are shown in
+Figure~\ref{f:quantumdialogs}.
 
 The preview of the input file at the bottom of each dialog is updated as options
 are changed. This approach helps new users of quantum codes to learn the syntax
@@ -667,10 +679,12 @@ Avogadro API, allowing for a wide variety of features to be implemented in a
 very modular way.
 
 The Avogadro framework uses the model, view, controller paradigm. The model
-being the core data classes such as Molecule, Atom, and Bond, the view being the
-engine plugins, and the controllers being the tools (interactive mouse) and
-extensions (non-interactive, form based/menu based). Each plugin has full access
-to the core data model.
+comprises the core data classes such as {\tt Molecule}, {\tt Atom}, and
+{\tt Bond}, the view being the engine render plugins, and the
+controllers being the tools (interactive mouse) and extensions
+(non-interactive, form based/menu based). Each plugin has full access
+to the core data model, but separation is made between the view and
+controller concepts.
 
 \subsection{Plugin Interface}
 
@@ -722,7 +736,7 @@ the user interface.
 
 \subsection{Display Types}
 
-Display types are one type of plugin, referred to as engines internally. Their
+Display types are one type of plugin, referred to as ``engines'' internally. Their
 primary focus is rendering graphics to the screen. As is the case with most
 molecular graphics, a large portion of the geometric primitives are spheres and
 cylinders, typically used to represent atoms and bonds. There are many other
@@ -985,7 +999,7 @@ of molecular structure (Figure~\ref{f:kalzium}).
 
 Packmol is a third-party package designed to create initial
 ``packed'' configurations of molecules for molecular dynamics or other
-simulations~\cite{packmol}\cite{packmol-packing}. Examples include
+simulations~\cite{packmol,packmol-packing}. Examples include
 surrounding a protein with solvent, solvent mixtures, lipid bilayers,
 spherical micelles, placing counterions, adding ligands to
 nanoparticles, etc.
