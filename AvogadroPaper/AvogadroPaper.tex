@@ -156,7 +156,16 @@ We describe some example extensions, one which uses a genetic algorithm to find
 stable crystal structures, and one which interfaces with the PackMol program to
 create packed, solvated structures for molecular dynamics simulations.
 
-\textbf{Conclusions:} Avogadro is freely available under an open-source license from
+\textbf{Conclusions:} Avogadro offers a semantic chemical builder and
+platform for visualization and analysis. For users, it offers an
+easy-to-use builder, integrated support for downloading from common
+databases such as PubChem and the Protein Data Bank, extracting
+chemical data from a wide variety of formats, including computational
+chemistry output, and native, semantic support for the CML file
+format. For developers, it can be easily extended via a powerful
+plugin mechanism to support new features in organic chemistry,
+inorganic complexes, drug design, materials, biomolecules, and simulations.
+Avogadro is freely available under an open-source license from
 http://avogadro.openmolecules.net.
 
 \end{abstract}
@@ -298,7 +307,6 @@ to be future-proof, adding new information and features
 necessary for an advanced semantically-aware editor at a later time,
 while still remaining readable in older versions of Avogadro.
 
-%% Does JUMBO and Semantic Physical Science require citations?
 Through the use of Open Babel~\cite{OpenBabel}, a large array of file
 formats can be interpreted. When extending Avogadro to read in larger
 amounts of the output from quantum codes, it was necessary to devote
@@ -404,7 +412,7 @@ quick force field optimization.
 Several extensions were developed for Avogadro that assist the user in preparing
 input files for popular quantum codes such as
 GAMESS-US,~\cite{GAMESS-US} NWChem,~\cite{NWChem}
-Gaussian,~\cite{Gaussian} Q-Chem,~\cite{Q-Chem3} MOLPRO,~\cite{MOLPRO}
+Gaussian,~\cite{g09} Q-Chem,~\cite{Q-Chem3} MOLPRO,~\cite{MOLPRO}
 and MOPAC.~\cite{MOPAC} The graphical dialogs present the features
 required to run basic quantum calculations; some examples are shown in
 Figure~\ref{f:quantumdialogs}.
@@ -698,7 +706,7 @@ plugin inside the Avogadro C++ namespace.
   \includegraphics[width=0.9\textwidth]{images/architecture}
   \caption{General code architecture of Avogadro, indicating major
     plugin interfaces for colors, display engines, tools, and extensions.}
- \label{f:standardReps}
+ \label{f:architecture}
 \end{figure}
 
 There are four main classes that derive from this common base class, specializing
@@ -1058,17 +1066,33 @@ Windows, and Mac.
 
 \section{Conclusions and Future Directions}
 
-Currently, two future versions of Avogadro are under development. The
+Avogadro has grown over its first six years to become an important
+tool for building, editing, visualizing, and analyzing chemical and
+molecular data. As we see from the over 270,000 downloads, many
+language translations and localizations, and over 100 citations, it
+has become an integral part of the chemical software toolbox. Through
+use of the native CML file format and a wide variety of chemical data
+import, Avogadro can provide semantic chemical data editing and conversion.
+We seek to provide an integrated environment in the simulation and
+cheminformatics workflow. While more must be done, particularly in
+regards to documentation, tutorials, ease-of-use, and automation, we
+aim to improve the quality and feature set with each new release.
+
+Currently, two upcoming versions of Avogadro are under development. The
 first is Avogadro version 1.1, which adds additional features and
 refinement, particularly including crystallography support developed
 through the XtalOpt project. The second is a more substantial
 development for Avogadro version 2.0, where many of the core data
 structures are being rewritten in order to offer greater flexibility and
-scalability.
+scalability. Our goal is to support an increasing scope of chemical
+systems, including biomolecules (DNA, RNA, saccarides, etc.),
+materials (crystallography, polymers, surfaces), nanoscience
+(nanoparticles, nanotubes, graphene, etc.) with improved speed and
+intuitive ease-of-use.
 
-% More on Future Development here
-
-
+Avogadro is freely available from http://avogadro.openmolecules.net/,
+and new contributors are welcome in all areas (users, developers,
+testers, translators, educators, students, researchers, dreamers).
 
 \section{Availability and Requirements}
 
