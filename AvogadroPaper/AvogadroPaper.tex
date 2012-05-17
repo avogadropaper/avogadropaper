@@ -177,7 +177,7 @@ http://avogadro.openmolecules.net.
 Many fields such as chemistry, materials science, physics, and biology, need
 efficient computer programs to both build and visualize molecular structures.
 The field of molecular graphics is dominated by viewers with little or no
-editing capabilities, such as RasMol~\cite{RasMol}, JMol~\cite{JMol},
+editing capabilities, such as RasMol~\cite{RasMol}, Jmol~\cite{JMol},
 PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol},
 BALLView~\cite{BALLView}, VESTA~\cite{vesta3}, and
 XCrySDen~\cite{xcrysden1}\cite{xcrysden2}, among many others. The aforementioned
@@ -482,10 +482,11 @@ The Avogadro application uses OpenGL to render molecular representations to the
 screen interactively. OpenGL offers a high-level, cross-platform API for rendering
 three-dimensional images using hardware accelerated graphics. OpenGL
 1.1 and below is used in most of the rendering code, and so Avogadro can be used
-even on modest, older computer systems. It is capable of taking advantage of
-some of the newer features available in OpenGL 2.0, but this has been kept as an
-optional extra feature when working on novel visualizations of molecular
-structure.
+even on older computer systems, or those without more modern
+accelerated graphics. It is capable of taking advantage of some of the
+newer features available in OpenGL 2.0 as described below, such as but
+this has been kept as an optional extra feature when working on novel
+visualizations of molecular structure.
 
 \subsection{Standard Representations}
 
@@ -586,10 +587,11 @@ expected in that field.
 \subsection{GLSL, Novel Visualization}
 
 GLSL, or OpenGL Shader Language, is a C-like syntax that can be used to develop
-code that will run on graphics cards. It has been used to great effect by the
-games industry, as well as in many areas of data visualization. Several recent
-papers highlight the potential in chemistry, such as QuteMol~\cite{QuteMol} in
-adding support for features such as ambient occlusion to add depth to images.
+code that will run on graphics cards and included in the OpenGL 2.0
+specification. It has been used to great effect by the games industry,
+as well as in many areas of data visualization. Several recent papers
+highlight the potential in chemistry, such as QuteMol~\cite{QuteMol}
+in adding support for features such as ambient occlusion to add depth to images.
 
 \begin{figure}
   \begin{center}
@@ -667,9 +669,12 @@ licensed under the GNU GPLv2 license and made openly available to all.
 The choice of license is an interesting one, and is hotly debated in many
 industries. The choice of the GPLv2 was necessitated because of the use of the
 Qt and Open Babel libraries. Qt has since been released under the much more
-permissive LGPL license. Packages such as PyMol use the more permissive BSD
-license, which allows for the sale of commercial versions in addition to the open
-source version (some capabilities are present only in the commercial version).
+permissive LGPL license. Avogadro is still restricted by the GPL
+license on the Open Babel library, and development of a more
+permissive cheminformatics library is underway. Packages such as PyMol
+use the more permissive BSD license, which allows for the sale of
+commercial versions in addition to the open source version (some
+capabilities are present only in the commercial version).
 
 The core of Avogadro is written in portable C++ code with platform-specific
 differences abstracted away by Qt, OpenGL, and Open Babel. The CMake build system
@@ -700,12 +705,16 @@ The Avogadro library was developed as an extensible library using C++ plugins
 that are loaded at runtime for most functionality. The Avogadro plugins are
 divided into four separate types, all having a common base class. The Plugin
 class is the common base, defining a minimal set of interfaces for an Avogadro
-plugin inside the Avogadro C++ namespace.
+plugin inside the Avogadro C++ namespace. As mentioned above, plugins
+can also be written in the Python scripting language.
 
 \begin{figure}
   \includegraphics[width=0.9\textwidth]{images/architecture}
   \caption{General code architecture of Avogadro, indicating major
-    plugin interfaces for colors, display engines, tools, and extensions.}
+    plugin interfaces for colors, display engines, tools, and
+    extensions. Red boxes indicate code dependencies of Avogadro, blue
+  boxes indicate plugin API classes, and green boxes inidicate examples of
+  each plugin type.}
  \label{f:architecture}
 \end{figure}
 
@@ -942,13 +951,14 @@ Python bindings are provided for all of the core API. Python code can be used
 in two ways: the first is the interactive Python terminal, and the second is to
 write Python plugins. Python plugins can be extensions, tools, or display types.
 Writing a Python plugin requires the same functions to be implemented as a
-native C++ plugin. The advantage of Python plugins is that it's easier to make
-prototypes since no compilation is required. Python plugins can also easily be
-shared with other users.
+native C++ plugin.~\cite{PythonExtensions} The advantage of Python
+plugins is that it's easier to make prototypes since no compilation is
+required. Python plugins can also easily be shared with other users.
 
 The Python bindings also interface with the PyQt python bindings for the Qt
 toolkit, which enables Python code to use all of Qt's features when writing a
-plugin.
+plugin. For example, a short Python script can present a window using Qt and
+render molecules using Avogadro.~\cite{PythonWindowExample}
 
 \section{Quantum Calculations} % Marcus
 
@@ -1100,7 +1110,7 @@ testers, translators, educators, students, researchers, dreamers).
 \textbf{Project home page:} http://avogadro.openmolecules.net/ \\
 \textbf{Operating system(s):} Cross-platform \\
 \textbf{Programming language:} C++, bindings to Python \\
-\textbf{Other requirements (if compiling):} CMake 2.6+ \\
+\textbf{Other requirements (if compiling):} CMake 2.6+, Open Babel, Qt 4.6+, Eigen \\
 \textbf{License:} GNU GPL v2 \\
 \textbf{Any restrictions to use by non-academics:} None
 
