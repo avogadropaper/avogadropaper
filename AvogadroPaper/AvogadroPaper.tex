@@ -143,8 +143,8 @@ document type, Avogadro seeks to enhance the semantic accessibility of
 chemical data types.
 
 \textbf{Results:} The work presented here details the Avogadro library, which
-provides a framework,
-application programming interface, three-dimensional visualization
+is a framework providing a code library and application programming
+interface (API) with three-dimensional visualization
 capabilities; and has direct applications to research and education in the
 fields of chemistry, physics, materials science, and biology. The Avogadro
 application provides a rich graphical interface using dynamically loaded
@@ -182,8 +182,8 @@ PyMOL~\cite{PyMOL}, VMD~\cite{VMD}, QuteMol~\cite{QuteMol},
 BALLView~\cite{BALLView}, VESTA~\cite{vesta3}, and
 XCrySDen~\cite{xcrysden1}\cite{xcrysden2}, among many others. The aforementioned
 viewers are all freely available, and most of them are available under
-open-source licenses and work on the most common operating systems
-(GNU/Linux, Apple Mac OS X, Windows, and BSD).
+open-source licenses and work on the most common operating systems (Linux, Apple
+Mac OS X, Windows, and BSD).
 
 The choice of software capable of building chemical structures in
 three dimensions is far smaller.
@@ -242,11 +242,11 @@ contributors~\cite{OhlohContributors}. So far, it has been cited over
 100 times,~\cite{ScholarCitations} including applications in spectroscopy, catalysis,
 materials chemistry, theoretical chemistry, biochemistry, and
 molecular dynamics, among many
-others.~\cite{MeraAdasme:2011hj,Closser:2010kc,Ide:2011cj}
+others~\cite{MeraAdasme:2011hj,Closser:2010kc,Ide:2011cj}
 \cite{Menegazzo:2012by,Patel:2011fe,Popov:2011gv,Hu:2011ce,Bingol:2012kx}
 \cite{Yao:2010id,Fleisher:2011vz,Mayorkas:2011eu,Tian:2011ej,Kapla:2012ho}
 \cite{Mandal:2012ff,Bernstein:2010kc,Hlawacek:2011gh,Forster:2012ka}
-\cite{Burkhardt:2010kc,Burkhardt:2011hn,Madison:2011kw}
+\cite{Burkhardt:2010kc,Burkhardt:2011hn,Madison:2011kw}.
 
 From the beginning, the project
 has strived to make a robust, flexible framework for
@@ -262,14 +262,13 @@ BlueObelisk2011}.
 \section{The Graphical User Interface}
 
 The first thing most people will see is the main Avogadro application
-window, as shown in Figure~\ref{f:avogadrogui}.
-Binary installers are provided under the GPL license for Apple Mac OS X and
-Microsoft Windows, along with packages for all of the major Linux distributions.
-This means that Avogadro can be installed quite easily on most operating
-systems. Easy to follow instructions on how to compile the latest source code
-are also provided on the main Avogadro web
-site\cite{CompileWindows,CompileLinux} for the more adventurous,
-or those using an operating system that is not yet supported.
+window, as shown in Figure~\ref{f:avogadrogui}. Binary installers are provided
+for Apple Mac OS X and Microsoft Windows, along with packages for all of the
+major Linux distributions. This means that Avogadro can be installed quite
+easily on most operating systems. Easy to follow instructions on how to compile
+the latest source code are also provided on the main Avogadro web
+site\cite{CompileWindows,CompileLinux} for the more adventurous, or those using
+an operating system that is not yet supported.
 
 \begin{figure}
   \begin{center}
@@ -298,26 +297,26 @@ the plugin types later.
 \section{Semantic Chemistry}
 
 Avogadro has used CML~\cite{CML2011a, CML2011b} as its default file format from
-a very early stage; this
-was chosen over all other file formats because of the extensible,
-semantic structure provided by CML, and the support available in Open Babel~\cite{OpenBabel}. The CML
-format offers a number of advantages over others in common use, including the
-ability to extend the format. This allows Avogadro and other programs
-to be future-proof, adding new information and features
-necessary for an advanced semantically-aware editor at a later time,
+a very early stage; this was chosen over other file formats because of the
+extensible, semantic structure provided by CML, and the support available in
+Open Babel~\cite{OpenBabel}. The CML format offers a number of advantages over
+others in common use, including the ability to extend the format. This allows
+Avogadro and other programs to be future-proof, adding new information and
+features necessary for an advanced semantically-aware editor at a later time,
 while still remaining readable in older versions of Avogadro.
 
-Through the use of Open Babel~\cite{OpenBabel}, a large array of file
-formats can be interpreted. When extending Avogadro to read in larger
-amounts of the output from quantum codes, it was necessary to devote
-significant development resources to understanding and adding semantic
-meaning to the quantum code outputs. This work was developed in a plugin, which was later split out into a small independent
-library called OpenQube~\cite{OpenQube,OpenQubeSource}. More recently a large amount of work has been done
-by the Quixote project~\cite{Quixote}, JUMBO-Converters, and the Semantic
-Physical Science workshop to augment quantum codes to output more of this data
-directly from the code. Since CML can be extended, it is possible to reuse
-existing conventions for molecular structure data, and add new
-conventions for the additional quantum data.
+Through the use of Open Babel~\cite{OpenBabel}, a large array of file formats
+can be interpreted. When extending Avogadro to read in larger amounts of the
+output from quantum codes, it was necessary to devote significant development
+resources to understanding and adding semantic meaning to the quantum code
+output. This work was developed in a plugin, which was later split out into a
+small independent library called OpenQube~\cite{OpenQube,OpenQubeSource}. More
+recently a large amount of work has been done by the Quixote
+project~\cite{Quixote}, JUMBO-Converters, and the Semantic Physical Science
+workshop to augment quantum codes to output more of this data directly from the
+code. Since CML can be extended, it is possible to reuse existing conventions
+for molecular structure data, and add new conventions for the additional quantum
+data.
 
 \subsection{Building a Molecule: Atom by Atom}
 
@@ -334,7 +333,8 @@ or a periodic table can be displayed to select less common elements. Clicking on
 an existing atom changes it to the currently selected element,
 dragging changes the atom back to its previous element and draws
 a new atom bonded to the original. If the bonds are left-clicked then the bond
-order cycles between single, double, and triple. Similarly, typing the
+order cycles between single, double, and triple. Shortcut keys are
+also available, e.g., typing the
 atomic symbol (e.g., ``C-o'' for cobalt) changes the selected element,
 or typing the numbers ``1,'' ``2,'' and ``3'' changes the bond order.
 
@@ -384,7 +384,6 @@ in the molecule.
 In addition to building molecules atom-by-atom, users can insert
 pre-built fragments of common molecules, ligands, or amino-acid
 sequences, as shown in Figure~\ref{f:insertdialogs}.
-
 In all cases, after inserting the fragment, the atom-centered manipulate tool
 is selected, allowing the fragment to be moved or rotated into
 position easily.
@@ -470,9 +469,9 @@ corner.
 More complex alignment tools for specific tasks could be created. The alignment
 tool was created in just a few hours for a specific research project. This is a prime
 example where extensibility was very important for performing
-research using a graphical computational chemistry tool. It would not have been
+research using a graphical computational chemistry tool. It would not be
 worth the investment to create a new application just to align molecular
-structures to an axis, but creating a plugin for an extensible project was not
+structures to an axis, but creating a plugin for an extensible project is not
 unreasonable.
 
 
@@ -554,12 +553,11 @@ by QtConcurrent in order to use all available processor cores. This offers almos
 linear scaling as each point in the grid can be calculated independently of all other
 points, the results of which can be seen in Figure~\ref{f:electronic-structure}.
 An alternate approach to calculating the molecular orbitals was developed
-in a second plugin, and the relevant code was split out into a support library later
-named ``OpenQube''. This library has now been split off into a separate support
-project outside of Avogadro, and was added as an optional backend in
-VTK during the 2011 Google Summer of Code, bringing support for several
-output file formats and calculation of cube files that can later be fed into more
-advanced data pipelines.
+in a second plugin that has since been split off into a separate
+project named ``OpenQube''. The ``OpenQube'' library has also been added as an
+optional backend in VTK during the 2011 Google Summer of Code, bringing support
+for several output file formats and calculation of cube files that can later be
+fed into more advanced data pipelines.
 
 There are several related projects for adding semantic meaning to this type of output,
 including the JUMBO-Converters project and Quixote. It is hoped that more codes
@@ -576,13 +574,14 @@ projects like Avogadro to derive more meaning from the outputs of these codes.
 
 \subsection{Secondary Biological Structure}
 
-Avogadro uses the PDB reader from Open Babel, and is able to to visualize the
-secondary structure annotated in those files. A simple plugin was initially
-developed that rendered a simple tube between the biomolecule backbone, then a
-second more advanced visualization plugin was developed to calculate meshes for
-the alpha helices and beta sheets. The simple plugin is much faster, but with
-more optimization it is clear that the superior rendering produces the results
-expected in that field.
+Avogadro uses the PDB reader from Open Babel to read in the secondary
+biological structure. Two plugins exist to process and render this information.
+The first is plugin which renders a simple tube between the biomolecule
+backbone atoms. A second more advanced plugin calculate meshes for
+the alpha helices and beta sheets. While the first plugin is much
+faster, the advanced plugin more accurately produces output expected
+in the field.  This allows users flexibility for rendering
+secondary biological structures.
 
 \subsection{GLSL, Novel Visualization}
 
@@ -649,8 +648,6 @@ view to minimize their impact when developing Avogadro. Modern software design
 processes were used in the initial planning stages of Avogadro, along with the
 choice of modern programming languages and libraries.
 
-%% I think this paragraph is better here. - GRH
-
 Avogadro has close ties to several other free, cross-platform, open-source
 projects to reuse as much code as is practical. These projects include
 Nokia Qt to provide a free, cross-platform graphical toolkit; Open
@@ -659,22 +656,13 @@ other chemical perception; Eigen~\cite{Eigen} for matrix and vector mathematics;
 OpenGL/GLSL for real-time, three-dimensional rendering; and POV-Ray for ray-traced
 rendering.
 
-Based on the previous experience of the authors and a review of available
-programs at the time, several fundamental choices were made. The C++ programming
-language was chosen, with Qt as the cross-platform graphical toolkit; OpenGL for
-3D rendering; CMake as the build system; and Open Babel as the chemical library.
-Using this combination of languages and libraries allowed for the project to be
-licensed under the GNU GPLv2 license and made openly available to all.
-
-The choice of license is an interesting one, and is hotly debated in many
-industries. The choice of the GPLv2 was necessitated because of the use of the
-Qt and Open Babel libraries. Qt has since been released under the much more
-permissive LGPL license. Avogadro is still restricted by the GPL
-license on the Open Babel library, and development of a more
-permissive cheminformatics library is underway. Packages such as PyMol
-use the more permissive BSD license, which allows for the sale of
-commercial versions in addition to the open source version (some
-capabilities are present only in the commercial version).
+Based on the previous experience of the authors and a review of
+available programs at the time, several fundamental choices were made.
+The C++ programming language; the Qt graphical toolkit;
+OpenGL for 3D visualization; CMake as the build system; and Open Babel as
+the chemical library. Using this combination of languages and
+libraries requires the project to be licensed under the GNU GPLv2
+license and made openly available to all.
 
 The core of Avogadro is written in portable C++ code with platform-specific
 differences abstracted away by Qt, OpenGL, and Open Babel. The CMake build system
@@ -682,31 +670,36 @@ makes the build process relatively simple on all supported platforms. Avogadro
 has been successfully built and tested on x86 and x86\_64 versions of Linux, PPC
 and x86 version of Apple Mac OS X, and x86 Microsoft Windows.
 
-Avogadro has a well defined set of graphical and programming interfaces. Almost
-all functionality is implemented in self contained plugins that are loaded at
-runtime. The majority of these plugins are written in C++, but the Avogadro API
-has also been exposed to the Python scripting language. This allows for a great
-deal of choice in how plugins are implemented. In both cases, each plugin is a
-self-contained class that implements a set of functions that are part of the
-Avogadro API, allowing for a wide variety of features to be implemented in a
-very modular way.
-
 The Avogadro framework uses the model, view, controller paradigm. The model
-comprises the core data classes such as {\tt Molecule}, {\tt Atom}, and
-{\tt Bond}, the view being the engine render plugins, and the
-controllers being the tools (interactive mouse) and extensions
-(non-interactive, form based/menu based). Each plugin has full access
-to the core data model, but separation is made between the view and
-controller concepts.
+is comprised of the core data classes such as {\tt Molecule}, {\tt Atom}, and
+{\tt Bond}, views are made up of the engine/display plugins, and
+controllers are the tools (interactive mouse) and extensions
+(non-interactive, form based/menu based). Every plugin has full access
+to the core data model, but view and controller plugins are
+conceptually different; views are responsible for displaying
+data and controllers are responsible for modifying/changing data.
+
+Plugins rely on Avogadro's set of programming interfaces and almost
+all functionality is implemented in self contained plugins that are
+loaded at runtime. The majority of plugins distributed with Avogadro
+are written in C++, but the API is also available in the Python
+scripting language. This allows for a great deal of choice in how
+plugins are implemented. Each plugin is a singleton class that
+implements a particular set of functions--depending on the type of
+plugin--which allows for features to be implemented in a very modular
+way.
+
+Over the last few years Avogadro development has started to use nightly builds
+of the latest version of the code in order to automatically flag issues
+introduced in new commits. Code review was also introduced in order to add a
+review step before new code is merged, along with softening the line between
+someone with commit rights and someone without (anyone can propose and upload
+a patch, but a small group can choose if/when the patch will be merged). Some
+automated testing has been added, but coverage at this point remains relatively
+low. API documentation is automatically generated from comments in the code
+using Doxygen.
 
 \subsection{Plugin Interface}
-
-The Avogadro library was developed as an extensible library using C++ plugins
-that are loaded at runtime for most functionality. The Avogadro plugins are
-divided into four separate types, all having a common base class. The Plugin
-class is the common base, defining a minimal set of interfaces for an Avogadro
-plugin inside the Avogadro C++ namespace. As mentioned above, plugins
-can also be written in the Python scripting language.
 
 \begin{figure}
   \includegraphics[width=0.9\textwidth]{images/architecture}
@@ -718,13 +711,15 @@ can also be written in the Python scripting language.
  \label{f:architecture}
 \end{figure}
 
-There are four main classes that derive from this common base class, specializing
+Avogadro plugins are divided into four different types corresponding
+to four main classes
+that derive from this common base class, specializing
 their interface for specific activities
 (Figure~\ref{f:architecture}). The {\tt Avogadro::Color} base class
 defines the virtual interface for applying colors to atoms, bonds, and other properties.
- {\tt Avogadro::Engine} defines the common interface for all display types in Avogadro,
-from the simple ball and stick or Van der Waals visualizations, through to
-surfaces and force visualizations. The {\tt Avogadro::Tool} base class provides
+ {\tt Avogadro::Engine} defines the common interface for all display types in Avogadro:
+simple ball and stick, Van der Waals visualizations,
+surfaces, and force visualizations. The {\tt Avogadro::Tool} base class provides
 the interface for all interactive tools, focusing principally on mouse and
 keyboard interaction with Avogadro. Examples of tool plugins include the draw
 tool used to draw molecules atom by atom, and the navigation tool used to pan,
@@ -739,35 +734,34 @@ others. This class of plugin is also applied to file import, and network aware
 extensions querying web databases for structures given their common name for
 example.
 
-The application searches several directories for plugins at start up,
-which it then attempts to load. The Qt plugin framework is used to check that
-the plugins have a recent enough version to be loaded, and the plugin type can
-be deduced once it has been loaded. The user interface is then populated with
-appropriate entries. The tools are added to the main toolbar using their
-embedded icons, display types are added to the display type list, and menu
-entries are added for all loaded extensions.
+At start up, several standard directories, which may be customized, are searched
+for plugins. The Qt plugin framework is used to check that the plugins have a
+recent enough version to be loaded, and the plugin type can be deduced once
+loaded. The user interface is then populated with appropriate entries; tools are
+added to the main toolbar using their embedded icons, display types are added to
+the display type list, and menu entries are added for all loaded extensions.
 
-The tool and display type plugins can both (optionally) return a dialog that is
-used to configure the plugin. These are specific to each plugin, and provided in
-the user interface.
+The tool and display type plugins can both (optionally) provide a
+dialog for configuring the plugin. Dialogs are specific to each plugin
+and integrated into the user interface.
 
 \subsection{Display Types}
 
-Display types are one type of plugin, referred to as ``engines'' internally. Their
+Display plugins are referred to as ``engines'' internally. Their
 primary focus is rendering graphics to the screen. As is the case with most
 molecular graphics, a large portion of the geometric primitives are spheres and
 cylinders, typically used to represent atoms and bonds. There are many other
-properties that can be rendered using the display type plugins.
+properties that can be rendered using the display type plugins, for example,
+some of the engines also convey information about the underlying data the
+geometric primitives represent to allow for the molecule to be edited.
 
-Some of the engines also convey some information about the underlying data the
-geometric primitives represent, to allow for the molecule to be edited.
 Engines are performance critical as the render functions are called each time a
-frame is requested for display. It is very important for the engines to
-efficiently render all requested data; multiple display types can be
-combined to form a composite display, for example ball and stick display
-overlaid with a transparent Van der Waals space-filling display and ring
-rendering to highlight all rings in the structure. Figure~\ref{f:standardReps}
-(d) and (f) show two such combinations of multiple display types.
+frame is requested for display.  Efficient rendering is also critical
+since multiple display types can be combined to form a composite display. For
+example, ball and stick display overlaid with a transparent Van der Waals
+space-filling display and ring rendering to highlight all rings in the
+structure. Figure~\ref{f:standardReps} (d) and (f) show two such combinations of
+multiple display types.
 
 \begin{table}
 \caption{List of default display type (engine) plugins}
@@ -798,16 +792,19 @@ Wireframe & Wireframe with more features such as bond order rendering \\
 \subsection{Tools}
 
 The tools are responsible for virtually all mouse and keyboard interaction with
-the molecule. The navigation tool provides basic scene navigation, implementing
-rotation, panning, tilting, and zooming support. This tool provides optional
-visual cues to show what type of navigation is taking place, and all scene
-navigation will take place about the center of the molecule if an empty space is
-clicked, or about the center of the clicked atom. The navigation tool is also
-used as the default tool if the currently active tool does not handle the mouse
-event passed to it.
+the molecule. A list of all tools is given in Table~\ref{tool-table}.
+
+The navigation tool provides basic scene navigation, implementing rotation,
+panning, tilting, and zooming support. The initial point of interaction (where
+the click occurs) changes the anchor point for navigation; navigation takes
+place about the center of molecule when clicking in empty space or about the
+center of any clicked atom. During interaction, the navigation tool provides
+visual cues to show what type of navigation is taking place. The navigation
+tool is also used as the default tool if the currently active tool does not
+handle the mouse event passed to it.
 
 One of the other central tools is the draw tool, which implements a free-hand
-molecule drawing input method, supporting keyboard shortcuts, combo boxes, or a
+molecule drawing input method supporting keyboard shortcuts, combo boxes, and a
 periodic table view to select elements. The user can use the left mouse button
 to add new atoms or bonds, or click on the bonds to change their order. The
 right mouse button can be used to delete atoms or bonds, and the directional keys
@@ -859,9 +856,9 @@ translate to a specified frame of reference \\
 
 \subsection{Extensions}
 
-The extensions represent quite a diverse range of plugins. These range from the
+Extensions represent quite a diverse range of plugins including
 input generation dialogs for various quantum chemistry codes such as GAMESS,
-MolPro, NWChem, etc, through to animation of the molecule and visualization of
+MolPro, NWChem, etc., animation of the molecule, and visualization of
 molecular orbitals and electron density. Network aware extensions allow the user
 to click on File$\to$Import$\to$Fetch by chemical name and search for ``tnt'' or
 ``propanol'' and have structures returned by the NIH CACTUS Chemical Structure
@@ -949,16 +946,16 @@ custom color \\
 
 Python bindings are provided for all of the core API. Python code can be used
 in two ways: the first is the interactive Python terminal, and the second is to
-write Python plugins. Python plugins can be extensions, tools, or display types.
-Writing a Python plugin requires the same functions to be implemented as a
-native C++ plugin.~\cite{PythonExtensions} The advantage of Python
+write Python plugins; extensions, tools, or display types.
+Writing a Python plugin requires the same functionality to be implemented as a
+native C++ plugin~\cite{PythonExtensions}. The advantage of Python
 plugins is that it's easier to make prototypes since no compilation is
 required. Python plugins can also easily be shared with other users.
 
-The Python bindings also interface with the PyQt python bindings for the Qt
+The Python bindings interface with the PyQt python bindings for the Qt
 toolkit, which enables Python code to use all of Qt's features when writing a
 plugin. For example, a short Python script can present a window using Qt and
-render molecules using Avogadro.~\cite{PythonWindowExample}
+render molecules using Avogadro~\cite{PythonWindowExample}.
 
 \begin{figure}
   \begin{center}
@@ -971,37 +968,38 @@ render molecules using Avogadro.~\cite{PythonWindowExample}
 
 Avogadro also includes an interactive Python console
 (Figure~\ref{f:python-terminal}, which allows users to directly script
-and manipulate the Avogadro environment.~\cite{PythonTerminalTutorial}
+and manipulate the Avogadro environment~\cite{PythonTerminalTutorial}.
+
 
 \section{Quantum Calculations} % Marcus
 
-Once quantum calculations have been performed, it is desirable to be able
+Once quantum calculations have been performed, it is desirable
 to visualize various properties including the molecular orbitals and electron
 density of the final state of the system. The OpenQube library houses most of
-the code that reads in the relevant matrices and factors. This code takes
-care of scanning the output files for the output, and putting the output into a
+the code that reads in the relevant matrices and factors and takes
+care of translating output into a
 standard format as expected by the calculation code.
 
-Once the data has been parsed and normalized, some initialization is
-necessary. Once the initialization of the calculation is complete, these data
-structures can be treated as read-only. This allows the calculation to be
-multithreaded, but to share one copy of the input data. The scalar value of
-the molecular orbital or electron density is calculated as a linear combination
-or atomic orbitals. The parallelization takes place across a regularly spaced
-cube with each point being calculated in an independent thread sharing
-the input arrays and matrices. The QtConcurrent framework abstracts away
+Once the data has been parsed and normalized, initialization of data
+structures is required and these structures are treated as read-only. This
+allows the calculation to be multithreaded and share one copy of the input data.
+The scalar value of the molecular orbital or electron density is calculated as a
+linear combination or atomic orbitals. The parallelization takes place across a
+regularly spaced cube with each point being calculated in an independent thread
+sharing the input arrays and matrices. The QtConcurrent framework abstracts away
 thread pool management, using as many cores as available on the host system.
 
 Once a cube has been calculated, it is passed to the marching cubes
-algorithm to calculate an isosurface. Each isosurface is calculated in a separate
-thread; at this stage the cube is read only, and so both the positive and negative
-isosurface of a molecular orbital can be calculated in separate threads. Further
-parallelization of this stage is possible, but typical isosurfaces do not take long
-to calculate, and offloading this calculation to the GPU is likely to be more useful
-as the result would already be in GPU memory for rendering.
+algorithm which calculates an isosurface. Each isosurface is
+calculated in a separate thread; at this stage the cube is read only,
+and so both the positive and negative isosurface of a molecular
+orbital can be calculated in separate threads. Further parallelization
+of this stage is possible, but typical isosurfaces do not take long to
+calculate. This could be moved to the GPU as it is likely to be more useful
+because the result would already be in GPU memory for rendering.
 
 A class hierarchy with a standard API is provided for quantum output. Adding
-support for new codes involved developing a new parser, and ensuring the
+support for new codes involved developing a new parser and ensuring the
 Gaussian or Slater set is populated with the correct ordering and the expected
 normalization scheme. The s, p, and d-type Gaussian orbitals are supported,
 with f and g support planned in order to support the increasing number of
@@ -1011,9 +1009,9 @@ these basis sets are normally read in directly from the output files.
 
 \section{Avogadro Library in Use}
 
-The Avogadro library's first user was the Avogadro application, closely
+The Avogadro library's first use was the Avogadro application, closely
 followed by the Kalzium periodic table program that is part of the KDE software
-collection. This initial work was funded as part of the Google Summer of Code
+collection. This initial work was funded in part by the Google Summer of Code
 program in 2007, and also resulted in the addition of several other features in
 the Avogadro library to support Kalzium and general visualization and editing
 of molecular structure (Figure~\ref{f:kalzium}).
@@ -1091,7 +1089,7 @@ Windows, and Mac.
 
 Avogadro has grown over its first six years to become an important
 tool for building, editing, visualizing, and analyzing chemical and
-molecular data. As we see from the over 270,000 downloads, many
+molecular data. With over 270,000 downloads,
 language translations and localizations, and over 100 citations, it
 has become an integral part of the chemical software toolbox. Through
 use of the native CML file format and a wide variety of chemical data
@@ -1110,8 +1108,8 @@ structures are being rewritten in order to offer greater flexibility and
 scalability. Our goal is to support an increasing scope of chemical
 systems, including biomolecules (DNA, RNA, saccarides, etc.),
 materials (crystallography, polymers, surfaces), nanoscience
-(nanoparticles, nanotubes, graphene, etc.) with improved speed and
-intuitive ease-of-use.
+(nanoparticles, nanotubes, graphene, etc.) with improved speed, intuitive
+ease-of-use and simpler non-reciprocal licensing terms.
 
 Avogadro is freely available from http://avogadro.openmolecules.net/,
 and new contributors are welcome in all areas (users, developers,
@@ -1123,20 +1121,24 @@ testers, translators, educators, students, researchers, dreamers).
 \textbf{Project home page:} http://avogadro.openmolecules.net/ \\
 \textbf{Operating system(s):} Cross-platform \\
 \textbf{Programming language:} C++, bindings to Python \\
-\textbf{Other requirements (if compiling):} CMake 2.6+, Open Babel, Qt 4.6+, Eigen \\
+\textbf{Other requirements (if compiling):} CMake 2.6+, Open Babel, Qt 4.6+,
+Eigen 2 \\
 \textbf{License:} GNU GPL v2 \\
 \textbf{Any restrictions to use by non-academics:} None additional
 
 \section{Acknowledgements and Funding}
 
-We wish to thank the many contributors to the Avogadro project, including
-developers, testers, translators, and users. We thank SourceForge for
-providing resources for issue tracking and managing releases,
-Launchpad for hosting language translations, and
-Kitware for additional dashboard resources. MDH and GRH thank the
-University of Pittsburgh for support. MDH also thanks Kitware and the
-Engineering Research Development Center for support. EZ and DL acknowledge
-the NSF (DMR-1005413) for financial support.
+We wish to thank the many contributors to the Avogadro project,
+including developers, testers, translators, and users. We thank
+SourceForge for providing resources for issue tracking and managing
+releases, Launchpad for hosting language translations, and Kitware for
+additional dashboard resources. MDH and GRH thank the University of
+Pittsburgh for support. DEC would like to thank Jan Halborg Jensen for
+designing the GAMESS-US interface and supporting Avogadro in its
+infancy; believing Avogadro could be better than what was available.
+MDH also thanks Kitware and the Engineering Research Development
+Center for support. EZ and DL acknowledge the NSF (DMR-1005413) for
+financial support.
 
 \section{Authors' contributions}
 GRH and DEC are the founders of the Avogadro project. MDH is the
