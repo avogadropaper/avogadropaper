@@ -184,7 +184,7 @@ BALLView~\cite{BALLView}, VESTA~\cite{vesta3}, and
 XCrySDen~\cite{xcrysden1}\cite{xcrysden2}, among many others. The aforementioned
 viewers are all freely available, and most of them are available under
 open-source licenses and work on the most common operating systems (Linux, Apple
-Mac OS X, Windows, and BSD).
+Mac OS X, Microsoft Windows, and BSD).
 
 The choice of software capable of building chemical structures in
 three dimensions is far smaller.
@@ -240,14 +240,14 @@ first 5 years of development has been downloaded over 270,000
 times~\cite{Downloads}, been translated into over 20
 languages~\cite{Translations}, and has over 20
 contributors~\cite{OhlohContributors}. So far, it has been cited over
-100 times,~\cite{ScholarCitations} including applications in spectroscopy, catalysis,
-materials chemistry, theoretical chemistry, biochemistry, and
+100 times~\cite{ScholarCitations}, including applications in spectroscopy,
+catalysis, materials chemistry, theoretical chemistry, biochemistry, and
 molecular dynamics, among many
-others~\cite{MeraAdasme:2011hj,Closser:2010kc,Ide:2011cj}
-\cite{Menegazzo:2012by,Patel:2011fe,Popov:2011gv,Hu:2011ce,Bingol:2012kx}
-\cite{Yao:2010id,Fleisher:2011vz,Mayorkas:2011eu,Tian:2011ej,Kapla:2012ho}
-\cite{Mandal:2012ff,Bernstein:2010kc,Hlawacek:2011gh,Forster:2012ka}
-\cite{Burkhardt:2010kc,Burkhardt:2011hn,Madison:2011kw}.
+others~\cite{MeraAdasme:2011hj,Closser:2010kc,Ide:2011cj,Menegazzo:2012by,
+Patel:2011fe,Popov:2011gv,Hu:2011ce,Bingol:2012kx,Yao:2010id,Fleisher:2011vz,
+Mayorkas:2011eu,Tian:2011ej,Kapla:2012ho,Mandal:2012ff,Bernstein:2010kc,
+Hlawacek:2011gh,Forster:2012ka,Burkhardt:2010kc,Burkhardt:2011hn,Madison:2011kw}
+.
 
 From the beginning, the project
 has strived to make a robust, flexible framework for
@@ -281,8 +281,9 @@ for a molecule.}
   \label{f:avogadrogui}
 \end{figure}
 
-The Qt toolkit from Nokia gives Avogadro a native look and feel on the three
-supported operating systems---Linux, Mac OS X, and Windows. The basic
+The Qt toolkit gives Avogadro a native look and feel on the three major
+supported operating systems---Linux, Apple Mac OS X, and Microsoft Windows. The
+basic
 functionality expected in a molecular builder and viewer has been implemented,
 along with several less common features. It is very easy for new users to
 install Avogadro and build their
@@ -329,7 +330,8 @@ mouse button down and drags, a bonded carbon atom is drawn
 between the start point and the final position where the mouse is released.
 
 A large amount of effort has been expended to create an intuitive tool for
-drawing small molecules. Common elements can be selected from a drop down list,
+drawing small molecules. Common chemical elements can be selected from a drop
+down list,
 or a periodic table can be displayed to select less common elements. Clicking on
 an existing atom changes it to the currently selected element,
 dragging changes the atom back to its previous element and draws
@@ -403,7 +405,7 @@ quick force field optimization.
   \includegraphics[width=0.44\textwidth]{images/molpro}
   \hspace{0.1cm}
   \includegraphics[width=0.44\textwidth]{images/mopac}
-  \caption{Dialog for generating input for Q-Chem, NWChem, MolPro and MOPAC.
+  \caption{Dialog for generating input for Q-Chem, NWChem, Molpro and MOPAC200x.
     Note that the dialogs are similar in interface, allowing users to use
     multiple computational chemistry packages.}
   \label{f:quantumdialogs}
@@ -412,8 +414,8 @@ quick force field optimization.
 Several extensions were developed for Avogadro that assist the user in preparing
 input files for popular quantum codes such as
 GAMESS-US,~\cite{GAMESS-US} NWChem,~\cite{NWChem}
-Gaussian,~\cite{g09} Q-Chem,~\cite{Q-Chem3} MOLPRO,~\cite{MOLPRO}
-and MOPAC.~\cite{MOPAC} The graphical dialogs present the features
+Gaussian,~\cite{g09} Q-Chem,~\cite{Q-Chem3} Molpro,~\cite{MOLPRO}
+and MOPAC200x~\cite{MOPAC}. The graphical dialogs present the features
 required to run basic quantum calculations; some examples are shown in
 Figure~\ref{f:quantumdialogs}.
 
@@ -421,7 +423,8 @@ The preview of the input file at the bottom of each dialog is updated as options
 are changed. This approach helps new users of quantum codes to learn the syntax
 of input files for different codes, and to quickly generate useful input files
 as they learn. The input can also be edited by hand in the dialog before the file is saved
-and submitted to the quantum code. The MOPAC extension can also run the MOPAC
+and submitted to the quantum code. The MOPAC extension can also run the
+MOPAC200x
 program directly if it is available on the user's computer, and then reload the
 output file into Avogadro once the calculation is complete. This
 feature will be extended to other quantum codes in future versions of Avogadro.
@@ -441,8 +444,7 @@ the advanced dialog, the input deck can be edited inline and features syntax
 highlighting (Figure~\ref{f:gamess}) as used in many popular editors aimed at software developers. This
 can indicate simple typing errors in keywords, as well as harder to spot whitespace
 errors that would otherwise cause the hand-edited input deck to fail when being
-read by GAMESS-US. Some new features in the GAMESS plugin will even allow
-for the submission of GAMESS-US jobs to computational clusters.
+read by GAMESS-US.
 
 \subsection{Alignment and Measurements}
 
@@ -533,7 +535,7 @@ log files generated as the program runs, and provides all of the detail needed t
 calculate scalar values of the molecular orbital or electron density at any point in space.
 Once a class structure had been developed for Gaussian type orbitals, the approach
 was extended to read in several other popular output file formats including Q-Chem,
-GAMESS-US, NWChem, and MolPro. MOPAC support was added later, along with
+GAMESS-US, NWChem, and Molpro. MOPAC200x support was added later, along with
 support for the AUX format and Slater type orbitals used in that code. All of these
 codes output their final configurations using the standard linear combination of
 atomic orbitals, meaning that parallelization is extremely simple.
@@ -651,7 +653,7 @@ choice of modern programming languages and libraries.
 
 Avogadro has close ties to several other free, cross-platform, open-source
 projects to reuse as much code as is practical. These projects include
-Nokia Qt to provide a free, cross-platform graphical toolkit; Open
+Qt to provide a free, cross-platform graphical toolkit; Open
 Babel~\cite{OpenBabel} for chemical file input/output, geometry optimization, and
 other chemical perception; Eigen~\cite{Eigen} for matrix and vector mathematics;
 OpenGL/GLSL for real-time, three-dimensional rendering; and POV-Ray for ray-traced
@@ -668,8 +670,8 @@ license and made openly available to all.
 The core of Avogadro is written in portable C++ code with platform-specific
 differences abstracted away by Qt, OpenGL, and Open Babel. The CMake build system
 makes the build process relatively simple on all supported platforms. Avogadro
-has been successfully built and tested on x86 and x86\_64 versions of Linux, PPC
-and x86 version of Apple Mac OS X, and x86 Microsoft Windows.
+has been successfully built and tested on Linux, Apple Mac OS X, and Microsoft
+Windows in common 32 and 64 bit hardware architectures.
 
 The Avogadro framework uses the model, view, controller paradigm. The model
 is comprised of the core data classes such as {\tt Molecule}, {\tt Atom}, and
@@ -859,11 +861,11 @@ translate to a specified frame of reference \\
 
 Extensions represent quite a diverse range of plugins including
 input generation dialogs for various quantum chemistry codes such as GAMESS,
-MolPro, NWChem, etc., animation of the molecule, and visualization of
+Molpro, NWChem, etc., animation of the molecule, and visualization of
 molecular orbitals and electron density. Network aware extensions allow the user
-to click on File$\to$Import$\to$Fetch by chemical name and search for ``tnt'' or
+to click on a menu item to fetch by chemical name and search for ``tnt'' or
 ``propanol'' and have structures returned by the NIH CACTUS Chemical Structure
-Resolver service.
+Resolver service~\cite{StructureResolver}.
 
 Other extensions translate the entire scene to POV-Ray input, and call POV-Ray
 to render the molecule using ray tracing techniques to provide higher quality
@@ -889,7 +891,7 @@ GAMESS & Prepare input files for GAMESS-US, featuring syntax highlighting, advan
 Insert Fragment & Insert molecular fragments from a library of common fragments \\
 Insert Peptide & Build up and insert peptide fragments \\
 Molecular Mechanics & Use Open Babel's force fields for geometry optimization and conformer searches \\
-MOPAC & Prepare input for and run MOPAC  \\
+MOPAC & Prepare input for and run MOPAC200x  \\
 POV-Ray & Ray-trace the displayed structure using POV-Ray \\
 \textbf{Properties} \\
 Angle Properties & Table of all bond angles (editable)\\
