@@ -1,3 +1,48 @@
+%% BioMed_Central_Tex_Template_v1.06
+%%                                      %
+%  bmc_article.tex            ver: 1.06 %
+%                                       %
+
+%%IMPORTANT: do not delete the first line of this template
+%%It must be present to enable the BMC Submission system to
+%%recognise this template!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     %%
+%%  LaTeX template for BioMed Central  %%
+%%     journal article submissions     %%
+%%                                     %%
+%%         <14 August 2007>            %%
+%%                                     %%
+%%                                     %%
+%% Uses:                               %%
+%% cite.sty, url.sty, bmc_article.cls  %%
+%% ifthen.sty. multicol.sty		   %%
+%%				      	   %%
+%%                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% For instructions on how to fill out this Tex template           %%
+%% document please refer to Readme.pdf and the instructions for    %%
+%% authors page on the biomed central website                      %%
+%% http://www.biomedcentral.com/info/authors/                      %%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%% BioMed Central currently use the MikTex distribution of         %%
+%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
+%% http://www.miktex.org                                           %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \documentclass[10pt]{bmc_article}
 
 % Load packages
@@ -22,9 +67,9 @@
 %%  submitted article.                         %%
 %%                                             %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{graphicx}
-%\def\includegraphic{}
-%\def\includegraphics{}
+%\usepackage{graphicx}
+\def\includegraphic{}
+\def\includegraphics{}
 
 \setlength{\topmargin}{0.0cm}
 \setlength{\textheight}{21.5cm}
@@ -47,8 +92,8 @@
 
 %Review style settings
 \newenvironment{bmcformat}{\begin{raggedright}
-\baselineskip20pt\sloppy\setboolean{publ}{false}}{\end{raggedright}
-\baselineskip20pt\sloppy}
+  \baselineskip20pt\sloppy\setboolean{publ}{false}}{\end{raggedright}
+  \baselineskip20pt\sloppy}
 
 %Publication style settings
 %\newenvironment{bmcformat}{\fussy\setboolean{publ}{true}}{\fussy}
@@ -88,7 +133,7 @@
   \and
   Donald E Curtis$^3$%
   \and
-  David Lonie$^4$%
+  David C Lonie$^4$%
   \and
   Tim Vandermeersch$^5$%
   \and
@@ -173,7 +218,7 @@ http://avogadro.openmolecules.net.
 
 %\ifthenelse{\boolean{publ}}{\begin{multicols}{2}}{}
 
-\section{Introduction}
+\section*{Introduction}
 
 Many fields such as chemistry, materials science, physics, and biology, need
 efficient computer programs to both build and visualize molecular structures.
@@ -260,26 +305,16 @@ members of the Blue Obelisk movement, following the three pillars outlined by
 the group: Open Data, Open Standards, and Open Source~\cite{BlueObelisk2006,
 BlueObelisk2011}.
 
-\section{The Graphical User Interface}
+\section*{The Graphical User Interface}
 
 The first thing most people will see is the main Avogadro application
-window, as shown in Figure~\ref{f:avogadrogui}. Binary installers are provided
+window, as shown in Figure~1. Binary installers are provided
 for Apple Mac OS X and Microsoft Windows, along with packages for all of the
 major Linux distributions. This means that Avogadro can be installed quite
 easily on most operating systems. Easy to follow instructions on how to compile
 the latest source code are also provided on the main Avogadro web
 site\cite{CompileWindows,CompileLinux} for the more adventurous, or those using
 an operating system that is not yet supported.
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.9\textwidth]{images/avogadro-drawing}
-  \end{center}
-  \caption{The Avogadro graphical user interface (on Mac OS X), showing the
-editing interface
-for a molecule.}
-  \label{f:avogadrogui}
-\end{figure}
 
 The Qt toolkit gives Avogadro a native look and feel on the three major
 supported operating systems---Linux, Apple Mac OS X, and Microsoft Windows. The
@@ -296,7 +331,7 @@ interface made available to plugin writers, and is loaded at
 runtime. We will discuss these plugin interfaces and descriptions of
 the plugin types later.
 
-\section{Semantic Chemistry}
+\subsection*{Semantic Chemistry}
 
 Avogadro has used CML~\cite{CML2011a, CML2011b} as its default file format from
 a very early stage; this was chosen over other file formats because of the
@@ -320,9 +355,9 @@ code. Since CML can be extended, it is possible to reuse existing conventions
 for molecular structure data, and add new conventions for the additional quantum
 data.
 
-\subsection{Building a Molecule: Atom by Atom}
+\subsection*{Building a Molecule: Atom by Atom}
 
-After opening Avogadro a window such as that shown in Figure~\ref{f:avogadrogui}
+After opening Avogadro a window such as that shown in Figure~1
 is presented. By default, the draw tool is selected. Simply left-clicking on the
 black part of the display
 allows the user to draw a carbon atom. If the user pushes the left
@@ -373,20 +408,11 @@ Several dialogs are implemented to provide information on molecule properties
 and to precisely change parameters, such as the cartesian coordinates of the atoms
 in the molecule.
 
-\subsection{Building a Molecule: From Fragments}
-
-\begin{figure}
-  \includegraphics[width=0.44\textwidth]{images/insert-fragment}
-  \hspace{0.1cm}
-  \includegraphics[width=0.44\textwidth]{images/insert-peptide}
-  \caption{Dialogs for inserting pre-built fragments for (left)
-    molecules, and (right) amino-acid sequences.}
-  \label{f:insertdialogs}
-\end{figure}
+\subsection*{Building a Molecule: From Fragments}
 
 In addition to building molecules atom-by-atom, users can insert
 pre-built fragments of common molecules, ligands, or amino-acid
-sequences, as shown in Figure~\ref{f:insertdialogs}.
+sequences, as shown in Figure~2.
 In all cases, after inserting the fragment, the atom-centered manipulate tool
 is selected, allowing the fragment to be moved or rotated into
 position easily.
@@ -395,21 +421,7 @@ Users can also insert a SMILES~\cite{smiles,opensmiles} string for a molecule. I
 this case, a rough 3D geometry is generated using Open Babel and a
 quick force field optimization.
 
-\subsection{Preparing Input for Quantum Codes}
-
-\begin{figure}
-  \includegraphics[width=0.44\textwidth]{images/qchem}
-  \hspace{0.1cm}
-  \includegraphics[width=0.44\textwidth]{images/nwchem}\\
-
-  \includegraphics[width=0.44\textwidth]{images/molpro}
-  \hspace{0.1cm}
-  \includegraphics[width=0.44\textwidth]{images/mopac}
-  \caption{Dialog for generating input for Q-Chem, NWChem, Molpro and MOPAC200x.
-    Note that the dialogs are similar in interface, allowing users to use
-    multiple computational chemistry packages.}
-  \label{f:quantumdialogs}
-\end{figure}
+\subsection*{Preparing Input for Quantum Codes}
 
 Several extensions were developed for Avogadro that assist the user in preparing
 input files for popular quantum codes such as
@@ -417,7 +429,7 @@ GAMESS-US,~\cite{GAMESS-US} NWChem,~\cite{NWChem}
 Gaussian,~\cite{g09} Q-Chem,~\cite{Q-Chem3} Molpro,~\cite{MOLPRO}
 and MOPAC200x~\cite{MOPAC}. The graphical dialogs present the features
 required to run basic quantum calculations; some examples are shown in
-Figure~\ref{f:quantumdialogs}.
+Figure~3.
 
 The preview of the input file at the bottom of each dialog is updated as options
 are changed. This approach helps new users of quantum codes to learn the syntax
@@ -429,24 +441,16 @@ program directly if it is available on the user's computer, and then reload the
 output file into Avogadro once the calculation is complete. This
 feature will be extended to other quantum codes in future versions of Avogadro.
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.9\textwidth]{images/gamess-input}
-  \end{center}
-  \caption{The GAMESS-US input deck generator, showing the advanced panel and syntax highlighting.}
-  \label{f:gamess}
-\end{figure}
-
 The GAMESS-US plugin is one of the most highly developed, featuring a basic dialog
 present in most of the other input deck generators, as well as an advanced dialog
 exposing many of the more unusual and complex calculation types. In addition to
 the advanced dialog, the input deck can be edited inline and features syntax
-highlighting (Figure~\ref{f:gamess}) as used in many popular editors aimed at software developers. This
+highlighting (Figure~4) as used in many popular editors aimed at software developers. This
 can indicate simple typing errors in keywords, as well as harder to spot whitespace
 errors that would otherwise cause the hand-edited input deck to fail when being
 read by GAMESS-US.
 
-\subsection{Alignment and Measurements}
+\subsection*{Alignment and Measurements}
 
 One of the specialized tools included in the standard Avogadro distribution is
 the alignment tool. This mouse tool facilitates the alignment of a molecular
@@ -456,18 +460,9 @@ with the measure, select, and manipulate tools to create inputs for
 quantum codes where the position and orientation of the molecule is important.
 One example of this is calculations where an external electric field is applied
 to the molecule. In these types of calculations, the alignment of the molecule
-can have a large effect. Figure~\ref{f:measurement} shows the measurement tool
+can have a large effect. Figure~5 shows the measurement tool
 in action with the alignment tool configuration dialog visible in the lower-left
 corner.
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.9\textwidth]{images/avogadro-measurement}
-  \end{center}
-  \caption{The measurement tool being used to measure bond angles and lengths
-  (on Linux with KDE 4).}
-  \label{f:measurement}
-\end{figure}
 
 More complex alignment tools for specific tasks could be created. The alignment
 tool was created in just a few hours for a specific research project. This is a prime
@@ -478,7 +473,7 @@ structures to an axis, but creating a plugin for an extensible project is not
 unreasonable.
 
 
-\section{Visualization}
+\section*{Visualization}
 
 The Avogadro application uses OpenGL to render molecular representations to the
 screen interactively. OpenGL offers a high-level, cross-platform API for rendering
@@ -490,28 +485,20 @@ newer features available in OpenGL 2.0 as described below, such as but
 this has been kept as an optional extra feature when working on novel
 visualizations of molecular structure.
 
-\subsection{Standard Representations}
-
-\begin{figure}
-  \includegraphics[width=0.95\textwidth]{images/standardRepsLabel}
-  \caption{Several molecular representations of thiophene, (a) wireframe,
-   (b) stick/licorice, (c) ball and stick, (d) ball and stick with ring,
-    (e) Van der Waals/CPK and (f) transparent Van der Waal's with stick.}
- \label{f:standardReps}
-\end{figure}
+\subsection*{Standard Representations}
 
 In chemistry, there are several standard representations of molecular structure,
 originally based upon those possible with physical models. The Avogadro
 application implements each of these representations shown in
-Figure~\ref{f:standardReps} as a plugin. These range from the simple wireframe
+Figure~6 as a plugin. These range from the simple wireframe
 representation, stick/licorice, ball and stick, and Van der Waals spheres.
 
 It is also possible to combine several representations, such as ball and stick
-with ring rendering (Figure~\ref{f:standardReps} (d)), and a semi-transparent Van
+with ring rendering (Figure~6 (d)), and a semi-transparent Van
 der Waals space-filling representation with a stick representation to elucidate
-molecular backbone (Figure~\ref{f:standardReps} (f)).
+molecular backbone (Figure~6 (f)).
 
-\subsection{Electronic Structure}
+\subsection*{Electronic Structure}
 
 Quantum codes were originally developed for line printers, and unfortunately little has
 changed since then in the standard log files. There are several formats developed for
@@ -540,21 +527,10 @@ support for the AUX format and Slater type orbitals used in that code. All of th
 codes output their final configurations using the standard linear combination of
 atomic orbitals, meaning that parallelization is extremely simple.
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.45\textwidth]{images/avo-mbt-orb}
-    \hspace*{0.1cm}
-    \includegraphics[width=0.45\textwidth]{images/avo-mbt-esp}
-  \end{center}
-  \caption{Rendering of a molecular orbital isosurface (left) and an electrostatic
-  surface potential mapped onto the electron density (right).}
- \label{f:electronic-structure}
-\end{figure}
-
 The plugin was developed to take advantage of the map-reduce approach offered
 by QtConcurrent in order to use all available processor cores. This offers almost
 linear scaling as each point in the grid can be calculated independently of all other
-points, the results of which can be seen in Figure~\ref{f:electronic-structure}.
+points, the results of which can be seen in Figure~7.
 An alternate approach to calculating the molecular orbitals was developed
 in a second plugin that has since been split off into a separate
 project named ``OpenQube''. The ``OpenQube'' library has also been added as an
@@ -575,7 +551,7 @@ the parsing code present in OpenQube. Semantic meaning is one of the most
 difficult to extract from log files, and coming together as a community will help
 projects like Avogadro to derive more meaning from the outputs of these codes.
 
-\subsection{Secondary Biological Structure}
+\subsection*{Secondary Biological Structure}
 
 Avogadro uses the PDB reader from Open Babel to read in the secondary
 biological structure. Two plugins exist to process and render this information.
@@ -586,7 +562,7 @@ faster, the advanced plugin more accurately produces output expected
 in the field.  This allows users flexibility for rendering
 secondary biological structures.
 
-\subsection{GLSL, Novel Visualization}
+\subsection*{GLSL, Novel Visualization}
 
 GLSL, or OpenGL Shader Language, is a C-like syntax that can be used to develop
 code that will run on graphics cards and included in the OpenGL 2.0
@@ -595,26 +571,14 @@ as well as in many areas of data visualization. Several recent papers
 highlight the potential in chemistry, such as QuteMol~\cite{QuteMol}
 in adding support for features such as ambient occlusion to add depth to images.
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.45\textwidth]{images/avo-vitaminc-xray}
-    \hspace*{0.1cm}
-    \includegraphics[width=0.45\textwidth]{images/avo-vitaminc-cryos}
-  \end{center}
-  \caption{Rendering of a molecular orbital isosurface using two GLSL shaders to
-  highlight the edges of the surfaces. The X-ray effect (left) and red and blue (right)
-  showing the positive and negative molecular orbital shapes.}
- \label{f:electronic-glsl}
-\end{figure}
-
 Avogadro has support for vertex and fragment shader programs, and several
 examples are bundled with the package. If the user's graphics card is capable,
 these programs can be loaded at runtime and used to great effect to visualize
 structure. Some of these include summarization techniques such as isosurface
 rendering where only the edges orthogonal to the view plane are visible, giving
-a much better rendering of both the molecular and electronic structure (Figure~\ref{f:electronic-glsl}).
+a much better rendering of both the molecular and electronic structure (Figure~8).
 
-\subsection{Ray Tracing}
+\subsection*{Ray Tracing}
 
 Avogadro uses a painter abstraction that makes it much easier for developers to
 add new display types. It also abstracts away the renderer, making it possible
@@ -624,17 +588,7 @@ available in ray tracers to render molecular structure at very high levels of
 clarity and with none of the triangle artifacts present in standard OpenGL rendered
 images. Much higher quality transparency and reflection also allow for the
 images to be used in poster and oral presentations as well as research
-articles (Figure~\ref{f:electronic-ray}).
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.45\textwidth]{images/caffeine-homo3}
-    \includegraphics[width=0.45\textwidth]{images/caffeine-homo4}
-  \end{center}
-  \caption{Rendering of a molecular orbital isosurface using POV-Ray with cubes
-  of low (left) and high (right) density.}
- \label{f:electronic-ray}
-\end{figure}
+articles (Figure~9).
 
 This feature is implemented in an extension, with an additional painter class
 deriving from the base class and a dialog allowing the user to edit the basic
@@ -642,7 +596,7 @@ rendering controls. The POV-Ray input file can also be retained and edited to
 produce more complex images, or to allow for much finer control of the
 rendering process if desired.
 
-\section{Software Architecture}
+\section*{Software Architecture}
 
 One area that seems to suffer in many code bases in chemistry is software
 architecture. This can lead to less maintainable code, poor code reuse, and a
@@ -702,23 +656,13 @@ automated testing has been added, but coverage at this point remains relatively
 low. API documentation is automatically generated from comments in the code
 using Doxygen.
 
-\subsection{Plugin Interface}
-
-\begin{figure}
-  \includegraphics[width=0.9\textwidth]{images/architecture}
-  \caption{General code architecture of Avogadro, indicating major
-    plugin interfaces for colors, display engines, tools, and
-    extensions. Red boxes indicate code dependencies of Avogadro, blue
-  boxes indicate plugin API classes, and green boxes inidicate examples of
-  each plugin type.}
- \label{f:architecture}
-\end{figure}
+\subsection*{Plugin Interface}
 
 Avogadro plugins are divided into four different types corresponding
 to four main classes
 that derive from this common base class, specializing
 their interface for specific activities
-(Figure~\ref{f:architecture}). The {\tt Avogadro::Color} base class
+(Figure~10). The {\tt Avogadro::Color} base class
 defines the virtual interface for applying colors to atoms, bonds, and other properties.
  {\tt Avogadro::Engine} defines the common interface for all display types in Avogadro:
 simple ball and stick, Van der Waals visualizations,
@@ -748,7 +692,7 @@ The tool and display type plugins can both (optionally) provide a
 dialog for configuring the plugin. Dialogs are specific to each plugin
 and integrated into the user interface.
 
-\subsection{Display Types}
+\subsection*{Display Types}
 
 Display plugins are referred to as ``engines'' internally. Their
 primary focus is rendering graphics to the screen. As is the case with most
@@ -756,46 +700,21 @@ molecular graphics, a large portion of the geometric primitives are spheres and
 cylinders, typically used to represent atoms and bonds. There are many other
 properties that can be rendered using the display type plugins, for example,
 some of the engines also convey information about the underlying data the
-geometric primitives represent to allow for the molecule to be edited.
+geometric primitives represent to allow for the molecule to be edited. Table~1
+shows a summary of the display plugins distributed with Avogadro.
 
 Engines are performance critical as the render functions are called each time a
 frame is requested for display.  Efficient rendering is also critical
 since multiple display types can be combined to form a composite display. For
 example, ball and stick display overlaid with a transparent Van der Waals
 space-filling display and ring rendering to highlight all rings in the
-structure. Figure~\ref{f:standardReps} (d) and (f) show two such combinations of
+structure. Figure~6 (d) and (f) show two such combinations of
 multiple display types.
 
-\begin{table}
-\caption{List of default display type (engine) plugins}
-\begin{tabular}{l | l}
-\hline
-Name & Description \\
-\hline
-Axes & Renders x, y, z Cartesian axes from the origin \\
-Ball and Stick & Standard ball and stick representation \\
-Cartoon & Secondary biological structure ($\alpha$ helix and $\beta$ sheet) \\
-Dipole & Render direction/magnitude of dipole moment if present \\
-Force & Renders arrows showing forces on atoms from force field \\
-Hydrogen Bond & Renders hydrogen bonds as dotted lines \\
-Label & Shows labels on atoms and bonds, configurable \\
-Overlay & Overlay of color gradient used for electrostatic properties \\
-Polygon & Renders closed polygons of metallic centers \\
-Ribbon & Basic secondary structure ribbon rendering \\
-Ring & Renders rings in structure, different colors depending on ring size \\
-Simple Wireframe & Very simple wireframe display \\
-Sticks & Stick or liquorice rendering style for atoms and bonds \\
-Surface &Renders triangular isosurface meshes \\
-Van der Waals Spheres & Van der Waals sphere rendering (no bonds, space-filling) \\
-Wireframe & Wireframe with more features such as bond order rendering \\
-\hline
-\end{tabular}
-\end{table}
-
-\subsection{Tools}
+\subsection*{Tools}
 
 The tools are responsible for virtually all mouse and keyboard interaction with
-the molecule. A list of all tools is given in Table~\ref{tool-table}.
+the molecule. A list of all tools is given in Table~2.
 
 The navigation tool provides basic scene navigation, implementing rotation,
 panning, tilting, and zooming support. The initial point of interaction (where
@@ -827,37 +746,7 @@ minimized. If the optimization tool is turned off, the measurement tool also
 allows the user to precisely adjust bond lengths and/or angles using the
 adjustment tools.
 
-\begin{table}
-\caption{List of default mouse tool plugins}
-\label{tool-table}
-\begin{tabular}{c | l | l }
-\hline
-Icon & Tool Name & Description \\
-\hline
-\includegraphics[height=0.2in]{images/draw} & Draw Tool & Build and edit
-atoms\\
-\includegraphics[height=0.2in]{images/navigate} & Navigate Tool & Move the
-camera, rotate, pan, and zoom \\
-\includegraphics[height=0.2in]{images/bondcentric} & Bond Centric
-Manipulate Tool & Alter bond lengths, angles, and torsions \\
-\includegraphics[height=0.2in]{images/manipulate} & Manipulate Tool & Move
-atoms and selected fragments \\
-\includegraphics[height=0.2in]{images/select} & Select Tool & Select
-individual atoms, bonds, or fragments \\
-\includegraphics[height=0.2in]{images/autorotate} & Auto Rotate Tool &
-Continuously rotate a molecule for presentations \\
-\includegraphics[height=0.2in]{images/autoopttool} & Auto Optimize
-Tool &
-Continuously optimize molecular geometry using molecular mechanics \\
-\includegraphics[height=0.2in]{images/measure} & Measure Tool & Determine
-bond lengths, angles, and dihedrals \\
-\includegraphics[height=0.2in]{images/align} & Align Tool & Rotate and
-translate to a specified frame of reference \\
-\hline
-\end{tabular}
-\end{table}
-
-\subsection{Extensions}
+\subsection*{Extensions}
 
 Extensions represent quite a diverse range of plugins including
 input generation dialogs for various quantum chemistry codes such as GAMESS,
@@ -865,7 +754,8 @@ Molpro, NWChem, etc., animation of the molecule, and visualization of
 molecular orbitals and electron density. Network aware extensions allow the user
 to click on a menu item to fetch by chemical name and search for ``tnt'' or
 ``propanol'' and have structures returned by the NIH CACTUS Chemical Structure
-Resolver service~\cite{StructureResolver}.
+Resolver service~\cite{StructureResolver}. A summary of the extensions
+distributed with Avogadro is shown in Table 3.
 
 Other extensions translate the entire scene to POV-Ray input, and call POV-Ray
 to render the molecule using ray tracing techniques to provide higher quality
@@ -879,36 +769,7 @@ useful to practitioners in that area, including Miller Plane
 visualization, slab and surface generation. New builders for
 nanotubes, nanoparticles, and DNA are also planned for upcoming releases.
 
-\begin{table}
-  \caption{List of default extension commands}
-  \label{extension-table}
-\begin{tabular}{l | l}
-\hline
-Name & Description \\
-\hline
-Create Surfaces & Create surface meshes from molecular orbital/electron density data \\
-GAMESS & Prepare input files for GAMESS-US, featuring syntax highlighting, advanced properties \\
-Insert Fragment & Insert molecular fragments from a library of common fragments \\
-Insert Peptide & Build up and insert peptide fragments \\
-Molecular Mechanics & Use Open Babel's force fields for geometry optimization and conformer searches \\
-MOPAC & Prepare input for and run MOPAC200x  \\
-POV-Ray & Ray-trace the displayed structure using POV-Ray \\
-\textbf{Properties} \\
-Angle Properties & Table of all bond angles (editable)\\
-Atom Properties & Table of all atoms with common properties \\
-Bond Properties & Table of all bonds with common properties \\
-Molecule Properties & Common properties of the molecule (including
-molecular weight, etc.)\\
-Torsion Properties & Table of all dihedral angles (editable) \\
-Spectra & Visualize spectra from output files \\
-Super Cell Builder & Expand atoms with space group, replicate specified repeats and perform simple bonding \\
-Unit Cell & Change crystallographic unit cell display and parameters \\
-Vibrations & Show and animate molecular vibrations \\
-\hline
-\end{tabular}
-\end{table}
-
-\subsection{Colors}
+\subsection*{Colors}
 
 The color plugins primarily take either double precision numbers or integer
 values and return an RGB value. The plugins range from the standard color
@@ -920,32 +781,10 @@ By defining a plugin interface for coloring atoms, bonds, or residues,
 developers can easily offer flexible rendering options to highlight
 important information without requiring a user to tediously set colors
 on specific atoms or functional groups. Default color plugins are
-listed in Table~\ref{color-table}, illustrating the variety of
+listed in Table~4, illustrating the variety of
 options. Each plugin is usually only 40-50 lines of C++ code.
 
-\begin{table}
-  \caption{List of default color plugins}
-  \label{color-table}
-\begin{tabular}{l | l}
-\hline
-Name & Description \\
-\hline
-Atom Index Color & Color based on atom ID (from atom 1, 2, etc.) \\
-Charge Color & Color based on predicted electrostatic partial charge \\
-Custom Color & Color all atoms a specific, custom color \\
-Distance Color & Color based on distance from one end of the
-molecule \\
-Element Color \textbf{(Default)} & Standard color scheme, giving each
-atom a color defined by its element\\
-Residue Color & Color based on amino acid or nucleic acid residue (i.e., glycine,
-histidine, etc.) \\
-SMARTS Color & Color atoms matching a specific SMARTS pattern with a
-custom color \\
-\hline
-\end{tabular}
-\end{table}
-
-\section{Python Interface} % Tim
+\section*{Python Interface}
 
 Python bindings are provided for all of the core API. Python code can be used
 in two ways: the first is the interactive Python terminal, and the second is to
@@ -960,21 +799,12 @@ toolkit, which enables Python code to use all of Qt's features when writing a
 plugin. For example, a short Python script can present a window using Qt and
 render molecules using Avogadro~\cite{PythonWindowExample}.
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.9\textwidth]{images/python-terminal}
- \end{center}
-  \caption{Illustration of the Python scripting terminal, printing
-    atomic numbers.}
- \label{f:python-terminal}
-\end{figure}
-
 Avogadro also includes an interactive Python console
-(Figure~\ref{f:python-terminal}, which allows users to directly script
+(Figure~11, which allows users to directly script
 and manipulate the Avogadro environment~\cite{PythonTerminalTutorial}.
 
 
-\section{Quantum Calculations} % Marcus
+\section*{Quantum Calculations} % Marcus
 
 Once quantum calculations have been performed, it is desirable
 to visualize various properties including the molecular orbitals and electron
@@ -1010,22 +840,14 @@ calculations using these higher-order orbitals. The Basis Set Exchange hosted
 by EMSL provides access to the basis sets in common use, although at present
 these basis sets are normally read in directly from the output files.
 
-\section{Avogadro Library in Use}
+\section*{Avogadro Library in Use}
 
 The Avogadro library's first use was the Avogadro application, closely
 followed by the Kalzium periodic table program that is part of the KDE software
 collection. This initial work was funded in part by the Google Summer of Code
 program in 2007, and also resulted in the addition of several other features in
 the Avogadro library to support Kalzium and general visualization and editing
-of molecular structure (Figure~\ref{f:kalzium}).
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[width=0.7\textwidth]{images/kalzium-porph}
-  \end{center}
-  \caption{The Kalzium application in KDE using Avogadro to render molecular structures.}
- \label{f:kalzium}
-\end{figure}
+of molecular structure (Figure~12).
 
 The Q-Chem package~\cite{Q-Chem3} has developed ``QUI - The Q-Chem User
 Interface''~\cite{QUI} around Avogadro, originally as an Avogadro extension.
@@ -1034,7 +856,7 @@ with much tighter integration. Molpro~\cite{MOLPRO} has also published some
 results from their development of a Molpro interface using the Avogadro
 library~\cite{MOLPROGUI}.
 
-\subsection{Packmol}
+\subsection*{Packmol}
 
 Packmol is a third-party package designed to create initial
 ``packed'' configurations of molecules for molecular dynamics or other
@@ -1047,7 +869,8 @@ Typically, users may have equilibrated ``solvent boxes'' which have
 been run for long simulations to ensure proper density, and both short
 and long-range interactions between solvent molecules. Using such
 solvent boxes allows placing solute molecules, such as proteins, in an
-approximately correct initial structure. The solute is added into the
+approximately correct initial structure, such as that shown in Figure~13.
+The solute is added into the
 box, and solvent molecules with overlapping atoms are removed. While
 these utilities are often enough, creating complex input files is not
 always easy.
@@ -1058,14 +881,6 @@ box, etc.), and the molecules to be placed. An Avogadro developer wrote
 an external plugin to facilitate use of Packmol, including estimating
 the number of molecules in a given volume.
 
-\begin{figure}
-  \includegraphics[width=0.45\textwidth]{images/packmol-extension}
-  \includegraphics[width=0.45\textwidth]{images/packmol-lipid}
-  \caption{The PackMol extension for Avogadro (left) and a lipid layer (right)
-    as produced by the PackMol program.}
-  \label{f:packmol}
-\end{figure}
-
 The plugin is not currently distributed with Avogadro as a standard
 feature, although it is planned for some future version. It serves as
 an example of how Avogadro can facilitate a workflow with a
@@ -1073,14 +888,7 @@ text-oriented package (Packmol), including saving files in the PDB
 format required by Packmol, generating an input file, and reading the
 output for visualization, analysis, and further simulations.
 
-\subsection{XtalOpt}
-
-\begin{figure}
-  \includegraphics[width=0.95\textwidth]{images/xtalopt}
-  \caption{The XtalOpt package showing a plot of stability vs. search progress
-    for a $\mathrm{TiO_2}$ supercell.}
-  \label{f:xtalopt}
-\end{figure}
+\subsection*{XtalOpt}
 
 The XtalOpt~\cite{xo1, xo2} software package is implemented as a third-party C++
 extension to Avogadro and makes heavy use of the libavogadro API. The extension
@@ -1088,14 +896,14 @@ implements an evolutionary algorithm tailored for crystal structure prediction.
 The XtalOpt development team chose Avogadro as a platform because of its
 open-source license, well-designed API, powerful visualization tools, and
 intuitive user-interface. XtalOpt exists as a dialog window
-(Figure~\ref{f:xtalopt}) and uses the main Avogadro window for visualizing
+(Figure~14) and uses the main Avogadro window for visualizing
 candidate structures as they evolve. The API is well suited for XtalOpt’s needs,
 providing a simple mechanism to allow the user to view, edit, and export the
 structures generated during the search. Taking advantage of the cross-platform
 capabilities of Avogadro and its dependencies, XtalOpt is available for Linux,
 Windows, and Mac.
 
-\section{Conclusions and Future Directions}
+\section*{Conclusions and Future Directions}
 
 Avogadro has grown over its first six years to become an important
 tool for building, editing, visualizing, and analyzing chemical and
@@ -1125,7 +933,7 @@ Avogadro is freely available from http://avogadro.openmolecules.net/,
 and new contributors are welcome in all areas (users, developers,
 testers, translators, educators, students, researchers, dreamers).
 
-\section{Availability and Requirements}
+\section*{Availability and Requirements}
 
 \textbf{Project Name:} Avogadro \\
 \textbf{Project home page:} http://avogadro.openmolecules.net/ \\
@@ -1136,7 +944,7 @@ Eigen 2 \\
 \textbf{License:} GNU GPL v2 \\
 \textbf{Any restrictions to use by non-academics:} None additional
 
-\section{Acknowledgements and Funding}
+\section*{Acknowledgements and Funding}
 
 We wish to thank the many contributors to the Avogadro project,
 including developers, testers, translators, and users. We thank
@@ -1146,18 +954,18 @@ additional dashboard resources. MDH and GRH thank the University of
 Pittsburgh for support. DEC would like to thank Jan Halborg Jensen for
 designing the GAMESS-US interface and supporting Avogadro in its
 infancy; believing Avogadro could be better than what was available.
-MDH also thanks Kitware and the Engineering Research Development
-Center for support. EZ and DL acknowledge the NSF (DMR-1005413) for
-financial support.
+MDH acknowledges the Engineering Research Development Center (W912HZ-11-P-0019)
+for financial support. EZ and DL acknowledge the NSF (DMR-1005413) for financial
+support.
 
-\section{Authors' contributions}
+\section*{Authors' contributions}
 GRH and DEC are the founders of the Avogadro project. MDH is the
 current lead developer and maintainer of Avogadro. GRH, DL and TV are
 active developers. DL and EZ are founders of the XtalOpt project which
 is discussed in this work. TV developed the PackMol plugin. All
 authors read and approved the final manuscript.
 
-\section{Competing interests}
+\section*{Competing interests}
 
 The authors declare that they have no competing interests.
 
@@ -1185,6 +993,192 @@ The authors declare that they have no competing interests.
 %%%%%%%%%%%
 
 \ifthenelse{\boolean{publ}}{\end{multicols}}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Figures                       %%
+%%                               %%
+%% NB: this is for captions and  %%
+%% Titles. All graphics must be  %%
+%% submitted separately and NOT  %%
+%% included in the Tex document  %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% Do not use \listoffigures as most will included as separate files
+
+\section*{Figures}
+  \subsection*{Figure 1 - The Avogadro graphical user interface}
+    Taken on Mac OS X, showing the editing interface for a molecule.
+
+  \subsection*{Figure 2 - Dialogs for inserting pre-built fragments}
+    The left shows molecules, and the right amino-acid sequences.
+
+  \subsection*{Figure 3 - Dialog for generating input for quantum codes}
+    Dialogs for generating input for Q-Chem, NWChem, Molpro and MOPAC200x.
+    Note that the dialogs are similar in interface, allowing users to use
+    multiple computational chemistry packages.
+
+  \subsection*{Figure 4 - The GAMESS-US input deck generator}
+    This input generator has an advanced panel and syntax highlighting.
+
+  \subsection*{Figure 5 - The measurement tool}
+    The measurement tool being used to measure bond angles and lengths
+    (on Linux with KDE 4).
+
+  \subsection*{Figure 6 - Standard molecular structure representations}
+    Several molecular representations of thiophene, (a) wireframe,
+    (b) stick/licorice, (c) ball and stick, (d) ball and stick with ring,
+    (e) Van der Waals/CPK and (f) transparent Van der Waal's with stick.
+
+  \subsection*{Figure 7 - Molecular orbitals and surfaces}
+    Rendering of a molecular orbital isosurface (left) and an electrostatic
+    surface potential mapped onto the electron density (right).
+
+  \subsection*{Figure 8 - Molecular orbitals rendering using GLSL shaders}
+    Rendering of a molecular orbital isosurface using two GLSL shaders to
+    highlight the edges of the surfaces. The X-ray effect (left) and red and blue (right)
+    showing the positive and negative molecular orbital shapes.
+
+  \subsection*{Figure 9 - Ray-traced HOMO isosurfaces of varying cube density}
+    Rendering of a molecular orbital isosurface using POV-Ray with cubes
+    of low (left) and high (right) density.
+
+  \subsection*{Figure 10 - General code architecture of Avogadro}
+    General code architecture of Avogadro, indicating major
+    plugin interfaces for colors, display engines, tools, and
+    extensions. Red boxes indicate code dependencies of Avogadro, blue
+    boxes indicate plugin API classes, and green boxes inidicate examples of
+    each plugin type.
+
+  \subsection*{Figure 11 - Python scripting terminal, printing atomic numbers}
+
+  \subsection*{Figure 12 - The Kalzium application in KDE using Avogadro to render molecular structures}
+
+  \subsection*{Figure 13 - The PackMol lipid layer as produced by the PackMol extension}
+
+  \subsection*{Figure 14 - The XtalOpt extension}
+    XtalOpt extension showing a plot of stability vs. search progress
+    for a $\mathrm{TiO_2}$ supercell.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Tables                        %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Use of \listoftables is discouraged.
+%%
+\section*{Tables}
+  \subsection*{Table 1 - List of default display type (engine) plugins}
+    \par
+    \mbox{
+\begin{tabular}{l | l}
+\hline
+Name & Description \\
+\hline
+Axes & Renders x, y, z Cartesian axes from the origin \\
+Ball and Stick & Standard ball and stick representation \\
+Cartoon & Secondary biological structure ($\alpha$ helix and $\beta$ sheet) \\
+Dipole & Render direction/magnitude of dipole moment if present \\
+Force & Renders arrows showing forces on atoms from force field \\
+Hydrogen Bond & Renders hydrogen bonds as dotted lines \\
+Label & Shows labels on atoms and bonds, configurable \\
+Overlay & Overlay of color gradient used for electrostatic properties \\
+Polygon & Renders closed polygons of metallic centers \\
+Ribbon & Basic secondary structure ribbon rendering \\
+Ring & Renders rings in structure, different colors depending on ring size \\
+Simple Wireframe & Very simple wireframe display \\
+Sticks & Stick or liquorice rendering style for atoms and bonds \\
+Surface &Renders triangular isosurface meshes \\
+Van der Waals Spheres & Van der Waals sphere rendering (no bonds, space-filling) \\
+Wireframe & Wireframe with more features such as bond order rendering \\
+\hline
+\end{tabular}
+      }
+
+  \subsection*{Table 2 - List of default mouse tool plugins}
+    \par
+    \mbox{
+\begin{tabular}{c | l | l }
+\hline
+Icon & Tool Name & Description \\
+\hline
+\includegraphics[height=0.2in]{images/draw} & Draw Tool & Build and edit
+atoms\\
+\includegraphics[height=0.2in]{images/navigate} & Navigate Tool & Move the
+camera, rotate, pan, and zoom \\
+\includegraphics[height=0.2in]{images/bondcentric} & Bond Centric
+Manipulate Tool & Alter bond lengths, angles, and torsions \\
+\includegraphics[height=0.2in]{images/manipulate} & Manipulate Tool & Move
+atoms and selected fragments \\
+\includegraphics[height=0.2in]{images/select} & Select Tool & Select
+individual atoms, bonds, or fragments \\
+\includegraphics[height=0.2in]{images/autorotate} & Auto Rotate Tool &
+Continuously rotate a molecule for presentations \\
+\includegraphics[height=0.2in]{images/autoopttool} & Auto Optimize
+Tool &
+Continuously optimize molecular geometry using molecular mechanics \\
+\includegraphics[height=0.2in]{images/measure} & Measure Tool & Determine
+bond lengths, angles, and dihedrals \\
+\includegraphics[height=0.2in]{images/align} & Align Tool & Rotate and
+translate to a specified frame of reference \\
+\hline
+\end{tabular}
+      }
+
+  \subsection*{Table 3 - List of default extension commands}
+    \par
+    \mbox{
+\begin{tabular}{l | l}
+\hline
+Name & Description \\
+\hline
+Create Surfaces & Create surface meshes from molecular orbital/electron density data \\
+GAMESS & Prepare input files for GAMESS-US, featuring syntax highlighting, advanced properties \\
+Insert Fragment & Insert molecular fragments from a library of common fragments \\
+Insert Peptide & Build up and insert peptide fragments \\
+Molecular Mechanics & Use Open Babel's force fields for geometry optimization and conformer searches \\
+MOPAC & Prepare input for and run MOPAC200x  \\
+POV-Ray & Ray-trace the displayed structure using POV-Ray \\
+\textbf{Properties} \\
+Angle Properties & Table of all bond angles (editable)\\
+Atom Properties & Table of all atoms with common properties \\
+Bond Properties & Table of all bonds with common properties \\
+Molecule Properties & Common properties of the molecule (including
+molecular weight, etc.)\\
+Torsion Properties & Table of all dihedral angles (editable) \\
+Spectra & Visualize spectra from output files \\
+Super Cell Builder & Expand atoms with space group, replicate specified repeats and perform simple bonding \\
+Unit Cell & Change crystallographic unit cell display and parameters \\
+Vibrations & Show and animate molecular vibrations \\
+\hline
+\end{tabular}
+      }
+
+  \subsection*{Table 4 - List of default color plugins}
+    \par
+    \mbox{
+\begin{tabular}{l | l}
+\hline
+Name & Description \\
+\hline
+Atom Index Color & Color based on atom ID (from atom 1, 2, etc.) \\
+Charge Color & Color based on predicted electrostatic partial charge \\
+Custom Color & Color all atoms a specific, custom color \\
+Distance Color & Color based on distance from one end of the
+molecule \\
+Element Color \textbf{(Default)} & Standard color scheme, giving each
+atom a color defined by its element\\
+Residue Color & Color based on amino acid or nucleic acid residue (i.e., glycine,
+histidine, etc.) \\
+SMARTS Color & Color atoms matching a specific SMARTS pattern with a
+custom color \\
+\hline
+\end{tabular}
+      }
 
 \end{bmcformat}
 \end{document}
