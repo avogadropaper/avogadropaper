@@ -234,9 +234,10 @@ Mac OS X, Microsoft Windows, and BSD).
 The choice of software capable of building chemical structures in
 three dimensions is far smaller.
 There are existing commercial packages, such as
-Spartan~\cite{Spartan}, CAChe/Scigress~\cite{CAChe},
-GaussView~\cite{GaussView}, Materials Studio~\cite{Accelrys} and
-CrystalMaker~\cite{CrystalMaker}, which are polished and capable of
+CAChe/Scigress~\cite{CAChe}, ChemBio3D~\cite{Chem3D},
+GaussView~\cite{GaussView}, HyperChem~\cite{HyperChem},
+Materials Studio~\cite{Accelrys}, and Spartan~\cite{Spartan},
+which are polished and capable of
 constructing many different types of molecular structures. They are,
 however, not available for all operating systems (most of them only
 run on Microsoft Windows), and are not easily extensible, customized,
@@ -607,7 +608,7 @@ choice of modern programming languages and libraries.
 
 Avogadro has close ties to several other free, cross-platform, open-source
 projects to reuse as much code as is practical. These projects include
-Qt to provide a free, cross-platform graphical toolkit; Open
+Qt~\cite{Qt} to provide a free, cross-platform graphical toolkit; Open
 Babel~\cite{OpenBabel} for chemical file input/output, geometry optimization, and
 other chemical perception; Eigen~\cite{Eigen} for matrix and vector mathematics;
 OpenGL/GLSL for real-time, three-dimensional rendering; and POV-Ray for ray-traced
@@ -618,7 +619,7 @@ available programs at the time, several fundamental choices were made.
 The C++ programming language; the Qt graphical toolkit;
 OpenGL for 3D visualization; CMake as the build system; and Open Babel as
 the chemical library. Using this combination of languages and
-libraries requires the project to be licensed under the GNU GPLv2
+libraries requires the project to be licensed under the GNU GPLv2~\cite{GPLv2}
 license and made openly available to all.
 
 The core of Avogadro is written in portable C++ code with platform-specific
@@ -798,6 +799,14 @@ The Python bindings interface with the PyQt python bindings for the Qt
 toolkit, which enables Python code to use all of Qt's features when writing a
 plugin. For example, a short Python script can present a window using Qt and
 render molecules using Avogadro~\cite{PythonWindowExample}.
+% I'm trying to get this posted to GitHub
+% More examples:
+%http://avogadro.openmolecules.net/wiki/Python_Engines
+%http://avogadro.openmolecules.net/wiki/Python_Molecule
+%http://avogadro.openmolecules.net/wiki/Python_Extensions
+%http://avogadro.openmolecules.net/wiki/Protein.py
+%http://avogadro.openmolecules.net/wiki/Saveconformers.py
+%http://avogadro.openmolecules.net/wiki/Python_PyQt4
 
 Avogadro also includes an interactive Python console
 (Figure~11, which allows users to directly script
@@ -805,6 +814,7 @@ and manipulate the Avogadro environment~\cite{PythonTerminalTutorial}.
 
 
 \section*{Quantum Calculations} % Marcus
+% Is this a duplicate of the "Electronic Structure" section above?
 
 Once quantum calculations have been performed, it is desirable
 to visualize various properties including the molecular orbitals and electron
